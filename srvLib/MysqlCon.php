@@ -18,7 +18,7 @@ class MysqlCon {
     protected $sql;
     protected $res;
 
-    public function __construct($webSite = "localhost", $user = "askLeave", $passwd = "to32eo334", $db = "AskForLeave") {
+    public function __construct($webSite = "localhost", $user = "combuy", $passwd = "nv2kau3", $db = "ComputerBuy") {
 	$dbconStat = "mysql:host=$webSite;dbname=$db";
 	$this->con = new PDO($dbconStat, $user, $passwd);
     }
