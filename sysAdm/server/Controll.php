@@ -22,12 +22,18 @@ class Control {
     }
 
     public function execInstr() {
-	$instr = $this->instr;
 	try {
+	    if(!isset($this->instr))
+		throw new Exception("instr not defined");
+	    $instr = $this->instr;
 	    $instr();
 	}
 	catch(Exception $e) {
-	    print_r($e);
+	    $reData = Array();
+	    $reData['status'] = 500;
+	    $reData['msg'] = $e->getMessage();
+	    $reData['trace'] = $e->getTrace();
+	    echo json_encode($reData);
 	}
     }
 
