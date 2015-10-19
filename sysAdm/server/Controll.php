@@ -48,3 +48,14 @@ function addProduct() {
     $reData['msg'] = "success";
     echo json_encode($reData);
 }
+
+function prodList() {
+    require_once("prodAdm/Product.php");
+    $prodAdm = new Product();
+    $prodList = $prodAdm->prodList();
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    $reData['data'] = $prodList;
+    echo json_encode($reData);
+}

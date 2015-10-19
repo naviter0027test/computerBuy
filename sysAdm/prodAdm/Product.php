@@ -37,4 +37,15 @@ class Product {
 	$dbAdm->insertData($tablename, $columns, $data);
 	$dbAdm->execSQL();
     }
+
+    public function prodList() {
+	$dbAdm = $this->mysql;
+	$tablename = "Product";
+	$columns = Array();
+	$columns[0] = "*";
+
+	$dbAdm->selectData($tablename, $columns);
+	$dbAdm->execSQL();
+	return $dbAdm->getAll();
+    }
 }
