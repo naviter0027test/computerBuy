@@ -4,7 +4,7 @@
 	<meta charset='utf-8' />
     </head>
     <body>
-	<form action="../index.php" method="post">
+	<form action="../instr.php" method="post">
 	    <input type='hidden' name="instr" value="addProduct" />
 	    商品名：<input type="text" name="p_name" /><br />
 	    商品價格：<input type="text" name="p_price" /><br />
