@@ -48,4 +48,14 @@ class Product {
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }
+
+    public function delProduct($pid) {
+	$dbAdm = $this->mysql;
+	$tablename = "Product";
+	$conditionArr = Array();
+	$conditionArr['p_id'] = $pid;
+
+	$dbAdm->deleteData($tablename, $conditionArr);
+	$dbAdm->execSQL();
+    }
 }

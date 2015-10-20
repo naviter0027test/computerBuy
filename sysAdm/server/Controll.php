@@ -59,3 +59,12 @@ function prodList() {
     $reData['data'] = $prodList;
     echo json_encode($reData);
 }
+
+function delProduct() {
+    require_once("prodAdm/Product.php");
+    $prodAdm = new Product();
+    $prodAdm->delProduct($_POST['p_id']);
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    echo json_encode($reData);
+}
