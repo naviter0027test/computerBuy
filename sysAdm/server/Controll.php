@@ -68,3 +68,13 @@ function delProduct() {
     $reData['msg'] = "success";
     echo json_encode($reData);
 }
+
+function addClass() {
+    require_once("prodAdm/Classification.php");
+    $prodAdm = new Classification();
+    $prodAdm->addClass($_POST['c_name']);
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    echo json_encode($reData);
+}
