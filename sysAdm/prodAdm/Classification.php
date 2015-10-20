@@ -30,6 +30,17 @@ class Classification {
 	$dbAdm->insertData($tablename, $columns, $data);
 	$dbAdm->execSQL();
     }
+
+    public function classList() {
+	$dbAdm = $this->mysql;
+	$tablename = "Classification";
+	$columns = Array();
+	$columns[0] = "*";
+
+	$dbAdm->selectData($tablename, $columns);
+	$dbAdm->execSQL();
+	return $dbAdm->getAll();
+    }
 }
 
 ?>

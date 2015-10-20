@@ -71,10 +71,21 @@ function delProduct() {
 
 function addClass() {
     require_once("prodAdm/Classification.php");
-    $prodAdm = new Classification();
-    $prodAdm->addClass($_POST['c_name']);
+    $classAdm = new Classification();
+    $classAdm->addClass($_POST['c_name']);
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "success";
+    echo json_encode($reData);
+}
+
+function classList() {
+    require_once("prodAdm/Classification.php");
+    $classAdm = new Classification();
+    $classList = $classAdm->classList();
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    $reData['data'] = $classList;
     echo json_encode($reData);
 }
