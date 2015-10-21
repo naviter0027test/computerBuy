@@ -2,6 +2,7 @@
     <head>
 	<title>系統管理登入</title>
 	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/login.css" />
     </head>
     <body>
 	<form action="instr.php" method="post">
@@ -9,6 +10,7 @@
 	    <input type="hidden" name="instr" value="sysLogin" />
 	    <label>系統帳號</label><input type="text" name="account" /><br />
 	    <label>系統密碼</label><input type="password" name="pass" /><br />
+	    <label><img src='../srvLib/Captcha.php' /></label><input type="text" name="captcha" /><br />
 	    <button>登入</button>
 	</form>
     </body>
