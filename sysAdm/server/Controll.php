@@ -89,3 +89,37 @@ function classList() {
     $reData['data'] = $classList;
     echo json_encode($reData);
 }
+
+function login() {
+    require_once("login/Login.php");
+    $loginAdm = new Login();
+    $loginAdm->login($_POST);
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    echo json_encode($reData);
+}
+
+function logout() {
+    require_once("login/Login.php");
+    $loginAdm = new Login();
+    $loginAdm->logout();
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    echo json_encode($reData);
+}
+
+function isLogin() {
+    require_once("login/Login.php");
+    $loginAdm = new Login();
+    if($loginAdm->isLogin()) {
+	$reData['status'] = 200;
+	$reData['msg'] = "已經登入";
+    }
+    else {
+	$reData['status'] = 500;
+	$reData['msg'] = "尚未登入";
+	$reData['jumpPage'] = "login.html";
+    }
+    echo json_encode($reData);
+    exit;
+}
