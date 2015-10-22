@@ -6,27 +6,20 @@
     </head>
     <body>
 	<div id="header">
-	    <img src="/imgs/cooltext143725226109873.png" />
-	    <a href="#">登出</a>
 	</div>
 	<div id="left">
-	    <ul>
-		<h3>帳號管理</h3>
-		<li><a href="#" class="clicked">密碼修改</a></li>
-		<h3>商品管理</h3>
-		<li><a href="#">商品清單</a></li>
-		<li><a href="#">新增商品</a></li>
-		<h3>訂單管理</h3>
-		<li><a href="#">有效訂單</a></li>
-		<li><a href="#">無效訂單</a></li>
-	    </ul>
 	</div><div id="right">
-	    <h1>管理員頁面</h1>
 	</div>
     </body>
     <script src="../lib/jquery-1.8.2.js"></script>
     <script src="../lib/underscore.js"></script>
     <script src="../lib/backbone.js"></script>
     <script src="js/admin.js"></script>
+    <script>
+	$(document).ready(function() {
+	    var router = new AdminRoutes();
+	    Backbone.history.start();
+	});
+    </script>
 </html>
 
