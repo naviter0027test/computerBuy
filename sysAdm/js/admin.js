@@ -5,7 +5,8 @@ AdminRoutes = Backbone.Router.extend({
 	$("#header").load("header.html");
     },
     routes : {
-	'productList' : 'productList'
+	'productList' : 'productList',
+	'productAdd' : 'productAdd'
     },
     productList : function() {
 	$("#right").load("prodAdm/prodList.html", function() {
@@ -13,6 +14,12 @@ AdminRoutes = Backbone.Router.extend({
 	    $("#right tbody").html(tem());
 	    $("#left a").removeClass('clicked');
 	    $("#left a[href=#productList]").addClass('clicked');
+	});
+    },
+    productAdd : function() {
+	$("#right").load("prodAdm/prodEdit.html", function() {
+	    $("#left a").removeClass('clicked');
+	    $("#left a[href=#productAdd]").addClass('clicked');
 	});
     }
 });
