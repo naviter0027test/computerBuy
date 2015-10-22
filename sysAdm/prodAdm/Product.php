@@ -38,6 +38,22 @@ class Product {
 	$dbAdm->execSQL();
     }
 
+    public function editProd($computer) {
+	$dbAdm = $this->mysql;
+	$tablename = "Product";
+	$columns = Array();
+	$columns['p_name'] = "'". $computer['p_name']. "'";
+	$columns['p_price'] = "'". $computer['p_price']. "'";
+	$columns['p_memo'] = "'". $computer['p_memo']. "'";
+	$columns['p_cls'] = "'". $computer['p_cls']. "'";
+
+	$conditionArr = Array();
+	$conditionArr['p_id'] = $computer['p_id'];
+
+	$dbAdm->updateData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+    }
+
     public function prodList() {
 	$dbAdm = $this->mysql;
 	$tablename = "Product";

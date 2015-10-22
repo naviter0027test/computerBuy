@@ -49,6 +49,15 @@ function addProduct() {
     echo json_encode($reData);
 }
 
+function editProduct() {
+    require_once("prodAdm/Product.php");
+    $prodAdm = new Product();
+    $prodAdm->editProd($_POST);
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    echo json_encode($reData);
+}
+
 function prodList() {
     require_once("prodAdm/Product.php");
     $prodAdm = new Product();
