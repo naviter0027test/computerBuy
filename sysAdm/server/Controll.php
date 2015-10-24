@@ -132,3 +132,13 @@ function isLogin() {
     echo json_encode($reData);
     exit;
 }
+
+function upload() {
+    require_once("upload/Upload.php");
+    $upfile = new Upload();
+    $upfile->uploadFinish();
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "上傳成功";
+    echo json_encode($reData);
+}
