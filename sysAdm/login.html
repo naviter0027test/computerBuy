@@ -5,13 +5,19 @@
 	<link rel="stylesheet" type="text/css" href="css/login.css" />
     </head>
     <body>
-	<form action="instr.php" method="post">
+	<form action="instr.php" method="post" id="login">
 	    <h2>系統登入</h2>
-	    <input type="hidden" name="instr" value="sysLogin" />
+	    <input type="hidden" name="instr" value="login" />
 	    <label>系統帳號</label><input type="text" name="account" /><br />
 	    <label>系統密碼</label><input type="password" name="pass" /><br />
 	    <label><img src='../srvLib/Captcha.php' /></label><input type="text" name="captcha" /><br />
 	    <button>登入</button>
 	</form>
     </body>
+    <script src="../lib/jquery-1.8.2.js"></script>
+    <script src="../lib/jquery.form.js"></script>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/backbone.js"></script>
+    <script src="login/Login.js"></script>
+    <script src="js/login.js"></script>
 </html>
