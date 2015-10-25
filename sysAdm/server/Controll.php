@@ -142,3 +142,12 @@ function upload() {
     $reData['msg'] = "上傳成功";
     echo json_encode($reData);
 }
+
+function passModify() {
+    require_once("login/Login.php");
+    $loginAdm = new Login();
+    $loginAdm->modifyPass($_POST['pass']);
+    $reData['status'] = 200;
+    $reData['msg'] = "修改成功";
+    echo json_encode($reData);
+}

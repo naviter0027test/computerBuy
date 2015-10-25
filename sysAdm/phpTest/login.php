@@ -18,5 +18,11 @@
 	    <input type="hidden" name="instr" value="logout" />
 	    <button>登出</button>
 	</form>
+	<form action="../instr.php" method="post">
+	    <h2>密碼修改</h2>
+	    <input type="hidden" name="instr" value="passModify" />
+	    密碼：<input type="password" name="pass" />
+	    <button>修改</button>
+	</form>
     </body>
 </html>

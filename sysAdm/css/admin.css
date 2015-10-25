@@ -171,7 +171,7 @@ a {
 #right form input {
     width : 50%;
     padding : 3px;
-    margin-top : 5px;
+    margin : 5px 0 5px 0;
     border : 1px solid #827DA0;
 }
 

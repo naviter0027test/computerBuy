@@ -5,9 +5,16 @@ AdminRoutes = Backbone.Router.extend({
 	$("#header").load("header.html");
     },
     routes : {
+	'passAdm' : 'passAdm',
 	'productList' : 'productList',
 	'productAdd' : 'productAdd',
 	'logout' : 'logout'
+    },
+    passAdm : function() {
+	$("#right").load("login/passAdm.html", function() {
+	    $("#left a").removeClass('clicked');
+	    $("#left a[href=#passAdm]").addClass('clicked');
+	});
     },
     productList : function() {
 	$("#right").load("prodAdm/prodList.html", function() {
