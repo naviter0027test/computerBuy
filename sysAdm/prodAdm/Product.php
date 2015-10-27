@@ -22,20 +22,29 @@ class Product {
 
     public function addProd($computer) {
 	$dbAdm = $this->mysql;
+	$folderName = strtotime(date('Y-m-d h:i:s'));
+
 	$tablename = "Product";
 	$columns = Array();
 	$columns[0] = "p_name";
 	$columns[1] = "p_price";
 	$columns[2] = "p_memo";
 	$columns[3] = "p_cls";
+	$columns[4] = "p_img";
+	$columns[5] = "p_folder";
 
 	$data = Array();
 	$data[0] = "'". $computer['p_name']. "'";
 	$data[1] = $computer['p_price'];
 	$data[2] = "'". $computer['p_memo']. "'";
 	$data[3] = $computer['p_cls'];
+	$data[4] = "'". $computer['p_img']. "'";
+	$data[5] = "'$folderName'";
 	$dbAdm->insertData($tablename, $columns, $data);
 	$dbAdm->execSQL();
+
+	mkdir("../imgs/$folderName");
+	rename("imgs/tmp/". $computer['p_img'], "../imgs/$folderName/". $computer['p_img']);
     }
 
     public function editProd($computer) {
@@ -60,7 +69,10 @@ class Product {
 	$columns = Array();
 	$columns[0] = "*";
 
-	$dbAdm->selectData($tablename, $columns);
+	$order = Array();
+	$order['col'] = "p_crTime";
+	$order['order'] = "desc";
+	$dbAdm->selectData($tablename, $columns, null, $order);
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }

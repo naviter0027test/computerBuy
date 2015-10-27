@@ -17,6 +17,10 @@ class Control {
     private $instr;
 
     public function __construct() {
+	
+	//時間初始設定, date() strtotime() 須要
+	date_default_timezone_set('Asia/Taipei');
+
 	if(isset($_POST['instr']))
 	    $this->instr = $_POST['instr'];
     }
@@ -136,10 +140,11 @@ function isLogin() {
 function upload() {
     require_once("upload/Upload.php");
     $upfile = new Upload();
-    $upfile->uploadFinish();
+    $upResult = $upfile->uploadFinish();
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "上傳成功";
+    $reData['info'] = $upResult;
     echo json_encode($reData);
 }
 
