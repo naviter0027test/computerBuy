@@ -59,5 +59,17 @@ class Login {
 	    return true;
 	return false;
     }
+
+    public function modifyPass($newpass) {
+	$dbAdm = $this->mysql;
+
+	$tablename = "Sys";
+	$columns = Array();
+	$columns['s_value'] = "md5('$newpass')";
+	$conditionArr = Array();
+	$conditionArr['s_key'] = "'pass'";
+	$dbAdm->updateData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+    }
 }
 

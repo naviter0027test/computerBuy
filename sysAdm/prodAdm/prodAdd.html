@@ -4,7 +4,15 @@
     <input type='hidden' name="instr" value="addProduct" />
     <label>商品名：</label><input type="text" name="p_name" /><br />
     <label>商品價格：</label><input type="text" name="p_price" /><br />
+    <label>商品圖片：</label><input type="text" name="p_img" readonly /><br />
     <label>商品描述：</label><textarea name="p_memo"></textarea><br />
     <input type="hidden" name="p_cls" value="1"/><br />
     <button>增加</button>
+</form>
+
+<form id="uploadImg" action="instr.php" method="post" enctype='multipart/form-data'>
+    <h2>商品圖片</h2>
+    <input type="hidden" name="instr" value="upload" /><br />
+    <label>圖片</label><input type="file" name="file[]" />
+    <button>上傳</button>
 </form>

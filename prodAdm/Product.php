@@ -16,7 +16,7 @@ class Product {
     private $mysql;
 
     public function __construct() {
-	require_once("../srvLib/MysqlCon.php");
+	require_once("srvLib/MysqlCon.php");
 	$this->mysql = new MysqlCon();
     }
 
@@ -63,7 +63,7 @@ class Product {
 	$dbAdm->execSQL();
     }
 
-    public function prodList() {
+    public function prodList($nowPage = null) {
 	$dbAdm = $this->mysql;
 	$tablename = "Product";
 	$columns = Array();
@@ -72,7 +72,14 @@ class Product {
 	$order = Array();
 	$order['col'] = "p_crTime";
 	$order['order'] = "desc";
-	$dbAdm->selectData($tablename, $columns, null, $order);
+
+	$limit = null;
+	if($nowPage != null) {
+	    $limit = Array();
+	    $limit['offset'] = ($nowPage - 1) * 10;
+	    $limit['amount'] = 10;
+	}
+	$dbAdm->selectData($tablename, $columns, null, $order, $limit);
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }

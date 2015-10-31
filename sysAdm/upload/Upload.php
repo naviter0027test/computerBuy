@@ -27,8 +27,9 @@ class Upload {
 	$errMsg = "";
 	foreach($_FILES['file']['name'] as $count => $name) {
 	    if($_FILES['file']['error'][$count] > 0) {
+		$data['failed'][$failCount]['filename'] = $_FILES['file']['name'][$count];
 		$data['failed'][$failCount++]['error'] = $_FILES['file']['error'][$count];
-		$msg .= $_FILES['file']['error'][$count];
+		$errMsg .= $_FILES['file']['error'][$count];
 		$haveError = true;
 	    }
 	    else 
@@ -41,11 +42,12 @@ class Upload {
 		    $data['success'][$sussCount]['name'] = $_FILES['file']['name'][$count];
 		    $data['success'][$sussCount]['type'] = $_FILES['file']['type'][$count];
 		    $data['success'][$sussCount]['size'] = $_FILES['file']['size'][$count];
-		    move_uploaded_file($_FILES['file']['tmp_name'][$count], $_FILES['file']['name'][$count]);
+		    move_uploaded_file($_FILES['file']['tmp_name'][$count], "imgs/tmp/". $_FILES['file']['name'][$count]);
 		    ++$sussCount;
 		}
 	}
 	if($haveError)
-	    throw new Exception($errMsg);
+	    throw new Exception(json_encode($data['failed']));
+	return $data['success'];
     }
 }

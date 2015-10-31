@@ -1,5 +1,19 @@
 Product = Backbone.View.extend({
     initialize : function() {
+	self = this;
+	$("#uploadImg").submit(function() {
+	    $(this).ajaxSubmit(function(data, status) {
+		if(status == "success") {
+		    data = JSON.parse(data);
+		    console.log(data);
+		    if(data['status'] == 200) {
+			var imgName = data['info'][0]['name'];
+			self.$el.find('input[readonly]').val(imgName);
+		    }
+		}
+	    });
+	    return false;
+	});
     },
     el : "#prodAdd",
     events : {
@@ -43,6 +57,7 @@ ProdModel = Backbone.Model.extend({
 	var el = this.get("el");
 	el.ajaxSubmit(function(data, status) {
 	    if(status == "success") {
+		console.log(data);
 		data = JSON.parse(data);
 		console.log(data);
 	    }
@@ -54,6 +69,7 @@ ProdModel = Backbone.Model.extend({
 	postData['instr'] = "prodList";
 	$.post("instr.php", postData, function(data, status) {
 	    if(status == "success") {
+		console.log(data);
 		data = JSON.parse(data);
 		console.log(data);
 		self.set("data", data);
