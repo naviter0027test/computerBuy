@@ -55,3 +55,15 @@ function prodList() {
     $reData['data'] = $prodList;
     echo json_encode($reData);
 }
+
+function orderAdd() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $orderAdm->spanOrder($_POST);
+}
+
+function orderList() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $orderAdm->orderList();
+}
