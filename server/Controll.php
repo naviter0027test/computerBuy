@@ -96,3 +96,8 @@ function orderActive() {
     $reData['msg'] = "active modify success";
     echo json_encode($reData);
 }
+
+function orderDetailAdd() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+}

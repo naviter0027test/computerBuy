@@ -1,0 +1,45 @@
+#content {
+    background : #f0ffff;
+}
+
+#content h2 {
+    display : inline-block;
+    margin : 0px 0px 10px 10px;
+    padding : 15px;
+    width : 40%;
+
+    color : white;
+    box-shadow : 3px 3px 3px 1px #7db9e8;
+    border-left : 5px solid #7db9e8;
+    background : #207cca;
+}
+
+#content table {
+    margin-left : 10px;
+    width : 95%;
+}
+
+#content table tr:nth-child(2n) {
+    background : #82caff;
+}
+
+#content table tr > td {
+    padding : 5px;
+}
+
+#content thead {
+    color : #eeeeee;
+    font-weight : bold;
+    background : #8467d7;
+}
+
+#content > span {
+    display : block;
+    padding : 5px;
+    margin-left : 10px;
+}
+
+#content > span label {
+    display : inline-block;
+    width : 43%;
+}

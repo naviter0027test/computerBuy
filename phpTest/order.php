@@ -53,6 +53,18 @@
 	    </select>
 	    <button>修改</button>
 	</form>
+	<form action="../instr.php" method="post">
+	    <h2>細項</h2>
+	    <input type="hidden" name="instr" value="orderDetailAdd" />
+	    訂單編號<input type="text" name="o_id" /><br />
+	    商品名稱<input type="text" name="p_name" /><br />
+	    序號<input type="text" name="o_no" /><br />
+	    數量<input type="text" name="od_qty" /><br />
+	    單價<input type="text" name="od_price" /><br />
+	    小計<input type="text" name="od_subtotal" /><br />
+	    備註<textarea name="od_note" ></textarea><br />
+	    <button>新增</button>
+	</form>
     </body>
 </html>
 

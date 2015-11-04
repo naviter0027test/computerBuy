@@ -100,4 +100,31 @@ class Order {
 	$dbAdm->updateData($tablename, $columns, $conditionArr);
 	$dbAdm->execSQL();
     }
+
+    public function detailAdd($detail) {
+	$dbAdm = $this->mysql;
+
+	$tablename = "OrderDetail";
+	$columns = Array();
+	$columns[0] = 'o_id';
+	$columns[1] = 'o_no';
+	$columns[2] = 'p_id';
+	$columns[3] = 'p_name';
+	$columns[4] = 'od_qty';
+	$columns[5] = 'od_price';
+	$columns[6] = 'od_subtotal';
+	$columns[7] = 'od_note';
+
+	$data = Array();
+	$data[0] = $detail['o_id'];
+	$data[1] = $detail['o_no'];
+	$data[2] = $detail['p_id'];
+	$data[3] = "'". $detail['p_name']. "'";
+	$data[4] = $detail['od_qty'];
+	$data[5] = $detail['od_price'];
+	$data[6] = $detail['od_subtotal'];
+	$data[7] = $detail['od_note'];
+
+	$dbAdm->insertData($tablename, 
+    }
 }
