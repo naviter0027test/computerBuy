@@ -7,7 +7,7 @@
 	<form action="../instr.php" method="post">
 	    <input type="hidden" name="instr" value="orderAdd" />
 	    商品名稱:<input type="text" name="buyName" /><br />
-	    商品價格:<input type="text" name="total" /><br />
+	    商品小計:<input type="text" name="total" /><br />
 	    電子郵件:<input type="text" name="buyEmail" /><br />
 	    聯絡電話:<input type="text" name="buyTel" /><br />
 	    地址:
@@ -35,6 +35,23 @@
 	<form action="../instr.php" method="post">
 	    <input type="hidden" name="instr" value="orderList" />
 	    <button>清單</button>
+	</form>
+	<form action="../instr.php" method="post">
+	    <input type="hidden" name="instr" value="orderDel" />
+	    訂單編號<input type="text" name="o_id" />
+	    <button>刪除</button>
+	</form>
+	<form action="../instr.php" method="post">
+	    <input type="hidden" name="instr" value="orderActive" />
+	    訂單編號<input type="text" name="o_id" /><br />
+	    <select name="active">
+		<option value="未處理">未處理</option>
+		<option value="處理中">處理中</option>
+		<option value="已付款">已付款</option>
+		<option value="已出貨">已出貨</option>
+		<option value="訂單取消">訂單取消</option>
+	    </select>
+	    <button>修改</button>
 	</form>
     </body>
 </html>

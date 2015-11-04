@@ -21,7 +21,6 @@ class Order {
 
     public function spanOrder($order) {
 	$dbAdm = $this->mysql;
-	print_r($order);
 	$no = "PSN". strtotime(date('Y-m-d h:i:s'));
 
 	$tablename = "OrderList";
@@ -37,9 +36,10 @@ class Order {
 	$columns[8] = "payMode";
 	$columns[9] = "shipMode";
 	$columns[10] = "invoice_type";
+	$columns[11] = "active";
 	switch($order['payMode']) {
 	case "atm" :
-	    $columns[11] = "atm_act5";
+	    $columns[12] = "atm_act5";
 	    break;
 	default : 
 	    throw new Exception("沒有指定付款方式");
@@ -57,7 +57,8 @@ class Order {
 	$data[8] = "'". $order['payMode']. "'";
 	$data[9] = "'". $order['shipMode']. "'";
 	$data[10] = "'". $order['invoice_type']. "'";
-	$data[11] = "'". $order['atm_act5']. "'";
+	$data[11] = "'未處理'";
+	$data[12] = "'". $order['atm_act5']. "'";
 	$dbAdm->insertData($tablename, $columns, $data);
 	$dbAdm->execSQL();
     }
@@ -71,6 +72,32 @@ class Order {
 
 	$dbAdm->selectData($tablename, $columns);
 	$dbAdm->execSQL();
-	print_r($dbAdm->getAll());
+	return $dbAdm->getAll();
+    }
+
+    public function cancelOrder($o_id) {
+	$dbAdm = $this->mysql;
+
+	$tablename = "OrderList";
+	$columns = Array();
+	$columns['active'] = "'訂單取消'";
+
+	$conditionArr = Array();
+	$conditionArr['o_id'] = $o_id;
+	$dbAdm->updateData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+    }
+
+    public function updActive($order) {
+	$dbAdm = $this->mysql;
+
+	$tablename = "OrderList";
+	$columns = Array();
+	$columns['active'] = "'". $order['active']. "'";
+
+	$conditionArr = Array();
+	$conditionArr['o_id'] = $order['o_id'];
+	$dbAdm->updateData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
     }
 }
