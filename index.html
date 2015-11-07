@@ -165,5 +165,36 @@
 	</div>
 	<div id="footer">
 	</div>
+	<script id="prodListTem" type="text/template">
+	    <% _.each(data, function(item) { %>
+	    <div>
+		<img src="imgs/computerProd.gif">
+		<span><%=item['p_name']%></span>
+		<label>單價:<%=item['p_price']%></label>
+		<select>
+		    <option>請選擇數量</option>
+		    <option>1</option>
+		    <option>2</option>
+		    <option>3</option>
+		    <option>4</option>
+		</select>
+		<a href="#">查看</a>
+		<a href="#">加入購物車</a>
+	    </div>
+	    <% }); %>
+	    <span class="pager">
+		<% for(i = 1;i <= pageSum;++i) { %>
+		    <% if(i == nowPage) %>
+		<%=i%>
+		    <% else %>
+		<a href=#><%=i%></a>
+		<% } %>
+	    </span>
+	</script>
     </body>
+    <script src="lib/jquery-1.8.2.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script src="prodAdm/Product.js"></script>
+    <script src="js/index.js"></script>
 </html>

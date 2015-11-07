@@ -156,3 +156,45 @@ function passModify() {
     $reData['msg'] = "修改成功";
     echo json_encode($reData);
 }
+
+function orderAdd() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $orderAdm->spanOrder($_POST);
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "order span success";
+    echo json_encode($reData);
+}
+
+function orderList() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $orders = $orderAdm->orderList();
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "order cancel success";
+    $reData['orders'] = $orders;
+    echo json_encode($reData);
+}
+
+function orderDel() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $orderAdm->cancelOrder($_POST['o_id']);
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "order cancel success";
+    echo json_encode($reData);
+}
+
+function orderActive() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $orderAdm->updActive($_POST);
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "active modify success";
+    echo json_encode($reData);
+}
+

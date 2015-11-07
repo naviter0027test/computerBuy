@@ -43,7 +43,6 @@ class Control {
 
 }
 
-
 function prodList() {
     require_once("prodAdm/Product.php");
     $nowPage = $_POST['nowPage'];
@@ -66,38 +65,22 @@ function orderAdd() {
     echo json_encode($reData);
 }
 
-function orderList() {
-    require_once("orderAdm/Order.php");
-    $orderAdm = new Order();
-    $orders = $orderAdm->orderList();
-    $reData = Array();
-    $reData['status'] = 200;
-    $reData['msg'] = "order cancel success";
-    $reData['orders'] = $orders;
-    echo json_encode($reData);
-}
-
-function orderDel() {
-    require_once("orderAdm/Order.php");
-    $orderAdm = new Order();
-    $orderAdm->cancelOrder($_POST['o_id']);
-    $reData = Array();
-    $reData['status'] = 200;
-    $reData['msg'] = "order cancel success";
-    echo json_encode($reData);
-}
-
-function orderActive() {
-    require_once("orderAdm/Order.php");
-    $orderAdm = new Order();
-    $orderAdm->updActive($_POST);
-    $reData = Array();
-    $reData['status'] = 200;
-    $reData['msg'] = "active modify success";
-    echo json_encode($reData);
-}
-
 function orderDetailAdd() {
     require_once("orderAdm/Order.php");
     $orderAdm = new Order();
+    $orderAdm->detailAdd($_POST);
+    $reData['status'] = 200;
+    $reData['msg'] = "order detail add";
+    echo json_encode($reData);
+}
+
+function maxPage() {
+    require_once("prodAdm/Product.php");
+    $prodAdm = new Product();
+    $amount = $prodAdm->productAmount();
+    $interval = $_POST['interval'];
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    $reData['pageSum'] = ceil($amount / $interval);
+    echo json_encode($reData);
 }

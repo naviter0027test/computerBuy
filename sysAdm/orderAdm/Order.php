@@ -15,7 +15,7 @@ class Order {
     private $mysql;
 
     public function __construct() {
-	require_once("srvLib/MysqlCon.php");
+	require_once("../srvLib/MysqlCon.php");
 	$this->mysql = new MysqlCon();
     }
 
@@ -63,6 +63,18 @@ class Order {
 	$dbAdm->execSQL();
     }
 
+    public function orderList() {
+	$dbAdm = $this->mysql;
+
+	$tablename = "OrderList";
+	$columns = Array();
+	$columns[0] = "*";
+
+	$dbAdm->selectData($tablename, $columns);
+	$dbAdm->execSQL();
+	return $dbAdm->getAll();
+    }
+
     public function cancelOrder($o_id) {
 	$dbAdm = $this->mysql;
 
@@ -72,6 +84,19 @@ class Order {
 
 	$conditionArr = Array();
 	$conditionArr['o_id'] = $o_id;
+	$dbAdm->updateData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+    }
+
+    public function updActive($order) {
+	$dbAdm = $this->mysql;
+
+	$tablename = "OrderList";
+	$columns = Array();
+	$columns['active'] = "'". $order['active']. "'";
+
+	$conditionArr = Array();
+	$conditionArr['o_id'] = $order['o_id'];
 	$dbAdm->updateData($tablename, $columns, $conditionArr);
 	$dbAdm->execSQL();
     }
@@ -92,15 +117,14 @@ class Order {
 
 	$data = Array();
 	$data[0] = $detail['o_id'];
-	$data[1] = "'". $detail['o_no']. "'";
+	$data[1] = $detail['o_no'];
 	$data[2] = $detail['p_id'];
 	$data[3] = "'". $detail['p_name']. "'";
 	$data[4] = $detail['od_qty'];
 	$data[5] = $detail['od_price'];
 	$data[6] = $detail['od_subtotal'];
-	$data[7] = "'". $detail['od_note']. "'";
+	$data[7] = $detail['od_note'];
 
-	$dbAdm->insertData($tablename, $columns, $data);
-	$dbAdm->execSQL();
+	//$dbAdm->insertData($tablename, 
     }
 }
