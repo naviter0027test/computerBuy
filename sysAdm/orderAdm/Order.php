@@ -127,4 +127,19 @@ class Order {
 
 	//$dbAdm->insertData($tablename, 
     }
+
+    public function detailList($nowPage = null) {
+	$dbAdm = $this->mysql;
+
+	$tablename = "OrderDetail";
+	$columns = Array();
+	$columns[0] = "*";
+
+	$limit = Array();
+	$limit['offset'] = $nowPage * 10;
+	$limit['amount'] = 10;
+	$dbAdm->selectData($tablename, $columns, null, null, $limit);
+	$dbAdm->execSQL();
+	return $dbAdm->getAll();
+    }
 }

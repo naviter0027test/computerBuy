@@ -41,6 +41,28 @@ class Classification {
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }
+
+    public function classUpdate($cls) {
+	$dbAdm = $this->mysql;
+	$tablename = "Classification";
+	$updData = Array();
+	$updData['c_name'] = "'". $cls['c_name']. "'";
+
+	$conditionArr = Array();
+	$conditionArr['c_id'] = $cls['c_id'];
+	$dbAdm->updateData($tablename, $updData, $conditionArr);
+	$dbAdm->execSQL();
+    }
+
+    public function del($c_id) {
+	$dbAdm = $this->mysql;
+	$tablename = "Classification";
+
+	$conditionArr = Array();
+	$conditionArr['c_id'] = $c_id;
+	$dbAdm->deleteData($tablename, $conditionArr);
+	$dbAdm->execSQL();
+    }
 }
 
 ?>

@@ -65,6 +65,11 @@
 	    備註<textarea name="od_note" ></textarea><br />
 	    <button>新增</button>
 	</form>
+	<form action="../instr.php" method="post">
+	    <input type="hidden" name="instr" value="odrDetailList" />
+	    頁數<input type="text" name="nowPage" value="0" />
+	    <button>列表</button>
+	</form>
     </body>
 </html>
 

@@ -103,6 +103,24 @@ function classList() {
     echo json_encode($reData);
 }
 
+function classEdit() {
+    require_once("prodAdm/Classification.php");
+    $classAdm = new Classification();
+    $classAdm->classUpdate($_POST);
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    echo json_encode($reData);
+}
+
+function classDel() {
+    require_once("prodAdm/Classification.php");
+    $classAdm = new Classification();
+    $classAdm->del($_POST['c_id']);
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    echo json_encode($reData);
+}
+
 function login() {
     require_once("login/Login.php");
     $loginAdm = new Login();
@@ -198,3 +216,9 @@ function orderActive() {
     echo json_encode($reData);
 }
 
+function odrDetailList() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $nowPage = $_POST['nowPage'];
+    print_r($orderAdm->detailList($nowPage));
+}
