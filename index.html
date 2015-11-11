@@ -166,6 +166,7 @@
 	<div id="footer">
 	</div>
 	<script id="prodListTem" type="text/template">
+	    <% var counter = 0; %>
 	    <% _.each(data, function(item) { %>
 	    <div>
 		<img src="imgs/computerProd.gif">
@@ -178,8 +179,8 @@
 		    <option>3</option>
 		    <option>4</option>
 		</select>
-		<a href="#">查看</a>
-		<a href="#">加入購物車</a>
+		<a class="seeProd" href="#">查看</a>
+		<a class="addCart" item='<%=counter++%>' href="#">加入購物車</a>
 	    </div>
 	    <% }); %>
 	    <span class="pager">

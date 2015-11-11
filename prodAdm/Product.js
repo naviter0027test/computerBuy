@@ -13,14 +13,65 @@ ProductList = Backbone.View.extend({
 
 	this.showPage();
     },
+    events : {
+	'click a.addCart' : 'addCart',
+	"click a.seeProd" : "seeProd"
+    },
+
     el : '',
     template : null,
+
     showPage : function() {
 	var initData = {};
 	initData['nowPage'] = this.model.get('nowPage');
 	this.model.prodList(initData);
 	this.template = _.template($("#prodListTem").html());
     },
+
+    addCart : function(evt) {
+	var cart = [];
+	if(localStorage.getItem('cart') != null)
+	    cart = JSON.parse(localStorage.getItem('cart'));
+	if(cart == null)
+	    cart = [];
+	console.log(cart);
+
+	var btn = evt.target;
+	var item = $(btn).attr("item");
+	var data = this.model.get('data');
+	console.log(data['data'][item]);
+
+	var select = $(btn).parent().find('select');
+	var buyAmount = $(select).val();
+	if(isNaN(buyAmount)) {
+	    alert(buyAmount);
+	    return false;
+	}
+
+	var product = {};
+	product['amount'] = buyAmount;
+	product['p_id'] = data['data'][item]['p_id'];
+	product['p_name'] = data['data'][item]['p_name'];
+	product['p_price'] = data['data'][item]['p_price'];
+	product['subTotal'] = data['data'][item]['p_price'] * buyAmount;
+
+	var isInCart = false;
+	for(var i in cart) 
+	    if(cart[i]['p_id'] == product['p_id']) {
+		cart[i] = product;
+		isInCart = true;
+	    }
+	if(!isInCart)
+	    cart.push(product);
+	localStorage.setItem('cart', JSON.stringify(cart));
+	return false;
+    },
+
+    seeProd : function() {
+	console.log('seeProd');
+	return false;
+    },
+
     render : function(data) {
 	this.$el.html('');
 	this.$el.html(this.template(data));
