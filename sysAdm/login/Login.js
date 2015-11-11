@@ -31,8 +31,10 @@ Model = Backbone.Model.extend({
 			alert(data['msg']);
 			location.href = "admin.html";
 		    }
-		    else
-			;
+		    else {
+			alert("登入失敗");
+			$("#captchaReload").trigger('click');
+		    }
 		else if(data['status'] == 200) {
 		    alert("成功登入");
 		    location.href = "admin.html";

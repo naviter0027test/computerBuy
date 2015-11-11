@@ -126,6 +126,9 @@ function classDel() {
 
 function login() {
     require_once("login/Login.php");
+    $captcha = $_SESSION['login']['captcha'];
+    if($captcha != $_POST['captcha'])
+	throw new Exception("驗證碼錯誤");
     $loginAdm = new Login();
     $loginAdm->login($_POST);
     $reData['status'] = 200;
