@@ -21,6 +21,9 @@ class Control {
 	//時間初始設定, date() strtotime() 須要
 	date_default_timezone_set('Asia/Taipei');
 
+	if(isset($_GET['instr']))
+	    $this->instr = $_GET['instr'];
+
 	if(isset($_POST['instr']))
 	    $this->instr = $_POST['instr'];
     }
@@ -128,6 +131,16 @@ function login() {
     $reData['status'] = 200;
     $reData['msg'] = "success";
     echo json_encode($reData);
+}
+
+function captchaShow() {
+    require_once("../srvLib/Captcha.php");
+    switch($_GET['cls']) {
+    case "login" :
+	$_SESSION['login']['captcha'] = rand(1000, 9999);
+	break;
+    }
+    $captcha = new Captcha($_SESSION['login']['captcha']);
 }
 
 function logout() {

@@ -11,14 +11,10 @@
  *	chiping
  */
 
-session_start();
-
 class Captcha {
     private $fileName;
     private $img;
-    public function __construct() {
-	if(!isset($_SESSION['login']) || !isset($_SESSION['login']['captcha']))
-	    $_SESSION['login']['captcha'] = rand(1000, 9999);
+    public function __construct($num) {
 	header("Content-Type: image/png");
 	$width = 45;
 	$height = 25;
@@ -29,7 +25,7 @@ class Captcha {
 	$textColor = imagecolorallocate($img, 0, 0, 0);
 
 	imagefilledrectangle($img, 0, 0, $width, $height, $bgColor);
-	imagestring($img, 5, 5, 5, $_SESSION['login']['captcha'], $textColor);
+	imagestring($img, 5, 5, 5, $num, $textColor);
 	imagepng($img);
 	$this->img = $img;
     }
@@ -38,7 +34,5 @@ class Captcha {
 	imagedestroy($this->img);
     }
 }
-
-$captcha = new Captcha();
 
 ?>
