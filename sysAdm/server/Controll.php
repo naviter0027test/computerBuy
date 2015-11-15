@@ -67,12 +67,15 @@ function editProduct() {
 
 function prodList() {
     require_once("prodAdm/Product.php");
+    $interval = $_POST['interval'];
     $prodAdm = new Product();
-    $prodList = $prodAdm->prodList();
+    $prodList = $prodAdm->prodList($_POST['nowPage']);
+    $amount = $prodAdm->productAmount();
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "success";
     $reData['data'] = $prodList;
+    $reData['pageSum'] = ceil($amount / $interval);
     echo json_encode($reData);
 }
 

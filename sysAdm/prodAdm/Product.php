@@ -63,7 +63,7 @@ class Product {
 	$dbAdm->execSQL();
     }
 
-    public function prodList() {
+    public function prodList($nowPage = 1) {
 	$dbAdm = $this->mysql;
 	$tablename = "Product";
 	$columns = Array();
@@ -72,7 +72,14 @@ class Product {
 	$order = Array();
 	$order['col'] = "p_crTime";
 	$order['order'] = "desc";
-	$dbAdm->selectData($tablename, $columns, null, $order);
+
+	$limit = null;
+	if($nowPage != null) {
+	    $limit = Array();
+	    $limit['offset'] = ($nowPage - 1) * 10;
+	    $limit['amount'] = 10;
+	}
+	$dbAdm->selectData($tablename, $columns, null, $order, $limit);
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }
@@ -85,5 +92,17 @@ class Product {
 
 	$dbAdm->deleteData($tablename, $conditionArr);
 	$dbAdm->execSQL();
+    }
+
+    public function productAmount() {
+	$dbAdm = $this->mysql;
+	$tablename = "Product";
+	$columns = Array();
+	$columns[0] = "count(*) as amount";
+
+	$dbAdm->selectData($tablename, $columns);
+	$dbAdm->execSQL();
+	$amount = $dbAdm->getAll()[0]['amount'];
+	return $amount;
     }
 }

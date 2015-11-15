@@ -1,6 +1,6 @@
 Product = Backbone.View.extend({
     initialize : function() {
-	self = this;
+	var self = this;
 	$("#uploadImg").submit(function() {
 	    $(this).ajaxSubmit(function(data, status) {
 		if(status == "success") {
@@ -29,17 +29,24 @@ Product = Backbone.View.extend({
 ProductList = Backbone.View.extend({
     initialize : function() {
 	var self = this;
+	self.template = _.template(self.$el.find("script").html());
 	this.model.on("change:data", function() {
-	    self.template = _.template(self.$el.find("script").html());
 	    self.render();
 	});
     },
     el : '',
     template : null,
     render : function() {
-	var tbody = this.$el.find("tbody");
 	var data = this.model.get("data");
-	$(tbody).html(this.template(data));
+	var self = this;
+	data['nowPage'] = this.model.get("nowPage");
+	this.$el.html(this.template(data));
+	$(".pager a").on("click", function() {
+	    var page = $(this).text();
+	    self.model.set("nowPage", page);
+	    self.model.prodList();
+	    return false;
+	});
     },
     prodList : function(evt) {
 	this.model.prodList();
@@ -51,7 +58,8 @@ ProdModel = Backbone.Model.extend({
     },
     defaults : {
 	el : null,
-	data : null
+	data : null,
+	nowPage : 1
     },
     prodAdd : function() {
 	var el = this.get("el");
@@ -65,8 +73,11 @@ ProdModel = Backbone.Model.extend({
     },
     prodList : function() {
 	var postData = {};
-	self = this;
+	var self = this;
 	postData['instr'] = "prodList";
+	postData['nowPage'] = this.get("nowPage");
+	postData['interval'] = 10;
+	console.log(postData);
 	$.post("instr.php", postData, function(data, status) {
 	    if(status == "success") {
 		console.log(data);
