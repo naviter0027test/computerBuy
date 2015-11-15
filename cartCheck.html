@@ -25,46 +25,7 @@
 	<div id="content">
 	    <br />
 	    <h2>購物車商品查看</h2>
-	    <table>
-		<thead>
-		    <tr>
-			<td>商品分類</td>
-			<td>商品名稱</td>
-			<td>商品數量</td>
-			<td>商品小記</td>
-			<td>刪除</td>
-		    </tr>
-		</thead>
-		<tbody>
-		    <tr>
-			<td>處理器</td>
-			<td>Intel Core i7 1033</td>
-			<td>1</td>
-			<td>NT$ 1200</td>
-			<td></td>
-		    </tr>
-		    <tr>
-			<td>主機板</td>
-			<td>Asus Garming test</td>
-			<td>1</td>
-			<td>NT$ 990</td>
-			<td></td>
-		    </tr>
-		    <tr>
-			<td>記憶體</td>
-			<td>Kingstone X2 2G 1333</td>
-			<td>2</td>
-			<td>NT$ 3600</td>
-			<td></td>
-		    </tr>
-		    <tr>
-			<td>硬碟</td>
-			<td>Wastone WX348 2T</td>
-			<td>2</td>
-			<td>NT$ 2400</td>
-			<td></td>
-		    </tr>
-		</tbody>
+	    <table id="cartShow">
 	    </table>
 	    <span>
 		<label>運費：NT$ 120</label>
@@ -72,7 +33,44 @@
 		<button>下一步</button>
 	    </span>
 	</div>
+	<script id="prodCart" type="text/template">
+	    <thead>
+		<tr>
+		    <td>商品分類</td>
+		    <td>商品名稱</td>
+		    <td>商品數量</td>
+		    <td>商品小計</td>
+		    <td>刪除</td>
+		</tr>
+	    </thead>
+	    <tbody>
+		<% _.each(cart, function(item) { %>
+		<tr>
+		    <td><%=item['p_cls']%></td>
+		    <td><%=item['p_name']%></td>
+		    <td><%=item['p_qty']%></td>
+		    <td>NT$ <%=item['subTotal']%></td>
+		    <td></td>
+		</tr>
+		<% }); %>
+	    </tbody>
+	</script>
 	<div id="footer">
 	</div>
     </body>
+    <script src="lib/jquery-1.8.2.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script>
+	$(document).ready(function() {
+	    var cart = [];
+	    if(localStorage.getItem('cart') != null)
+		cart = JSON.parse(localStorage.getItem('cart'));
+	    console.log(cart);
+	    var temData = {};
+	    temData['cart'] = cart;
+	    template = _.template($("#prodCart").html())
+	    $("#cartShow").html(template(temData));
+	});
+    </script>
 </html>

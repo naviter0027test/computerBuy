@@ -53,6 +53,8 @@ ProductList = Backbone.View.extend({
 	product['p_id'] = data['data'][item]['p_id'];
 	product['p_name'] = data['data'][item]['p_name'];
 	product['p_price'] = data['data'][item]['p_price'];
+	product['p_qty'] = buyAmount;
+	product['p_cls'] = "主機板";
 	product['subTotal'] = data['data'][item]['p_price'] * buyAmount;
 
 	var isInCart = false;
@@ -64,6 +66,7 @@ ProductList = Backbone.View.extend({
 	if(!isInCart)
 	    cart.push(product);
 	localStorage.setItem('cart', JSON.stringify(cart));
+	alert("購物車操作成功");
 	return false;
     },
 
