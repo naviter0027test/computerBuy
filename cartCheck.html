@@ -61,16 +61,10 @@
     <script src="lib/jquery-1.8.2.js"></script>
     <script src="lib/underscore.js"></script>
     <script src="lib/backbone.js"></script>
+    <script src="cart/Cart.js"></script>
     <script>
 	$(document).ready(function() {
-	    var cart = [];
-	    if(localStorage.getItem('cart') != null)
-		cart = JSON.parse(localStorage.getItem('cart'));
-	    console.log(cart);
-	    var temData = {};
-	    temData['cart'] = cart;
-	    template = _.template($("#prodCart").html())
-	    $("#cartShow").html(template(temData));
+	    var cartv = new Cart({'el' : "#cartShow", 'model' : new CartStore()});
 	});
     </script>
 </html>
