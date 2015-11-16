@@ -6,7 +6,9 @@
     <label>商品價格：</label><input type="text" name="p_price" /><br />
     <label>商品圖片：</label><input type="text" name="p_img" readonly /><br />
     <label>商品描述：</label><textarea name="p_memo"></textarea><br />
-    <input type="hidden" name="p_cls" value="1"/><br />
+    <label>商品種類：</label>
+    <select name="p_cls">
+    </select><br />
     <button>增加</button>
 </form>
 
@@ -16,3 +18,9 @@
     <label>圖片</label><input type="file" name="file[]" />
     <button>上傳</button>
 </form>
+
+<script id="clsTem" type="text/template">
+    <% _.each(data, function(item) { %>
+	<option value="<%=item['c_id']%>"><%=item['c_name']%></option>
+    <% }); %>
+</script>

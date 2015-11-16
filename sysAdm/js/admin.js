@@ -8,6 +8,8 @@ AdminRoutes = Backbone.Router.extend({
 	'passAdm' : 'passAdm',
 	'productList' : 'productList',
 	'productAdd' : 'productAdd',
+	'productCls' : 'productCls',
+	'prodClsAdd' : 'prodClsAdd',
 	'logout' : 'logout'
     },
     passAdm : function() {
@@ -31,11 +33,32 @@ AdminRoutes = Backbone.Router.extend({
     productAdd : function() {
 	$("#right").load("prodAdm/prodAdd.html", function() {
 	    $.getScript("prodAdm/Product.js", function() {
-		console.log("get product js success");
 		var addForm = new Product({'model' : new ProdModel()});
 	    });
 	    $("#left a").removeClass('clicked');
 	    $("#left a[href=#productAdd]").addClass('clicked');
+	});
+    },
+    productCls : function() {
+	$("#right").load("prodAdm/classList.html", function() {
+	    $.getScript("prodAdm/Clsfication.js", function() {
+		var clsObj = new ClsList({'el' : "#clsShow", 'model' : new ClsModel()});
+	    });
+	    $("#left a").removeClass('clicked');
+	    $("#left a[href=#productCls]").addClass('clicked');
+	});
+    },
+    prodClsAdd : function() {
+	$("#right").load("prodAdm/clsAdd.html", function() {
+	    $.getScript("prodAdm/Clsfication.js", function() {
+		var clsMdl = new ClsModel();
+		$("#clsAdd").submit(function() {
+		    clsMdl.clsAdd();
+		    return false;
+		});
+	    });
+	    $("#left a").removeClass('clicked');
+	    $("#left a[href=#prodClsAdd]").addClass('clicked');
 	});
     },
     logout : function() {
