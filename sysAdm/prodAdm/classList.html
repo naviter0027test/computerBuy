@@ -9,12 +9,17 @@
 	</tr>
     </thead>
     <tbody>
+	<% var counter = 0; %>
 	<% _.each(data, function(item) { %>
 	<tr>
 	    <td><%=item['c_id']%></td>
 	    <td><%=item['c_name']%></td>
-	    <td></td>
+	    <td>
+		<a href='#'><img oper='mod' pos='<%=counter%>' src="imgs/1403417937_Modify.png" /></a>
+		<a href='#'><img oper='del' pos='<%=counter%>' src="imgs/1399522498_Erase.png" /></a>
+	    </td>
 	</tr>
+	<% ++counter;%>
 	<% }); %>
     </tbody>
 </script>
