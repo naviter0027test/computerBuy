@@ -11,9 +11,10 @@
 	</tr>
     </thead>
     <tbody>
+	<% var counter = 0; %>
 	<% _.each(data, function(item) { %>
 	<tr>
-	    <td>主機板</td>
+	    <td><%=item['clsName']%></td>
 	    <td><%=item['p_name']%></td>
 	    <td><%=item['p_price']%></td>
 	    <td>
@@ -23,11 +24,11 @@
 		</select>
 	    </td>
 	    <td>
-		<a href="#"><img src="imgs/1403417937_Modify.png" /></a>
-		<a href="#"><img src="imgs/1399522498_Erase.png" /></a>
+		<a href="#"><img pos="<%=counter%>" oper="modify" src="imgs/1403417937_Modify.png" /></a>
+		<a href="#"><img pos="<%=counter%>" oper="del" src="imgs/1399522498_Erase.png" /></a>
 	    </td>
 	</tr>
-	<% }); %>
+	<% ++counter; }); %>
     </tbody>
 </table>
 <span class="pager">

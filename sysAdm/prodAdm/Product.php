@@ -79,7 +79,8 @@ class Product {
 	    $limit['offset'] = ($nowPage - 1) * 10;
 	    $limit['amount'] = 10;
 	}
-	$dbAdm->selectData($tablename, $columns, null, $order, $limit);
+	//$dbAdm->selectData($tablename, $columns, null, $order, $limit);
+	$dbAdm->sqlSet("select p.*, c.c_name as clsName from Product p, Classification c where p.p_cls = c.c_id order by p.p_crTime desc limit ". $limit['offset']. ",". $limit['amount']. " ");
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }

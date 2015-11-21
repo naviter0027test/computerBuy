@@ -50,6 +50,9 @@ ProductList = Backbone.View.extend({
 	    self.render();
 	});
     },
+    events : {
+	"click a" : "prodOper"
+    },
     el : '',
     template : null,
     render : function() {
@@ -66,6 +69,30 @@ ProductList = Backbone.View.extend({
     },
     prodList : function(evt) {
 	this.model.prodList();
+    },
+    prodOper : function(evt) {
+	var btn = evt.target;
+	var oper = $(btn).attr("oper");
+	var pos = $(btn).attr("pos");
+	var data = this.model.get('data')['data'];
+	//console.log(data[pos]);
+	var postData = {};
+	postData['instr'] = "delProduct";
+	postData['p_id'] = data[pos]['p_id'];
+	if(oper == "del")
+	    if(confirm("是否刪除?"))
+		$.post('instr.php', postData, function(data) {
+		    data = JSON.parse(data);
+		    console.log(data);
+		    if(data['status'] == 200) {
+			location.reload();
+		    }
+		});
+	    else ;
+	else if(oper == "modify") {
+	    location.href = "#productMod";
+	}
+	return false;
     }
 });
 
