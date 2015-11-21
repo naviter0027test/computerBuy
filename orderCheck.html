@@ -8,9 +8,6 @@
     <body>
 	<div id="header">
 	    <a href="index.html"><img src="imgs/cooltext143725226109873.png" /></a>
-	    <span>
-		<a href="#">立即結帳</a>
-	    </span>
 	    <div class="navi">
 		<a href="#">主機板</a>
 		<a href="#">處理器</a>
@@ -35,34 +32,34 @@
 		    <h2>填寫收件人資料</h2>
 		    <p>
 		    <label>收件人姓名:</label>
-		    <input type="text" name="recvName" />
+		    <input type="text" name="buyName" />
 		    </p>
 		    <p>
 		    <label>E-mail:</label>
-		    <input type="text" name="email" />
+		    <input type="text" name="buyEmail" />
 		    </p>
 		    <p>
-		    <label>電話</label>
-		    <input type="text" name="tel" />
+		    <label>電話:</label>
+		    <input type="text" name="buyTel" />
 		    </p>
 		    <p>
-		    <label>地址</label>
-		    <input type="text" name="addr" />
+		    <label>地址:</label>
+		    <input type="text" name="buyAddr" />
 		    </p>
 		</div>
 		<div>
 		    <h2>選擇付款方式</h2>
 		    <p>
 		    <label>付款方式:</label>
-		    <input type="radio" name="payMent" value="atm" />ATM轉帳付款
+		    <input type="radio" name="payMode" value="atm" />ATM轉帳付款
 		    </p>
 		    <p>
 		    <label>付費類型:</label>
 		    </p>
 		    <p>
 		    <label>發票開立:</label>
-		    <input type="radio" name="invoiceType" value="personal" />個人
-		    <input type="radio" name="invoiceType" value="company" />公司
+		    <input type="radio" name="invoice_type" value="personal" />個人
+		    <input type="radio" name="invoice_type" value="company" />公司
 		    </p>
 		    <p>
 		    <label>備註:</label>
@@ -70,7 +67,7 @@
 		    </p>
 		</div>
 		<div>
-		    <button>下一步</button>
+		    <button id="payResult">結帳</button>
 		</div>
 	    </form>
 	</div>
@@ -103,7 +100,8 @@
     <script src="cart/Cart.js"></script>
     <script>
 	$(document).ready(function() {
-	    var cartv = new Cart({'el' : "#cartShow", 'model' : new CartStore()});
+	    var cartStore = new CartStore();
+	    var cartv = new Cart({'el' : "#cartShow", 'model' : cartStore});
 	});
     </script>
 </html>
