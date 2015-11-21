@@ -29,7 +29,6 @@
 	    <span>
 		<label>運費：NT$ 120</label>
 		<label>總計：NT$ 8310</label>
-		<button>下一步</button>
 	    </span>
 	    <form action="orderSpan" method="post">
 		<div>
@@ -75,11 +74,37 @@
 		</div>
 	    </form>
 	</div>
+	<script id="prodCart" type="text/template">
+	    <thead>
+		<tr>
+		    <td>商品分類</td>
+		    <td>商品名稱</td>
+		    <td>商品數量</td>
+		    <td>商品小計</td>
+		</tr>
+	    </thead>
+	    <tbody>
+		<% _.each(cart, function(item) { %>
+		<tr>
+		    <td><%=item['p_cls']%></td>
+		    <td><%=item['p_name']%></td>
+		    <td><%=item['p_qty']%></td>
+		    <td>NT$ <%=item['subTotal']%></td>
+		</tr>
+		<% }); %>
+	    </tbody>
+	</script>
 	<div id="footer">
 	</div>
     </body>
     <script src="lib/jquery-1.8.2.js"></script>
     <script src="lib/underscore.js"></script>
     <script src="lib/backbone.js"></script>
+    <script src="cart/Cart.js"></script>
+    <script>
+	$(document).ready(function() {
+	    var cartv = new Cart({'el' : "#cartShow", 'model' : new CartStore()});
+	});
+    </script>
 </html>
 
