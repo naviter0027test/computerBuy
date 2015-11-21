@@ -10,6 +10,7 @@ AdminRoutes = Backbone.Router.extend({
 	'productAdd' : 'productAdd',
 	'productCls' : 'productCls',
 	'prodClsAdd' : 'prodClsAdd',
+	'productMod' : 'productMod',
 	'logout' : 'logout'
     },
     passAdm : function() {
@@ -59,6 +60,10 @@ AdminRoutes = Backbone.Router.extend({
 	    });
 	    $("#left a").removeClass('clicked');
 	    $("#left a[href=#prodClsAdd]").addClass('clicked');
+	});
+    },
+    productMod : function() {
+	$("#right").load("prodAdm/prodEdit.html", function() {
 	});
     },
     logout : function() {
