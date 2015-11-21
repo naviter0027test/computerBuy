@@ -30,7 +30,8 @@ class Control {
 	    if(!isset($this->instr))
 		throw new Exception("instr not defined");
 	    $instr = $this->instr;
-	    $instr();
+	    $reData = $instr();
+	    echo json_encode($reData);
 	}
 	catch(Exception $e) {
 	    $reData = Array();
@@ -52,7 +53,7 @@ function prodList() {
     $reData['status'] = 200;
     $reData['msg'] = "success";
     $reData['data'] = $prodList;
-    echo json_encode($reData);
+    return $reData;
 }
 
 function orderAdd() {
@@ -62,7 +63,7 @@ function orderAdd() {
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "order span success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function orderDetailAdd() {
@@ -71,7 +72,7 @@ function orderDetailAdd() {
     $orderAdm->detailAdd($_POST);
     $reData['status'] = 200;
     $reData['msg'] = "order detail add";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function maxPage() {
@@ -82,9 +83,13 @@ function maxPage() {
     $reData['status'] = 200;
     $reData['msg'] = "success";
     $reData['pageSum'] = ceil($amount / $interval);
-    echo json_encode($reData);
+    return $reData;
 }
 
 function addRedMoney() {
     print_r($_POST);
+}
+
+function createOrder() {
+    return $_POST;
 }

@@ -33,7 +33,8 @@ class Control {
 	    if(!isset($this->instr))
 		throw new Exception("instr not defined");
 	    $instr = $this->instr;
-	    $instr();
+	    $reData = $instr();
+	    echo json_encode($reData);
 	}
 	catch(Exception $e) {
 	    $reData = Array();
@@ -53,7 +54,7 @@ function addProduct() {
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function editProduct() {
@@ -62,7 +63,7 @@ function editProduct() {
     $prodAdm->editProd($_POST);
     $reData['status'] = 200;
     $reData['msg'] = "success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function prodList() {
@@ -76,7 +77,7 @@ function prodList() {
     $reData['msg'] = "success";
     $reData['data'] = $prodList;
     $reData['pageSum'] = ceil($amount / $interval);
-    echo json_encode($reData);
+    return $reData;
 }
 
 function delProduct() {
@@ -85,7 +86,7 @@ function delProduct() {
     $prodAdm->delProduct($_POST['p_id']);
     $reData['status'] = 200;
     $reData['msg'] = "success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function addClass() {
@@ -95,7 +96,7 @@ function addClass() {
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function classList() {
@@ -106,7 +107,7 @@ function classList() {
     $reData['status'] = 200;
     $reData['msg'] = "success";
     $reData['data'] = $classList;
-    echo json_encode($reData);
+    return $reData;
 }
 
 function classEdit() {
@@ -115,7 +116,7 @@ function classEdit() {
     $classAdm->classUpdate($_POST);
     $reData['status'] = 200;
     $reData['msg'] = "success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function classDel() {
@@ -124,7 +125,7 @@ function classDel() {
     $classAdm->del($_POST['c_id']);
     $reData['status'] = 200;
     $reData['msg'] = "success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function login() {
@@ -136,7 +137,7 @@ function login() {
     $loginAdm->login($_POST);
     $reData['status'] = 200;
     $reData['msg'] = "success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function captchaShow() {
@@ -155,7 +156,7 @@ function logout() {
     $loginAdm->logout();
     $reData['status'] = 200;
     $reData['msg'] = "success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function isLogin() {
@@ -182,7 +183,7 @@ function upload() {
     $reData['status'] = 200;
     $reData['msg'] = "上傳成功";
     $reData['info'] = $upResult;
-    echo json_encode($reData);
+    return $reData;
 }
 
 function passModify() {
@@ -191,7 +192,7 @@ function passModify() {
     $loginAdm->modifyPass($_POST['pass']);
     $reData['status'] = 200;
     $reData['msg'] = "修改成功";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function orderAdd() {
@@ -201,7 +202,7 @@ function orderAdd() {
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "order span success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function orderList() {
@@ -212,7 +213,7 @@ function orderList() {
     $reData['status'] = 200;
     $reData['msg'] = "order cancel success";
     $reData['orders'] = $orders;
-    echo json_encode($reData);
+    return $reData;
 }
 
 function orderDel() {
@@ -222,7 +223,7 @@ function orderDel() {
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "order cancel success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function orderActive() {
@@ -232,7 +233,7 @@ function orderActive() {
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "active modify success";
-    echo json_encode($reData);
+    return $reData;
 }
 
 function odrDetailList() {

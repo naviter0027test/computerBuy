@@ -1,6 +1,5 @@
 Cart = Backbone.View.extend({
     initialize : function() {
-	console.log('view test');
 	console.log(this.$el);
 	this.template = _.template($("#prodCart").html());
 	this.render();

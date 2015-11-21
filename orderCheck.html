@@ -27,7 +27,7 @@
 		<label>運費：NT$ 120</label>
 		<label>總計：NT$ 8310</label>
 	    </span>
-	    <form action="orderSpan" method="post">
+	    <form action="orderSpan" method="post" id="payResult">
 		<div>
 		    <h2>填寫收件人資料</h2>
 		    <p>
@@ -67,7 +67,7 @@
 		    </p>
 		</div>
 		<div>
-		    <button id="payResult">結帳</button>
+		    <button>結帳</button>
 		</div>
 	    </form>
 	</div>
@@ -95,6 +95,7 @@
 	</div>
     </body>
     <script src="lib/jquery-1.8.2.js"></script>
+    <script src="lib/jquery.form.js"></script>
     <script src="lib/underscore.js"></script>
     <script src="lib/backbone.js"></script>
     <script src="cart/Cart.js"></script>
@@ -102,6 +103,20 @@
 	$(document).ready(function() {
 	    var cartStore = new CartStore();
 	    var cartv = new Cart({'el' : "#cartShow", 'model' : cartStore});
+	    $("#payResult").submit(function() {
+		var formArr = $(this).serializeArray();
+		var postData = {};
+		_.each(formArr, function(item) {
+		    postData[item['name']] = item['value'];
+		});
+		postData['cart'] = cartStore.toJSON()['data'];
+		postData['instr'] = "createOrder";
+		console.log(postData);
+		$.post("instr.php", postData, function(data) {
+		    console.log(data);
+		});
+		return false;
+	    });
 	});
     </script>
 </html>
