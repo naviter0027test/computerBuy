@@ -84,3 +84,7 @@ function maxPage() {
     $reData['pageSum'] = ceil($amount / $interval);
     echo json_encode($reData);
 }
+
+function addRedMoney() {
+    print_r($_POST);
+}
