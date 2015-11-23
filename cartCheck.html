@@ -30,7 +30,7 @@
 	    <span>
 		<label>運費：NT$ 120</label>
 		<label>總計：NT$ 8310</label>
-		<button>下一步</button>
+		<button id="next">下一步</button>
 	    </span>
 	</div>
 	<script id="prodCart" type="text/template">
@@ -48,7 +48,7 @@
 		<tr>
 		    <td><%=item['p_cls']%></td>
 		    <td><%=item['p_name']%></td>
-		    <td><%=item['p_qty']%></td>
+		    <td><%=item['amount']%></td>
 		    <td>NT$ <%=item['subTotal']%></td>
 		    <td></td>
 		</tr>
@@ -65,6 +65,9 @@
     <script>
 	$(document).ready(function() {
 	    var cartv = new Cart({'el' : "#cartShow", 'model' : new CartStore()});
+	    $("#next").on("click", function() {
+		location.href = "orderCheck.html";
+	    });
 	});
     </script>
 </html>

@@ -103,4 +103,19 @@ class Order {
 	$dbAdm->insertData($tablename, $columns, $data);
 	$dbAdm->execSQL();
     }
+
+    public function getOrder($sn) {
+	$dbAdm = $this->mysql;
+
+	$tablename = "OrderList";
+	$columns = Array();
+	$columns[0] = "*";
+
+	$conditionArr = Array();
+	$data['o_no'] = "'". $sn. "'";
+
+	$dbAdm->selectData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+	return $dbAdm->getAll();
+    }
 }

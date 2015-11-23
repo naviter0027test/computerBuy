@@ -56,10 +56,13 @@ function prodList() {
     return $reData;
 }
 
-function orderAdd() {
+function orderAdd($order = null) {
     require_once("orderAdm/Order.php");
     $orderAdm = new Order();
-    $orderAdm->spanOrder($_POST);
+    if($order == null)
+	$orderAdm->spanOrder($_POST);
+    else
+	$orderAdm->spanOrder($order);
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "order span success";
@@ -91,5 +94,31 @@ function addRedMoney() {
 }
 
 function createOrder() {
-    return $_POST;
+    require_once("prodAdm/Product.php");
+    require_once("orderAdm/Order.php");
+    $prodAdm = new Product();
+    $orderAdm = new Order();
+    $order = $_POST;
+    $order['o_no'] = "PSN". date("YmdHs");
+    $order['total'] = 3000;
+    orderAdd($order);
+
+    $orders = $orderAdm->getOrder($order['o_no']);
+    $odr = $orders[0];
+
+    $counter = 0;
+    foreach($order['cart']['cart'] as $item) {
+	$buyDetail = $prodAdm->getProd($item['p_id']);
+	$buyDetail['o_no'] = $order['o_no'];
+	$buyDetail['o_id'] = $odr['o_id'];
+	$buyDetail['od_qty'] = $item['amount'];
+	$buyDetail['od_price'] = $buyDetail['p_price'];
+	$buyDetail['od_subtotal'] = $buyDetail['p_price'] * $item['amount'];
+	$buyDetail['od_note'] = "";
+	$orderAdm->detailAdd($buyDetail);
+    }
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "order span success";
+    return $reData;
 }

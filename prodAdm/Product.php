@@ -84,6 +84,22 @@ class Product {
 	return $dbAdm->getAll();
     }
 
+    public function getProd($p_id) {
+	$dbAdm = $this->mysql;
+	$tablename = "Product";
+	$columns = Array();
+	$columns[0] = "*";
+
+	$conditionArr = Array();
+	$conditionArr['p_id'] = $p_id;
+	$dbAdm->selectData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+	$products = $dbAdm->getAll();
+	if(!isset($products[0]))
+	    return null;
+	return $products[0];
+    }
+
     public function productAmount() {
 	$dbAdm = $this->mysql;
 	$tablename = "Product";

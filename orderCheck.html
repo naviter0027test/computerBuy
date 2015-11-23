@@ -44,6 +44,16 @@
 		    </p>
 		    <p>
 		    <label>地址:</label>
+		    <select name="buyCity" />
+			<option value="台北市">台北市</option>
+			<option value="台中市">台中市</option>
+			<option value="台南市">台南市</option>
+		    </select>
+		    <select name="buyArea" />
+			<option value="測試區">測試區</option>
+			<option value="北平區">北平區</option>
+			<option value="輛長驅">輛長驅</option>
+		    </select>
 		    <input type="text" name="buyAddr" />
 		    </p>
 		</div>
@@ -52,9 +62,11 @@
 		    <p>
 		    <label>付款方式:</label>
 		    <input type="radio" name="payMode" value="atm" />ATM轉帳付款
+		    <input type="text" name="atm_act5" />
 		    </p>
 		    <p>
 		    <label>付費類型:</label>
+		    <input type="hidden" name="shipMode" value="shipModeA" />
 		    </p>
 		    <p>
 		    <label>發票開立:</label>
@@ -85,7 +97,7 @@
 		<tr>
 		    <td><%=item['p_cls']%></td>
 		    <td><%=item['p_name']%></td>
-		    <td><%=item['p_qty']%></td>
+		    <td><%=item['amount']%></td>
 		    <td>NT$ <%=item['subTotal']%></td>
 		</tr>
 		<% }); %>
@@ -113,7 +125,11 @@
 		postData['instr'] = "createOrder";
 		console.log(postData);
 		$.post("instr.php", postData, function(data) {
+		    data = JSON.parse(data);
 		    console.log(data);
+		    if(data['status'] = 200) {
+			cartStore.clear();
+		    }
 		});
 		return false;
 	    });

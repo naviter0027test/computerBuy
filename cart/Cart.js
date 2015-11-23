@@ -25,5 +25,8 @@ CartStore = Backbone.Model.extend({
     },
     defaults : {
 	data : null
+    },
+    clear : function() {
+	localStorage.setItem("cart", null);
     }
 });
