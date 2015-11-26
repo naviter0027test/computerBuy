@@ -63,11 +63,25 @@ class Product {
 	$dbAdm->execSQL();
     }
 
-    public function prodList($nowPage = null) {
+    public function prodList($listPara) {
+	if(isset($listPara['nowPage']))
+	    $nowPage = $listPara['nowPage'];
+	else
+	    $nowPage = null;
+	if(isset($listPara['cls']))
+	    $cls = $listPara['cls'];
+	else
+	    $cls = null;
 	$dbAdm = $this->mysql;
 	$tablename = "Product";
 	$columns = Array();
 	$columns[0] = "*";
+
+	$conditionArr = null;
+	if(isset($cls)) {
+	    $conditionArr = Array();
+	    $conditionArr['p_cls'] = $cls;
+	}
 
 	$order = Array();
 	$order['col'] = "p_crTime";
@@ -79,7 +93,7 @@ class Product {
 	    $limit['offset'] = ($nowPage - 1) * 10;
 	    $limit['amount'] = 9;
 	}
-	$dbAdm->selectData($tablename, $columns, null, $order, $limit);
+	$dbAdm->selectData($tablename, $columns, $conditionArr, $order, $limit);
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }
@@ -100,13 +114,19 @@ class Product {
 	return $products[0];
     }
 
-    public function productAmount() {
+    public function productAmount($cls = null) {
 	$dbAdm = $this->mysql;
 	$tablename = "Product";
 	$columns = Array();
 	$columns[0] = "count(*) as amount";
 
-	$dbAdm->selectData($tablename, $columns);
+	$conditionArr = null;
+	if($cls != null) {
+	    $conditionArr = Array();
+	    $conditionArr['p_cls'] = $cls;
+	}
+
+	$dbAdm->selectData($tablename, $columns, $conditionArr);
 	$dbAdm->execSQL();
 	$amount = $dbAdm->getAll()[0]['amount'];
 	return $amount;

@@ -28,6 +28,14 @@ ProductList = Backbone.View.extend({
 	this.template = _.template($("#prodListTem").html());
     },
 
+    showPageByCls : function(cls) {
+	var initData = {};
+	initData['nowPage'] = this.model.get('nowPage');
+	initData['cls'] = cls;
+	this.model.prodList(initData);
+	this.template = _.template($("#prodListTem").html());
+    },
+
     addCart : function(evt) {
 	var cart = [];
 	if(localStorage.getItem('cart') != null)
@@ -91,6 +99,7 @@ ProdModel = Backbone.Model.extend({
     },
     defaults : {
 	data : null,
+	cls : null,
 	pageSum : 0,
 	nowPage : 1
     },
@@ -99,6 +108,8 @@ ProdModel = Backbone.Model.extend({
 	var postData = {};
 	postData['instr'] = "maxPage";
 	postData['interval'] = 9;
+	if(initData['cls'])
+	    postData['cls'] = initData['cls'];
 
 	var self = this;
 	$.post("instr.php", postData, function(data) {
@@ -109,6 +120,8 @@ ProdModel = Backbone.Model.extend({
 
 	postData['instr'] = "prodList";
 	postData['nowPage'] = nowPage;
+	if(initData['cls'])
+	    postData['cls'] = initData['cls'];
 
 	$.post("instr.php", postData, function(data) {
 	    data = JSON.parse(data);

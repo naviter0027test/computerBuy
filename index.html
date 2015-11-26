@@ -23,17 +23,6 @@
 	    </div>
 	</div>
 	<div id="leftMenu">
-	    <ul>
-		<h2>商品分類</h2>
-		<li><a href="#">主機板</a></li>
-		<li><a href="#">處理器</a></li>
-		<li><a href="#">硬碟</a></li>
-		<li><a href="#">光碟機</a></li>
-		<li><a href="#">記憶體</a></li>
-		<li><a href="#">螢幕</a></li>
-		<li><a href="#">電源供應器</a></li>
-		<li><a href="#">顯示卡</a></li>
-	    </ul>
 	</div>
 	<div id="content">
 	    <div>
@@ -192,10 +181,22 @@
 		<% } %>
 	    </span>
 	</script>
+	<script id="leftMenuTem" type="text/template">
+	    <ul>
+		<h2>商品分類</h2>
+		<% 
+		var counter = 0;
+		_.each(data, function(item) { 
+		%>
+		<li><a pos=<%=counter++%> href="#"><%=item['c_name']%></a></li>
+		<% }); %>
+	    </ul>
+	</script>
     </body>
     <script src="lib/jquery-1.8.2.js"></script>
     <script src="lib/underscore.js"></script>
     <script src="lib/backbone.js"></script>
     <script src="prodAdm/Product.js"></script>
+    <script src="prodAdm/ProdCls.js"></script>
     <script src="js/index.js"></script>
 </html>

@@ -46,9 +46,9 @@ class Control {
 
 function prodList() {
     require_once("prodAdm/Product.php");
-    $nowPage = $_POST['nowPage'];
+    //$nowPage = $_POST['nowPage'];
     $prodAdm = new Product();
-    $prodList = $prodAdm->prodList($nowPage);
+    $prodList = $prodAdm->prodList($_POST);
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "success";
@@ -81,7 +81,10 @@ function orderDetailAdd() {
 function maxPage() {
     require_once("prodAdm/Product.php");
     $prodAdm = new Product();
-    $amount = $prodAdm->productAmount();
+    $cls = null;
+    if(isset($_POST['cls']))
+	$cls = $_POST['cls'];
+    $amount = $prodAdm->productAmount($cls);
     $interval = $_POST['interval'];
     $reData['status'] = 200;
     $reData['msg'] = "success";
@@ -122,3 +125,15 @@ function createOrder() {
     $reData['msg'] = "order span success";
     return $reData;
 }
+
+function classList() {
+    require_once("prodAdm/Classification.php");
+    $classAdm = new Classification();
+    $classList = $classAdm->classList();
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    $reData['data'] = $classList;
+    return $reData;
+}
+
