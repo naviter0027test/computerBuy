@@ -11,15 +11,7 @@
 	    <span>
 		<a href="cartCheck.html">立即結帳</a>
 	    </span>
-	    <div class="navi">
-		<a href="#">主機板</a>
-		<a href="#">處理器</a>
-		<a href="#">硬碟</a>
-		<a href="#">光碟機</a>
-		<a href="#">記憶體</a>
-		<a href="#">螢幕</a>
-		<a href="#">電源供應器</a>
-		<a href="#">顯示卡</a>
+	    <div id="topMenu" class="navi">
 	    </div>
 	</div>
 	<div id="leftMenu">
@@ -191,6 +183,14 @@
 		<li><a pos=<%=counter++%> href="#"><%=item['c_name']%></a></li>
 		<% }); %>
 	    </ul>
+	</script>
+	<script id="topMenuTem" type="text/template">
+	    <% 
+	    var counter = 0;
+	    _.each(data, function(item) { 
+	    %>
+	    <a pos=<%=counter++%> href="#"><%=item['c_name']%></a>
+	    <% }); %>
 	</script>
     </body>
     <script src="lib/jquery-1.8.2.js"></script>

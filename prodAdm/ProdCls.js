@@ -1,3 +1,30 @@
+ClsTop = Backbone.View.extend({
+    initialize : function() {
+	var self = this;
+	this.template = _.template($("#topMenuTem").html());
+	this.model.on("change:data", function() {
+	    self.render();
+	});
+    },
+    events : {
+	"click a" : 'changeCls'
+    },
+    template : null,
+    render : function() {
+	console.log("render");
+	var data = this.model.get("data");
+	this.$el.html(this.template(data));
+    },
+    changeCls : function(evt) {
+	var cls = evt.target;
+	var pos = $(cls).attr("pos");
+	var data = this.model.get("data")['data'];
+	var prodList = this.model.get("prodList");
+	console.log(data[pos]);
+	prodList.showPageByCls(data[pos]['c_id']);
+	return false;
+    }
+});
 ClsShow = Backbone.View.extend({
     initialize : function() {
 	var self = this;
