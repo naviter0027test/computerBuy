@@ -11,6 +11,8 @@ AdminRoutes = Backbone.Router.extend({
 	'productCls' : 'productCls',
 	'prodClsAdd' : 'prodClsAdd',
 	'productMod' : 'productMod',
+	'orderList' : 'orderList',
+	'orderDetail' : 'orderDetail',
 	'logout' : 'logout'
     },
     passAdm : function() {
@@ -64,6 +66,21 @@ AdminRoutes = Backbone.Router.extend({
     },
     productMod : function() {
 	$("#right").load("prodAdm/prodEdit.html", function() {
+	});
+    },
+    orderList : function() {
+	$("#right").load("orderAdm/orderList.html", function() {
+	    $.getScript("orderAdm/Order.js", function() {
+		var orderList = new OrderList({'el' : "#right", 'model' : new OrderModel()});
+		orderList.showPage();
+	    });
+	    $("#left a").removeClass('clicked');
+	    $("#left a[href=#orderList]").addClass('clicked');
+	});
+    },
+    orderDetail : function() {
+	$("#right").load("orderAdm/orderDetail.html", function() {
+	    $("#left a").removeClass('clicked');
 	});
     },
     logout : function() {

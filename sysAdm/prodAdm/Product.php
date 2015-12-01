@@ -43,8 +43,8 @@ class Product {
 	$dbAdm->insertData($tablename, $columns, $data);
 	$dbAdm->execSQL();
 
-	mkdir("../imgs/$folderName");
-	rename("imgs/tmp/". $computer['p_img'], "../imgs/$folderName/". $computer['p_img']);
+	mkdir("../imgs/prod/$folderName");
+	rename("imgs/tmp/". $computer['p_img'], "../imgs/prod/$folderName/". $computer['p_img']);
     }
 
     public function editProd($computer) {

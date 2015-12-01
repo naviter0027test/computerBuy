@@ -7,6 +7,7 @@ Product = Backbone.View.extend({
 	$("#uploadImg").submit(function() {
 	    $(this).ajaxSubmit(function(data, status) {
 		if(status == "success") {
+		    console.log(data);
 		    data = JSON.parse(data);
 		    console.log(data);
 		    if(data['status'] == 200) {

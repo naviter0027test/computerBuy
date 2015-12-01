@@ -211,7 +211,7 @@ function orderList() {
     $orders = $orderAdm->orderList();
     $reData = Array();
     $reData['status'] = 200;
-    $reData['msg'] = "order cancel success";
+    $reData['msg'] = "order list success";
     $reData['orders'] = $orders;
     return $reData;
 }
