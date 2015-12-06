@@ -1,0 +1,27 @@
+.orderDetail > label {
+    margin-left : 5%;
+    display : inline-block;
+    width : 30%;
+    height : 20px;
+    padding : 5px;
+
+    background : #E0ECF8;
+    border : 1px solid #E0E0F8;
+}
+
+.orderDetail > span {
+    display : inline-block;
+    width : 50%;
+    height : 20px;
+    padding : 5px;
+
+    background : #F8E6E0;
+    border : 1px solid #E0E0F8;
+}
+
+#orderDetail > table {
+    position : relative;
+    margin : 0 0 0 6%;
+    width : 80%;
+}
+
