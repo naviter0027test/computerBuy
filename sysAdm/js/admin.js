@@ -10,7 +10,7 @@ AdminRoutes = Backbone.Router.extend({
 	'productAdd' : 'productAdd',
 	'productCls' : 'productCls',
 	'prodClsAdd' : 'prodClsAdd',
-	'productMod' : 'productMod',
+	'productMod/:prodId' : 'productMod',
 	'orderList' : 'orderList',
 	'orderDetail' : 'orderDetail',
 	'logout' : 'logout'
@@ -64,8 +64,12 @@ AdminRoutes = Backbone.Router.extend({
 	    $("#left a[href=#prodClsAdd]").addClass('clicked');
 	});
     },
-    productMod : function() {
+    productMod : function(prodId) {
 	$("#right").load("prodAdm/prodEdit.html", function() {
+	    $.getScript("prodAdm/Product.js", function() {
+		var prodEdit = new ProdEditPage({'el' : '#right', 'model' : new ProdModel()});
+		prodEdit.showPage(prodId);
+	    });
 	});
     },
     orderList : function() {

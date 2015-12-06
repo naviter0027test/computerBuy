@@ -1,3 +1,61 @@
+ProdEditPage = Backbone.View.extend({
+    initialize : function() {
+	var self = this;
+	this.template = _.template($("#prodEditTem").html());
+
+	//取得商品所有分類
+	this.model.prodCls();
+
+	this.model.on("change:prod", function() {
+	    self.render();
+
+	    //上傳圖片用ajax submit
+	    $("#uploadImg").submit(function() {
+		$(this).ajaxSubmit(function(data, status) {
+		    if(status == "success") {
+			console.log(data);
+			data = JSON.parse(data);
+			console.log(data);
+			if(data['status'] == 200) {
+			    var imgName = data['info'][0]['name'];
+			    self.$el.find('input[readonly]').val(imgName);
+			}
+		    }
+		});
+		return false;
+	    });
+	});
+
+    },
+    events : {
+	"submit #editForm" : "prodModify"
+    },
+    el : null,
+    template : null,
+    render : function() {
+	data = this.model.get("prod");
+	clsList = this.model.get("clsList");
+	data['clsList'] = clsList;
+	this.$el.html(this.template(data));
+    },
+    showPage : function(prodId) {
+	console.log(prodId);
+	this.model.getProd(prodId);
+    },
+    prodModify : function(evt) {
+	var form = evt.target;
+	console.log(form);
+	$(form).ajaxSubmit(function(data, status) {
+	    if(status == "success") {
+		console.log(data);
+		data = JSON.parse(data);
+		console.log(data);
+	    }
+	});
+	return false;
+    }
+});
+
 Product = Backbone.View.extend({
     initialize : function() {
 	var self = this;
@@ -91,7 +149,7 @@ ProductList = Backbone.View.extend({
 		});
 	    else ;
 	else if(oper == "modify") {
-	    location.href = "#productMod";
+	    location.href = "#productMod/" + postData['p_id'];
 	}
 	return false;
     }
@@ -102,6 +160,7 @@ ProdModel = Backbone.Model.extend({
     },
     defaults : {
 	el : null,
+	prod : null, //編輯單一商品的資料存放
 	data : null,
 	clsList : null,
 	nowPage : 1
@@ -113,6 +172,21 @@ ProdModel = Backbone.Model.extend({
 		console.log(data);
 		data = JSON.parse(data);
 		console.log(data);
+	    }
+	});
+    },
+
+    getProd : function(prodId) {
+	var self = this;
+	var postData = {};
+	postData['instr'] = "oneProd";
+	postData['p_id'] = prodId;
+	$.post("instr.php", postData, function(data, status) {
+	    if(status == "success") {
+		console.log(data);
+		data = JSON.parse(data);
+		console.log(data);
+		self.set("prod", data);
 	    }
 	});
     },

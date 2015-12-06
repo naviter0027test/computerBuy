@@ -80,6 +80,18 @@ function prodList() {
     return $reData;
 }
 
+function oneProd() {
+    require_once("prodAdm/Product.php");
+    $prodAdm = new Product();
+    $prodId = $_POST['p_id'];
+    $product = $prodAdm->getProd($prodId);
+
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    $reData['data'] = $product;
+    return $reData;
+}
+
 function delProduct() {
     require_once("prodAdm/Product.php");
     $prodAdm = new Product();

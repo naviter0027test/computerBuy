@@ -49,18 +49,43 @@ class Product {
 
     public function editProd($computer) {
 	$dbAdm = $this->mysql;
+	$folderName = $computer['p_folder'];
+	if($computer['p_folder'] == "")
+	    $folderName = strtotime(date('Y-m-d h:i:s'));
+
 	$tablename = "Product";
 	$columns = Array();
 	$columns['p_name'] = "'". $computer['p_name']. "'";
-	$columns['p_price'] = "'". $computer['p_price']. "'";
+	$columns['p_price'] = $computer['p_price'];
 	$columns['p_memo'] = "'". $computer['p_memo']. "'";
-	$columns['p_cls'] = "'". $computer['p_cls']. "'";
+	$columns['p_cls'] = $computer['p_cls'];
+	$columns['p_img'] = "'". $computer['p_img']. "'";
+	$columns['p_folder'] = "'". $computer['p_folder']. "'";
 
 	$conditionArr = Array();
 	$conditionArr['p_id'] = $computer['p_id'];
 
 	$dbAdm->updateData($tablename, $columns, $conditionArr);
+	//echo $dbAdm->echoSQL();
 	$dbAdm->execSQL();
+
+	if($computer['p_folder'] == "")
+	    mkdir("../imgs/prod/$folderName");
+	rename("imgs/tmp/". $computer['p_img'], "../imgs/prod/$folderName/". $computer['p_img']);
+    }
+
+    public function getProd($prodId) {
+	$dbAdm = $this->mysql;
+	$tablename = "Product";
+	$columns = Array();
+	$columns[0] = "*";
+
+	$where = Array();
+	$where['p_id'] = $prodId;
+	$dbAdm->selectData($tablename, $columns, $where);
+	$dbAdm->execSQL();
+
+	return $dbAdm->getAll()[0];
     }
 
     public function prodList($nowPage = 1) {

@@ -150,7 +150,7 @@
 	    <% var counter = 0; %>
 	    <% _.each(data, function(item) { %>
 	    <div>
-		<img src="imgs/computerProd.gif">
+		<img src="imgs/prod/<%=item['p_folder']%>/<%=item['p_img']%>">
 		<span><%=item['p_name']%></span>
 		<label>單價:<%=item['p_price']%></label>
 		<select>
