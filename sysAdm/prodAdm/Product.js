@@ -25,10 +25,6 @@ ProdEditPage = Backbone.View.extend({
 		return false;
 	    });
 	});
-
-    },
-    events : {
-	"submit #editForm" : "prodModify"
     },
     el : null,
     template : null,
@@ -37,22 +33,26 @@ ProdEditPage = Backbone.View.extend({
 	clsList = this.model.get("clsList");
 	data['clsList'] = clsList;
 	this.$el.html(this.template(data));
+
+	$("#editForm").on("submit", function() {
+	    form = this;
+	    //var form = evt.target;
+	    console.log(form);
+	    $(form).ajaxSubmit(function(data, status) {
+		if(status == "success") {
+		    console.log(data);
+		    data = JSON.parse(data);
+		    console.log(data);
+		}
+	    });
+	    return false;
+	});
     },
     showPage : function(prodId) {
 	console.log(prodId);
 	this.model.getProd(prodId);
     },
     prodModify : function(evt) {
-	var form = evt.target;
-	console.log(form);
-	$(form).ajaxSubmit(function(data, status) {
-	    if(status == "success") {
-		console.log(data);
-		data = JSON.parse(data);
-		console.log(data);
-	    }
-	});
-	return false;
     }
 });
 

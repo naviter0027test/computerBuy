@@ -60,7 +60,7 @@ class Product {
 	$columns['p_memo'] = "'". $computer['p_memo']. "'";
 	$columns['p_cls'] = $computer['p_cls'];
 	$columns['p_img'] = "'". $computer['p_img']. "'";
-	$columns['p_folder'] = "'". $computer['p_folder']. "'";
+	$columns['p_folder'] = "'". $folderName. "'";
 
 	$conditionArr = Array();
 	$conditionArr['p_id'] = $computer['p_id'];
@@ -69,8 +69,8 @@ class Product {
 	//echo $dbAdm->echoSQL();
 	$dbAdm->execSQL();
 
-	if($computer['p_folder'] == "")
-	    mkdir("../imgs/prod/$folderName");
+	if(!file_exists("../imgs/prod/$folderName/"))
+	    mkdir("../imgs/prod/$folderName/");
 	rename("imgs/tmp/". $computer['p_img'], "../imgs/prod/$folderName/". $computer['p_img']);
     }
 
