@@ -77,9 +77,9 @@ class Product {
 	$columns = Array();
 	$columns[0] = "*";
 
-	$conditionArr = null;
+	$conditionArr = Array();
+	$conditionArr['active'] = "'Y'";
 	if(isset($cls)) {
-	    $conditionArr = Array();
 	    $conditionArr['p_cls'] = $cls;
 	}
 

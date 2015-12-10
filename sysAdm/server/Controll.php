@@ -86,6 +86,7 @@ function oneProd() {
     $prodId = $_POST['p_id'];
     $product = $prodAdm->getProd($prodId);
 
+    $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "success";
     $reData['data'] = $product;
@@ -96,6 +97,19 @@ function delProduct() {
     require_once("prodAdm/Product.php");
     $prodAdm = new Product();
     $prodAdm->delProduct($_POST['p_id']);
+
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    return $reData;
+}
+
+function prodAct() {
+    require_once("prodAdm/Product.php");
+    $prodAdm = new Product();
+    $prodAdm->updateAct($_POST);
+
+    $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "success";
     return $reData;

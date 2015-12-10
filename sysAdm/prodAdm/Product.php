@@ -131,4 +131,19 @@ class Product {
 	$amount = $dbAdm->getAll()[0]['amount'];
 	return $amount;
     }
+
+    public function updateAct($computer) {
+	$dbAdm = $this->mysql;
+	$tablename = "Product";
+
+	$columns = Array();
+	$columns['active'] = "'". $computer['active']. "'";
+
+	$conditionArr = Array();
+	$conditionArr['p_id'] = $computer['p_id'];
+
+	$dbAdm->updateData($tablename, $columns, $conditionArr);
+	//echo $dbAdm->echoSQL();
+	$dbAdm->execSQL();
+    }
 }

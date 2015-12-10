@@ -18,9 +18,9 @@
 	    <td><%=item['p_name']%></td>
 	    <td><%=item['p_price']%></td>
 	    <td>
-		<select>
-		    <option <%=(item['active'] == 'Y'?"selected":"")%>>上架</option>
-		    <option <%=(item['active'] == 'N'?"selected":"")%>>下架</option>
+		<select name="active" pos="<%=counter%>">
+		    <option value="Y" <%=(item['active'] == 'Y'?"selected":"")%>>上架</option>
+		    <option value="N" <%=(item['active'] == 'N'?"selected":"")%>>下架</option>
 		</select>
 	    </td>
 	    <td>

@@ -110,6 +110,7 @@ ProductList = Backbone.View.extend({
 	});
     },
     events : {
+	"change select[name=active]" : "prodAct",
 	"click a" : "prodOper"
     },
     el : '',
@@ -128,6 +129,20 @@ ProductList = Backbone.View.extend({
     },
     prodList : function(evt) {
 	this.model.prodList();
+    },
+    prodAct : function(evt) {
+	var data = this.model.get('data')['data'];
+	var select = evt.target;
+	var pos = $(select).attr("pos");
+	var postData = {};
+	postData['instr'] = "prodAct";
+	postData['p_id'] = data[pos]['p_id'];
+	postData['active'] = $(select).val();
+	$.post("instr.php", postData, function(data) {
+	    console.log(data);
+	    data = JSON.parse(data);
+	    console.log(data);
+	});
     },
     prodOper : function(evt) {
 	var btn = evt.target;
