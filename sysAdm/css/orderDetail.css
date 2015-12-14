@@ -1,0 +1,18 @@
+.orderDetail label {
+    display : inline-block;
+    width : 45%;
+    margin-left : 1%;
+    padding : 5px;
+
+    color : #F6D8CE;
+    background : #E18B6B;
+    border-bottom : #F6D8CE solid 1px;
+}
+
+.orderDetail span {
+    display : inline-block;
+    width : 45%;
+    padding : 5px;
+
+    background : #F5ECCE;
+}
