@@ -231,14 +231,21 @@ function orderAdd() {
     return $reData;
 }
 
+function orderPage($page) {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    return $orderAdm->orderAmount();
+}
+
 function orderList() {
     require_once("orderAdm/Order.php");
     $orderAdm = new Order();
-    $orders = $orderAdm->orderList();
+    $orders = $orderAdm->orderList($_POST);
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "order list success";
     $reData['orders'] = $orders;
+    $reData['orderAmount'] = orderPage($_POST);
     return $reData;
 }
 

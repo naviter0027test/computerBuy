@@ -49,4 +49,12 @@
 	<% ++counter; }); %>
     </tbody>
 </table>
+<span class="pager">
+<% for(i = 1;i <= pageSum;++i) { %>
+    <% if(i == nowPage+1) %>
+    <%=i%>
+    <% else %>
+    <a href=#><%=i%></a>
+<% } %>
+</span>
 </script>

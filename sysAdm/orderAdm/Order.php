@@ -63,16 +63,36 @@ class Order {
 	$dbAdm->execSQL();
     }
 
-    public function orderList() {
+    public function orderList($page) {
 	$dbAdm = $this->mysql;
 
 	$tablename = "OrderList";
 	$columns = Array();
 	$columns[0] = "*";
 
-	$dbAdm->selectData($tablename, $columns);
+	$orderby = Array();
+	$orderby['col'] = 'o_crTime';
+	$orderby['order'] = 'desc';
+
+	$limit = Array();
+	$limit['offset'] = $page['nowPage'] * 10;
+	$limit['amount'] = $page['itemShowAmount'];
+
+	$dbAdm->selectData($tablename, $columns, null, $orderby, $limit);
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
+    }
+
+    public function orderAmount() {
+	$dbAdm = $this->mysql;
+
+	$tablename = "OrderList";
+	$columns = Array();
+	$columns[0] = "count(*) as amount";
+
+	$dbAdm->selectData($tablename, $columns);
+	$dbAdm->execSQL();
+	return $dbAdm->getAll()[0]['amount'];
     }
 
     public function cancelOrder($o_id) {

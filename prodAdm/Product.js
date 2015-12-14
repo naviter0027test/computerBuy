@@ -1,3 +1,17 @@
+ProductInfo = Backbone.View.extend({
+    initialize : function() {
+	this.template = _.template($("#prodPageTem").html());
+    },
+    el : '',
+    template : null,
+    showProd : function(item) {
+	console.log("showProd");
+	var data = this.model.get('data');
+	console.log(data['data'][item]);
+	this.$el.html(this.template());
+    }
+});
+
 ProductList = Backbone.View.extend({
     initialize : function() {
 	var self = this;
@@ -78,8 +92,11 @@ ProductList = Backbone.View.extend({
 	return false;
     },
 
-    seeProd : function() {
-	console.log('seeProd');
+    seeProd : function(evt) {
+	var prodInfo = new ProductInfo({'model' : this.model, 'el' : "#content"});
+	var btn = evt.target;
+	var item = $(btn).attr("item");
+	prodInfo.showProd(item);
 	return false;
     },
 
