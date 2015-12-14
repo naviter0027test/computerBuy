@@ -1,0 +1,23 @@
+.pager {
+    display : block;
+    text-align : center;
+}
+
+.pager label {
+    display : inline-block;
+    padding : 5px;
+    
+    color : white;
+    background : #5882FA;
+    border : 1px solid #5882FA; 
+}
+
+.pager a {
+    display : inline-block;
+    padding : 5px;
+
+    color : #5882FA;
+    background : white;
+    border : 1px solid #5882FA; 
+    text-decoration : none;
+}
