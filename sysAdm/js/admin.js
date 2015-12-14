@@ -84,7 +84,9 @@ AdminRoutes = Backbone.Router.extend({
     },
     orderDetail : function() {
 	$("#right").load("orderAdm/orderDetail.html", function() {
-	    $("#left a").removeClass('clicked');
+	    $.getScript("orderAdm/Order.js", function() {
+		$("#left a").removeClass('clicked');
+	    });
 	});
     },
     logout : function() {

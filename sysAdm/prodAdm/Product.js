@@ -111,7 +111,7 @@ ProductList = Backbone.View.extend({
     },
     events : {
 	"change select[name=active]" : "prodAct",
-	"click a" : "prodOper"
+	"click table a" : "prodOper"
     },
     el : '',
     template : null,

@@ -6,6 +6,9 @@ OrderList = Backbone.View.extend({
 	    self.render();
 	});
     },
+    events : {
+	"click .pager a" : "changePage"
+    },
     template : null,
     render : function() {
 	var data = this.model.get("data");
@@ -14,6 +17,13 @@ OrderList = Backbone.View.extend({
 	data['nowPage'] = this.model.get("nowPage");
 	console.log(data);
 	this.$el.html(this.template(data));
+    },
+    changePage : function(evt) {
+	var page = evt.target;
+	console.log(page);
+	this.model.set("nowPage", $(page).text()-1);
+	this.showPage();
+	return false;
     },
     showPage : function() {
 	this.model.list();
