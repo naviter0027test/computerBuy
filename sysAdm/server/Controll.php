@@ -237,6 +237,12 @@ function orderPage($page) {
     return $orderAdm->orderAmount();
 }
 
+function oneOrder() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    return $orderAdm->oneOrder($_POST);
+}
+
 function orderList() {
     require_once("orderAdm/Order.php");
     $orderAdm = new Order();

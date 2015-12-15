@@ -1,14 +1,16 @@
-<div class="orderDetail">
-    <label>訂單編號</label><span>201512050002</span>
-    <label>收貨姓名</label><span>黃玉聲</span>
-    <label>電話	   </label><span>0988347532</span>
-    <label>付款方式</label><span>ATM轉帳</span>
-    <label>下定日期</label><span>2015-12-05</span>
-    <label>其他訊息</label><span>ATM後五碼:11111</span>
+<div id="orderDetail" class="orderDetail">
+</div>
+
+<script id="orderDetailTem" type="text/template">
+    <label>訂單編號</label><span><%=o_no%></span>
+    <label>收貨姓名</label><span><%=buyName%></span>
+    <label>電話	   </label><span><%=buyTel%></span>
+    <label>付款方式</label><span><%=payMode%></span>
+    <label>下定時間</label><span><%=o_crTime%></span>
+    <label>其他訊息</label><span>ATM後五碼:<%=atm_act5%></span>
     <table>
 	<thead>
 	    <tr>
-		<td>商品編號</td>
 		<td>商品名稱</td>
 		<td>單價</td>
 		<td>數量</td>
@@ -16,10 +18,18 @@
 	    </tr>
 	</thead>
 	<tbody>
+	    <% _.each(detail, function(item) { %>
+	    <tr>
+		<td><%=item['p_name']%></td>
+		<td><%=item['od_price']%></td>
+		<td><%=item['od_qty']%></td>
+		<td><%=item['od_subtotal']%></td>
+	    </tr>
+	    <% }); %>
 	</tbody>
     </table>
     <div>
 	<label>運費</label><span>NT$200</span>
-	<label>總計</label><span>NT$1400</span>
+	<label>總計</label><span>NT$<%=o_total%></span>
     </div>
-</div>
+</script>

@@ -1,3 +1,25 @@
+OrderDetail = Backbone.View.extend({
+    initialize : function() {
+	var self = this;
+	this.template = _.template($("#orderDetailTem").html());
+	this.model.on("change:order", function() {
+	    var order = this.get("order");
+	    var detail = this.get("detail");
+	    detail['detail'] = order;
+	    self.render(detail);
+	});
+    },
+    template : null,
+    showOrder : function(detail) {
+	this.model.set("detail", detail);
+	this.model.set("orderId", detail['o_id']);
+	this.model.oneOrder();
+    },
+    render : function(detail) {
+	this.$el.html(this.template(detail));
+    }
+});
+
 OrderList = Backbone.View.extend({
     initialize : function() {
 	var self = this;
@@ -7,6 +29,7 @@ OrderList = Backbone.View.extend({
 	});
     },
     events : {
+	"click table a[name=detailShow]" : "detailShow",
 	"click .pager a" : "changePage"
     },
     template : null,
@@ -25,6 +48,13 @@ OrderList = Backbone.View.extend({
 	this.showPage();
 	return false;
     },
+    detailShow : function(evt) {
+	var pos = $(evt.target).attr("pos");
+	console.log(pos);
+	var data = this.model.get('data')['orders'];
+	console.log(data[pos]);
+	window.sessionStorage.setItem("orderDetail", JSON.stringify(data[pos]));
+    },
     showPage : function() {
 	this.model.list();
     }
@@ -33,11 +63,31 @@ OrderList = Backbone.View.extend({
 OrderModel = Backbone.Model.extend({
     initialize : function() {
     },
+
     defaults : {
+	detail : null,
+	orderId : null,
+	order : null,
 	nowPage : 0,
 	itemShowAmount : 10,
 	data : null
     },
+
+    oneOrder : function() {
+	var postData = {};
+	var self = this;
+	postData['instr'] = "oneOrder";
+	postData['o_id'] = this.get("orderId");
+	$.post("instr.php", postData, function(data, status) {
+	    if(status == "success") {
+		console.log(data);
+		data = JSON.parse(data);
+		console.log(data);
+		self.set("order", data);
+	    }
+	});
+    },
+
     list : function() {
 	var postData = {};
 	var self = this;

@@ -63,6 +63,20 @@ class Order {
 	$dbAdm->execSQL();
     }
 
+    public function oneOrder($order) {
+	$dbAdm = $this->mysql;
+	$tablename = "OrderDetail";
+
+	$columns = Array();
+	$columns[0] = "*";
+
+	$conditionArr = Array();
+	$conditionArr['o_id'] = $order['o_id'];
+	$dbAdm->selectData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+	return $dbAdm->getAll();
+    }
+
     public function orderList($page) {
 	$dbAdm = $this->mysql;
 
