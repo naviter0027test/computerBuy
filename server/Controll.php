@@ -102,12 +102,14 @@ function createOrder() {
     $prodAdm = new Product();
     $orderAdm = new Order();
     $order = $_POST;
-    $order['o_no'] = "PSN". date("YmdHs");
+    $order['o_no'] = "PSN". strtotime(date("Y-m-d H:i:s"));
     $order['total'] = 3000;
     orderAdd($order);
+    echo $order['o_no']. "<br />";
 
     $orders = $orderAdm->getOrder($order['o_no']);
     $odr = $orders[0];
+    echo $odr['o_no'];
 
     $counter = 0;
     foreach($order['cart']['cart'] as $item) {

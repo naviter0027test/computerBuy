@@ -112,7 +112,7 @@ class Order {
 	$columns[0] = "*";
 
 	$conditionArr = Array();
-	$data['o_no'] = "'". $sn. "'";
+	$conditionArr['o_no'] = "'". $sn. "'";
 
 	$dbAdm->selectData($tablename, $columns, $conditionArr);
 	$dbAdm->execSQL();
