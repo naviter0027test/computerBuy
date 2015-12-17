@@ -1,0 +1,31 @@
+
+<script id="prodCart" type="text/template">
+    <table>
+	<thead>
+	    <tr>
+		<td>商品分類</td>
+		<td>商品名稱</td>
+		<td>商品數量</td>
+		<td>商品小計</td>
+	    </tr>
+	</thead>
+	<tbody>
+	    <% 
+	    var total = 0;
+	    _.each(cart, function(item) { 
+		total += item['subTotal'];
+		%>
+		<tr>
+		    <td><%=item['p_cls']%></td>
+		    <td><%=item['p_name']%></td>
+		    <td><%=item['amount']%></td>
+		    <td>NT$ <%=item['subTotal']%></td>
+		</tr>
+		<% }); %>
+	</tbody>
+    </table>
+    <span class="total">
+	<label>運費：NT$ 120</label>
+	<label>總計：NT$ <%=total%></label>
+    </span>
+</script>

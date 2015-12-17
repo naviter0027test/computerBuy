@@ -21,12 +21,8 @@
 	</div>
 	<div id="content">
 	    <h2>購物車商品查看</h2>
-	    <table id="cartShow">
-	    </table>
-	    <span>
-		<label>運費：NT$ 120</label>
-		<label>總計：NT$ 8310</label>
-	    </span>
+	    <div id="cartShow">
+	    </div>
 	    <form action="orderSpan" method="post" id="payResult">
 		<div>
 		    <h2>填寫收件人資料</h2>
@@ -45,14 +41,8 @@
 		    <p>
 		    <label>地址:</label>
 		    <select name="buyCity" />
-			<option value="台北市">台北市</option>
-			<option value="台中市">台中市</option>
-			<option value="台南市">台南市</option>
 		    </select>
 		    <select name="buyArea" />
-			<option value="測試區">測試區</option>
-			<option value="北平區">北平區</option>
-			<option value="輛長驅">輛長驅</option>
 		    </select>
 		    <input type="text" name="buyAddr" />
 		    </p>
@@ -83,58 +73,15 @@
 		</div>
 	    </form>
 	</div>
-	<script id="prodCart" type="text/template">
-	    <thead>
-		<tr>
-		    <td>商品分類</td>
-		    <td>商品名稱</td>
-		    <td>商品數量</td>
-		    <td>商品小計</td>
-		</tr>
-	    </thead>
-	    <tbody>
-		<% _.each(cart, function(item) { %>
-		<tr>
-		    <td><%=item['p_cls']%></td>
-		    <td><%=item['p_name']%></td>
-		    <td><%=item['amount']%></td>
-		    <td>NT$ <%=item['subTotal']%></td>
-		</tr>
-		<% }); %>
-	    </tbody>
-	</script>
 	<div id="footer">
 	</div>
+	<div id="template"></div>
     </body>
     <script src="lib/jquery-1.8.2.js"></script>
     <script src="lib/jquery.form.js"></script>
     <script src="lib/underscore.js"></script>
     <script src="lib/backbone.js"></script>
     <script src="cart/Cart.js"></script>
-    <script>
-	$(document).ready(function() {
-	    var cartStore = new CartStore();
-	    var cartv = new Cart({'el' : "#cartShow", 'model' : cartStore});
-	    $("#payResult").submit(function() {
-		var formArr = $(this).serializeArray();
-		var postData = {};
-		_.each(formArr, function(item) {
-		    postData[item['name']] = item['value'];
-		});
-		postData['cart'] = cartStore.toJSON()['data'];
-		postData['instr'] = "createOrder";
-		console.log(postData);
-		$.post("instr.php", postData, function(data) {
-		    console.log(data);
-		    data = JSON.parse(data);
-		    console.log(data);
-		    if(data['status'] = 200) {
-			cartStore.clear();
-		    }
-		});
-		return false;
-	    });
-	});
-    </script>
+    <script src="js/orderCheck.js"></script>
 </html>
 
