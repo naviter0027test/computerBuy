@@ -21,7 +21,7 @@ class Order {
 
     public function spanOrder($order) {
 	$dbAdm = $this->mysql;
-	$no = "PSN". strtotime(date('Y-m-d h:i:s'));
+	$no = $order['o_no'];
 
 	$tablename = "OrderList";
 	$columns = Array();
@@ -114,6 +114,20 @@ class Order {
 	$conditionArr = Array();
 	$conditionArr['o_no'] = "'". $sn. "'";
 
+	$dbAdm->selectData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+	return $dbAdm->getAll();
+    }
+
+    public function getDetails($sn) {
+        $dbAdm = $this->mysql;
+
+        $tablename = "OrderDetail";
+        $columns = Array();
+        $columns[0] = "*";
+
+        $conditionArr = Array();
+	$conditionArr['o_no'] = "'". $sn. "'";
 	$dbAdm->selectData($tablename, $columns, $conditionArr);
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();

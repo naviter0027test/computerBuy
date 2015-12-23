@@ -1,0 +1,26 @@
+<script id="orderShowTem" type="text/template">
+    <table>
+        <thead>
+            <tr>
+                <td>商品名稱</td>
+                <td>商品單價</td>
+                <td>商品數量</td>
+                <td>商品小計</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% _.each(details, function(item) { %>
+            <tr>
+                <td><%=item['p_name']%></td>
+                <td><%=item['od_price']%></td>
+                <td><%=item['od_qty']%></td>
+                <td><%=item['od_subtotal']%></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <span class="total">
+        <label>運費：NT$ 120</label>
+        <label>總計：NT$ <%=order['o_total']%></label>
+    </span>
+</script>

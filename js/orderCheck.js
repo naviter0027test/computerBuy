@@ -29,6 +29,7 @@ $(document).ready(function() {
 		console.log(data);
 		if(data['status'] = 200) {
 		    cartStore.clear();
+                    location.href = "orderResult.html?orderSN=" + data['order']['o_no'];
 		}
 	    });
 	    return false;

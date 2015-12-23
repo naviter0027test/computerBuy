@@ -103,13 +103,19 @@ function createOrder() {
     $orderAdm = new Order();
     $order = $_POST;
     $order['o_no'] = "PSN". strtotime(date("Y-m-d H:i:s"));
-    $order['total'] = 3000;
+
+    //計算總金額
+    $total = 0;
+    foreach($order['cart']['cart'] as $item) {
+	$buyDetail = $prodAdm->getProd($item['p_id']);
+	$total += $buyDetail['p_price'] * $item['amount'];
+    }
+
+    $order['total'] = $total;
     orderAdd($order);
-    echo $order['o_no']. "<br />";
 
     $orders = $orderAdm->getOrder($order['o_no']);
     $odr = $orders[0];
-    echo $odr['o_no'];
 
     $counter = 0;
     foreach($order['cart']['cart'] as $item) {
@@ -125,6 +131,7 @@ function createOrder() {
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "order span success";
+    $reData['order'] = $odr;
     return $reData;
 }
 
@@ -139,3 +146,15 @@ function classList() {
     return $reData;
 }
 
+function getOrder() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $odr = $orderAdm->getOrder($_POST['orderSN'])[0];
+    $details = $orderAdm->getDetails($_POST['orderSN']);
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "success";
+    $reData['order'] = $odr;
+    $reData['details'] = $details;
+    return $reData;
+}
