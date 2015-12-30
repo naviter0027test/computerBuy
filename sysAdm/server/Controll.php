@@ -34,12 +34,22 @@ class Control {
 		throw new Exception("instr not defined");
 	    $instr = $this->instr;
 	    $reData = $instr();
-	    echo json_encode($reData);
+            if(isset($_SESSION['sysLogin'])) {
+                if($_SESSION['sysLogin'] == true)
+                    echo json_encode($reData);
+                else
+                    throw new Exception("尚未登入");
+            }
+            else
+                throw new Exception("尚未登入");
 	}
 	catch(Exception $e) {
 	    $reData = Array();
 	    $reData['status'] = 500;
 	    $reData['msg'] = $e->getMessage();
+            if($reData['msg'] == "尚未登入") {
+                $reData['jump'] = "login.html";
+            }
 	    $reData['trace'] = $e->getTrace();
 	    echo json_encode($reData);
 	}
@@ -188,6 +198,7 @@ function logout() {
 function isLogin() {
     require_once("login/Login.php");
     $loginAdm = new Login();
+    $reData = Array();
     if($loginAdm->isLogin()) {
 	$reData['status'] = 200;
 	$reData['msg'] = "已經登入";
@@ -197,8 +208,7 @@ function isLogin() {
 	$reData['msg'] = "尚未登入";
 	$reData['jumpPage'] = "login.html";
     }
-    echo json_encode($reData);
-    exit;
+    return $reData;
 }
 
 function upload() {
@@ -280,4 +290,14 @@ function odrDetailList() {
     $orderAdm = new Order();
     $nowPage = $_POST['nowPage'];
     print_r($orderAdm->detailList($nowPage));
+}
+
+function shipList() {
+    require_once("payModeAdm/PayMode.php");
+    $payMode = new PayMode();
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "pay mode list show";
+    $reData['data'] = $payMode->lists();
+    return $reData;
 }

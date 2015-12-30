@@ -54,9 +54,9 @@ class Login {
     }
 
     public function isLogin() {
-	if(isset($_SESSION['sysLogin']) 
-	    && $_SESSION['sysLogin'] == true)
-	    return true;
+	if(isset($_SESSION['sysLogin'])) 
+	    if($_SESSION['sysLogin'] == true)
+                return true;
 	return false;
     }
 

@@ -13,7 +13,23 @@ AdminRoutes = Backbone.Router.extend({
 	'productMod/:prodId' : 'productMod',
 	'orderList' : 'orderList',
 	'orderDetail' : 'orderDetail',
-	'logout' : 'logout'
+        'payModeList' : 'payModeList',
+        'payModeEdit/:pos' : 'payModeEdit',
+	'logout' : 'logout',
+        '' : 'isLogin'
+    },
+    isLogin : function() {
+        var postData = {};
+        postData['instr'] = "isLogin";
+        $.post("instr.php", postData, function(data) {
+            console.log(data);
+            data = JSON.parse(data);
+            console.log(data);
+            if(data['status'] == 500) {
+                alert("尚未登入");
+                location.href = "login.html";
+            }
+        });
     },
     passAdm : function() {
 	$("#right").load("login/passAdm.html", function() {
@@ -93,6 +109,23 @@ AdminRoutes = Backbone.Router.extend({
 		$("#left a").removeClass('clicked');
 	    });
 	});
+    },
+    payModeList : function() {
+        $("#right").load("payModeAdm/payModeList.html", function() {
+            $.getScript("payModeAdm/PayMode.js", function() {
+                var payMode = new PayModeList({'el' : '#paymodeList', 'model' : new PayModeModel()});
+            });
+            $("#left a").removeClass('clicked');
+	    $("#left a[href=#payModeList]").addClass('clicked');
+        });
+    },
+    payModeEdit : function(pos) {
+        console.log("pay mode edit");
+        $("#right").load("payModeAdm/payModeEdit.html", function() {
+            $.getScript("payModeAdm/PayMode.js", function() {
+                var payEdit = new PayModeEdit({'el' : "#paymodePage", 'model' : new PayModeModel()});
+            });
+        });
     },
     logout : function() {
 	var postData = {};

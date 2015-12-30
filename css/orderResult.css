@@ -1,0 +1,46 @@
+body {
+    background : #007399;
+}
+h2 {
+    padding : 5px;
+    width : 40%;
+
+    color : white;
+    background : #6699cc;
+    opacity : .8;
+    border-bottom : 1px solid #3333cc;
+}
+
+#orderShow table {
+    width : 80%;
+}
+
+#orderShow thead {
+    color : white;
+    background : #2eb8b8;
+    opacity : .8;
+}
+
+#orderShow td {
+    padding : 5px;
+}
+
+#orderShow tbody {
+    background : #c2f0f0;
+    opacity : .8;
+}
+
+#orderShow span {
+    display : block;
+    width : 80%;
+    margin : 2px;
+}
+
+#orderShow span label {
+    display : inline-block;
+    width : 48%;
+    padding : 5px;
+
+    background : #70dcdc;
+    opacity : .9;
+}
