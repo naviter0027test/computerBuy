@@ -69,13 +69,13 @@ a {
 }
 
 #left a:hover {
-    color : #999900;
-    background : #ffd966;
+    color : #666633;
+    background : #fff2e5;
 }
 
 #left a.clicked {
-    color : #999900;
-    background : #ffd966;
+    color : #666633;
+    background : #fff2e5;
 }
 
 #right {

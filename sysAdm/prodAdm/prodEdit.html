@@ -1,27 +1,35 @@
 
 <script id="prodEditTem" type="text/template">
-<div class="productAdd formPanel2">
+<div class="productAdd prodEdit">
     <form action="instr.php" method="post" id="editForm">
+	<h2>商品修改</h2>
 	<input type="hidden" name="instr" value="editProduct" />
 	<input type="hidden" name="p_id" value="<%=data['p_id']%>" />
 	<input type="hidden" name="p_folder" value="<%=data['p_folder']%>" />
-	<label>商品名稱</label><input type="text" name="p_name" value="<%=data['p_name']%>" />
-	<label>商品價格</label><input type="text" name="p_price" value="<%=data['p_price']%>" />
-	<label>商品圖片</label><input type="text" name="p_img" value="<%=data['p_img']%>" readonly="true" />
-	<label>商品描述</label><textarea name="p_memo"><%=data['p_memo']%></textarea>
+	<label>商品名稱</label><input type="text" name="p_name" value="<%=data['p_name']%>" /><br />
+	<label>商品價格</label><input type="text" name="p_price" value="<%=data['p_price']%>" /><br />
+	<label>商品圖片</label><input type="text" name="p_img" value="<%=data['p_img']%>" readonly="true" /><br />
+	<label>商品描述</label><textarea name="p_memo"><%=data['p_memo']%></textarea><br />
 	<label>商品分類</label>
-	<select name="p_cls">
-	<% _.each(clsList['data'], function(item) { %>
-	    <option value="<%=item['c_id']%>" <% if(data['p_cls'] == item['c_id']) { %> selected <% } %> ><%=item['c_name']%></option>
-	<% }); %>
-	</select>
+	<div class="prodSelect">
+	    <select name="p_cls">
+	    <% _.each(clsList['data'], function(item) { %>
+		<option value="<%=item['c_id']%>" <% if(data['p_cls'] == item['c_id']) { %> selected <% } %> ><%=item['c_name']%></option>
+	    <% }); %>
+	    </select>
+	</div> 
+	<br />
 	<button>修改</button>
     </form>
 
     <form id="uploadImg" action="instr.php" method="post" enctype='multipart/form-data'>
 	<h2>商品圖片</h2>
 	<input type="hidden" name="instr" value="upload" /><br />
-	<label>圖片</label><input type="file" name="file[]" />
+	<label>圖片</label>
+	<div class="uploadShow">
+	    <input type="file" name="file[]" />
+	</div>
+	<br />
 	<button>上傳</button>
     </form>
 </div>

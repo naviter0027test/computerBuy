@@ -1,0 +1,78 @@
+#right .prodEdit {
+    padding : 15px;
+
+    background : #fff2e5;
+}
+
+#right .prodEdit h2 {
+    padding : 5px;
+    width : 40%;
+
+    color : white;
+    background : #663200;
+    border-bottom : #4d2600 3px solid;
+}
+
+#right .prodEdit label {
+    display : inline-block;
+    padding : 5px;
+    margin-top : 5px;
+    width : 25%;
+
+    color : white;
+    background : #994c00;
+    border : 1px solid #994c00;
+    vertical-align : top;
+}
+
+#right .prodEdit input[type=text], #right .prodEdit textarea {
+    display : inline-block;
+    padding : 6.5px;
+    margin-top : 5px;
+    width : 45%;
+
+    border : 1px solid #994c00;
+    vertical-align : top;
+}
+
+#right .prodEdit select {
+    width : 268px;
+    padding : 5.5px;
+
+    background : transparent;
+    border : 1px solid transparent;
+}
+
+#right .prodEdit .prodSelect {
+    display : inline-block;
+    margin-top : 5px;
+    width : 240px;
+
+    overflow : hidden;
+    background : url(../imgs/1451639148_double-arrow-down.png) no-repeat right #fff2e5;
+    border : 1px solid #994c00;
+}
+
+#right .prodEdit .uploadShow {
+    margin-top : 5px;
+    display : inline-block;
+    width : 240px;
+
+    overflow : hidden;
+    border : 1px solid #994c00;
+}
+
+#right .prodEdit .uploadShow input {
+    position : relative;
+    padding : 4px;
+    left : -90px;
+    cursor : pointer;
+}
+
+#right .prodEdit button {
+    margin-top : 5px;
+    padding : 5px;
+    width : 10%;
+
+    border : 1px solid #994c00;
+}
