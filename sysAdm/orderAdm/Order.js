@@ -54,6 +54,7 @@ OrderList = Backbone.View.extend({
 	var data = this.model.get('data')['orders'];
 	console.log(data[pos]);
 	window.sessionStorage.setItem("orderDetail", JSON.stringify(data[pos]));
+        location.href = $(evt.target).attr("href");
     },
     showPage : function() {
 	this.model.list();

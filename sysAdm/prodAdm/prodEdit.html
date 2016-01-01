@@ -1,6 +1,6 @@
 
 <script id="prodEditTem" type="text/template">
-<div class="productAdd">
+<div class="productAdd formPanel2">
     <form action="instr.php" method="post" id="editForm">
 	<input type="hidden" name="instr" value="editProduct" />
 	<input type="hidden" name="p_id" value="<%=data['p_id']%>" />
@@ -17,12 +17,12 @@
 	</select>
 	<button>修改</button>
     </form>
-</div>
 
-<form id="uploadImg" action="instr.php" method="post" enctype='multipart/form-data'>
-    <h2>商品圖片</h2>
-    <input type="hidden" name="instr" value="upload" /><br />
-    <label>圖片</label><input type="file" name="file[]" />
-    <button>上傳</button>
-</form>
+    <form id="uploadImg" action="instr.php" method="post" enctype='multipart/form-data'>
+	<h2>商品圖片</h2>
+	<input type="hidden" name="instr" value="upload" /><br />
+	<label>圖片</label><input type="file" name="file[]" />
+	<button>上傳</button>
+    </form>
+</div>
 </script>

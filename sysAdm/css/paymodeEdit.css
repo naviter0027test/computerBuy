@@ -1,0 +1,40 @@
+#paymodePage {
+    padding : 5%;
+}
+
+#paymodePage span {
+    display : block;
+    margin : 10px 0 10px 0;
+}
+
+#paymodePage span label {
+    display : inline-block;
+    padding : 5px;
+    width : 30%;
+
+    color : #eeeeee;
+    background : #b37700;
+}
+
+#paymodePage span input {
+    padding : 5px;
+    border : #b37700 1px solid;
+}
+
+#paymodePage span input:focus {
+    box-shadow : 1px 1px 0px 1px #ffc34d;
+}
+
+#paymodePage button {
+    width : 200px;
+    padding : 5px;
+
+    color : #eeeeee;
+    background : #b37700;
+    border : #b37700 1px solid;
+}
+
+#paymodePage button:hover {
+    color : #b37700;
+    background : #ffcb66;
+}

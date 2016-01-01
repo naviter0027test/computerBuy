@@ -1,23 +1,25 @@
-<form id="prodAdd" action="instr.php" method="post">
-    <h2>新增商品</h2>
-    <br />
-    <input type='hidden' name="instr" value="addProduct" />
-    <label>商品名：</label><input type="text" name="p_name" /><br />
-    <label>商品價格：</label><input type="text" name="p_price" /><br />
-    <label>商品圖片：</label><input type="text" name="p_img" readonly /><br />
-    <label>商品描述：</label><textarea name="p_memo"></textarea><br />
-    <label>商品種類：</label>
-    <select name="p_cls">
-    </select><br />
-    <button>增加</button>
-</form>
+<div class="formPanel2">
+    <form id="prodAdd" action="instr.php" method="post">
+	<h2>新增商品</h2>
+	<br />
+	<input type='hidden' name="instr" value="addProduct" />
+	<label>商品名：</label><input type="text" name="p_name" /><br />
+	<label>商品價格：</label><input type="text" name="p_price" /><br />
+	<label>商品圖片：</label><input type="text" name="p_img" readonly /><br />
+	<label>商品描述：</label><textarea name="p_memo"></textarea><br />
+	<label>商品種類：</label>
+	<select name="p_cls">
+	</select><br />
+	<button>增加</button>
+    </form>
 
-<form id="uploadImg" action="instr.php" method="post" enctype='multipart/form-data'>
-    <h2>商品圖片</h2>
-    <input type="hidden" name="instr" value="upload" /><br />
-    <label>圖片</label><input type="file" name="file[]" />
-    <button>上傳</button>
-</form>
+    <form id="uploadImg" action="instr.php" method="post" enctype='multipart/form-data'>
+	<h2>商品圖片</h2>
+	<input type="hidden" name="instr" value="upload" /><br />
+	<label>圖片</label><input type="file" name="file[]" />
+	<button>上傳</button>
+    </form>
+</div>
 
 <script id="clsTem" type="text/template">
     <% _.each(data, function(item) { %>
