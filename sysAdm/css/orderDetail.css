@@ -1,3 +1,18 @@
+.orderDetail {
+    padding : 5px;
+    background : #ffffe5;
+}
+
+.orderDetail h2 {
+    margin-left : 10px;
+    padding : 5px;
+    width : 40%;
+
+    color : white;
+    background : #663200;
+    border-bottom : #4d2600 3px solid;
+}
+
 .orderDetail label {
     display : inline-block;
     width : 45%;
@@ -15,4 +30,24 @@
     padding : 5px;
 
     background : #F5ECCE;
+}
+
+.orderDetail table {
+    width : 90%;
+    margin-left : 15px;
+
+}
+
+.orderDetail thead tr td {
+    padding : 8px;
+
+    color : white;
+    background : #805500;
+}
+
+.orderDetail tbody tr td {
+    padding : 8px;
+
+    color : #331a00;
+    background : #e6ff99;
 }

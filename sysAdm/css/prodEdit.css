@@ -25,7 +25,7 @@
     vertical-align : top;
 }
 
-#right .prodEdit input[type=text], #right .prodEdit textarea {
+#right .prodEdit input[type=text], #right .prodEdit input[type=password], #right .prodEdit textarea {
     display : inline-block;
     padding : 6.5px;
     margin-top : 5px;
