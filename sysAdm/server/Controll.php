@@ -34,6 +34,10 @@ class Control {
 		throw new Exception("instr not defined");
 	    $instr = $this->instr;
 	    $reData = $instr();
+	    if($instr == "logout") {
+		echo json_encode($reData);
+		exit;
+	    }
             if(isset($_SESSION['sysLogin'])) {
                 if($_SESSION['sysLogin'] == true)
                     echo json_encode($reData);
@@ -299,5 +303,16 @@ function shipList() {
     $reData['status'] = 200;
     $reData['msg'] = "pay mode list show";
     $reData['data'] = $payMode->lists();
+    return $reData;
+}
+
+function modPayMode() {
+    require_once("payModeAdm/PayMode.php");
+    $payMode = new PayMode();
+    $payMode->modifyOne($_POST);
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "paymode modify success";
+    $reData['postData'] = $_POST;
     return $reData;
 }

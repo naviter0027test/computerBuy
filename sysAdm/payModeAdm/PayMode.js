@@ -12,10 +12,39 @@
 
 PayModeEdit = Backbone.View.extend({
     initialize : function() {
-        //console.log(pos);
-        var payData = localStorage.getItem("payModeData");
+	this.template = _.template($("#payModelPageTem").html());
+	this.render();
+    },
+    events : {
+	"click button" : "modifyPaymode"
+    },
+    el : '',
+    template : null,
+    render : function() {
+        var payData = sessionStorage.getItem("payModeData");
         payData = JSON.parse(payData);
-        console.log(payData);
+        //console.log(payData);
+	var data = {};
+	data['item'] = payData;
+	this.$el.html(this.template(data));
+    },
+
+    modifyPaymode : function() {
+	console.log(this.$el.find("input"));
+	var inputs = this.$el.find("input");
+	var length = this.$el.find("input").length;
+	var postData = {};
+	postData['instr'] = "modPayMode";
+	for(idx = 0;idx < length;++idx) {
+	    var input = $(inputs)[idx];
+	    postData[$(input).attr("name")] = $(input).val();
+	}
+	console.log(postData);
+	$.post("instr.php", postData, function(data) {
+	    //console.log(data);
+	    data = JSON.parse(data);
+	    console.log(data);
+	});
     }
 });
 
@@ -42,7 +71,8 @@ PayModeList = Backbone.View.extend({
         var pos = $(evt.target).attr("pos");
         console.log(data['data'][pos]);
         var json = JSON.stringify(data['data'][pos]);
-        localStorage.setItem("payModeData", json);
+        sessionStorage.setItem("payModeData", json);
+	location.href = $(evt.target).attr("href");
     }
 });
 

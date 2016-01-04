@@ -28,6 +28,20 @@ class PayMode {
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }
+
+    public function modifyOne($payData) {
+        $dbAdm = $this->mysql;
+        $tablename = "PayMode";
+	$columns = Array();
+	$columns['pm_name'] = "'". $payData['pm_name']. "'";
+	$columns['pm_shipment'] = $payData['pm_shipment'];
+	$columns['pm_threshold'] = $payData['pm_threshold'];
+
+	$conditionArr = Array();
+	$conditionArr['pm_id'] = $payData['pm_id'];
+	$dbAdm->updateData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+    }
 }
 
 ?>

@@ -1,25 +1,13 @@
 <div id="paymodePage">
-    <h1>付款方式管理</h1>
-    <span>
-        <label>付款方式名稱</label>
-        <input type="text" name="pm_name" value="" />
-    </span>
-    <span>
-        <label>運費</label>
-        <input type="text" name="pm_shipment" value="" />
-    </span>
-    <span>
-        <label>免運門檻金額</label>
-        <input type="text" name="pm_threshold" value="" />
-    </span>
-    <button>修改</button>
 </div>
 
 <script id="payModelPageTem" type="text/template">
+    <% console.log(item); %>
     <h1>付款方式管理</h1>
+    <input type="hidden" name="pm_id" value="<%=item['pm_id']%>" />
     <span>
         <label>付款方式名稱</label>
-        <input type="text" name="pm_name" value="" />
+	<input type="text" name="pm_name" value="<%=item['pm_name']%>" />
     </span>
     <span>
         <label>運費</label>

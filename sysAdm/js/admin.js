@@ -22,9 +22,8 @@ AdminRoutes = Backbone.Router.extend({
         var postData = {};
         postData['instr'] = "isLogin";
         $.post("instr.php", postData, function(data) {
-            console.log(data);
+            //console.log(data);
             data = JSON.parse(data);
-            console.log(data);
             if(data['status'] == 500) {
                 alert("尚未登入");
                 location.href = "login.html";
@@ -103,7 +102,7 @@ AdminRoutes = Backbone.Router.extend({
 	    $.getScript("orderAdm/Order.js", function() {
 		var detail = window.sessionStorage.getItem("orderDetail");
 		detail = JSON.parse(detail);
-		console.log(detail);
+		//console.log(detail);
 		var orderShow = new OrderDetail({'el' : '#orderDetail', 'model' : new OrderModel()})
 		orderShow.showOrder(detail);
 		$("#left a").removeClass('clicked');
@@ -120,7 +119,7 @@ AdminRoutes = Backbone.Router.extend({
         });
     },
     payModeEdit : function(pos) {
-        console.log("pay mode edit");
+        //console.log("pay mode edit");
         $("#right").load("payModeAdm/payModeEdit.html", function() {
             $.getScript("payModeAdm/PayMode.js", function() {
                 var payEdit = new PayModeEdit({'el' : "#paymodePage", 'model' : new PayModeModel()});

@@ -23,6 +23,17 @@
     <script src="js/admin.js"></script>
     <script>
 	$(document).ready(function() {
+	    var postData = {};
+	    postData['instr'] = "isLogin";
+	    $.post("instr.php", postData, function(data) {
+		console.log(data);
+		data = JSON.parse(data);
+		console.log(data);
+		if(data['status'] == 500) {
+		    alert("尚未登入");
+		    location.href = "login.html";
+		}
+	    });
 	    var router = new AdminRoutes();
 	    Backbone.history.start();
 	});
