@@ -52,7 +52,8 @@ ProductList = Backbone.View.extend({
 
     addCart : function(evt) {
 	var cart = [];
-	if(localStorage.getItem('cart') != null)
+        var tmp = localStorage.getItem('cart');
+	if(tmp != null && tmp !== "") 
 	    cart = JSON.parse(localStorage.getItem('cart'));
 	if(cart == null)
 	    cart = [];

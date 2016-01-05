@@ -41,6 +41,8 @@ class Order {
 	case "atm" :
 	    $columns[12] = "atm_act5";
 	    break;
+        case "card" :
+            break;
 	default : 
 	    throw new Exception("沒有指定付款方式");
 	}
@@ -55,10 +57,18 @@ class Order {
 	$data[6] = "'". $order['buyArea']. "'";
 	$data[7] = "'". $order['buyAddr']. "'";
 	$data[8] = "'". $order['payMode']. "'";
-	$data[9] = "'". $order['shipMode']. "'";
+        $data[9] = "'". /*$order['shipMode']*/"shipmode". "'";
 	$data[10] = "'". $order['invoice_type']. "'";
 	$data[11] = "'未處理'";
-	$data[12] = "'". $order['atm_act5']. "'";
+	switch($order['payMode']) {
+	case "atm" :
+            $data[12] = "'". $order['atm_act5']. "'";
+        break;
+        case "card" :
+            break;
+	default : 
+	    throw new Exception("沒有指定付款方式");
+	}
 	$dbAdm->insertData($tablename, $columns, $data);
 	$dbAdm->execSQL();
     }

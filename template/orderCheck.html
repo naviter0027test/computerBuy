@@ -29,3 +29,33 @@
 	<label>總計：NT$ <%=total%></label>
     </span>
 </script>
+
+<script id="payMethodTem" type="text/template">
+    <h2>選擇付款方式</h2>
+    <p>
+    <label>付款方式:</label>
+    <% var pos = 0; %>
+    <% _.each(data, function(item) { %>
+    <input type="radio" name="payMode" pos="<%=pos%>" value="<%=item['pm_name']%>" /><%=item['pm_name']%>
+    <% ++pos; %>
+    <% }); %>
+    </p>
+    <p id="atm_5" style="display: none;">
+        <label>後五碼</label>
+        <input type="text" name="atm_act5" />
+    </p>
+    <p>
+    <label>運費:</label>
+    <label id="shippment"></label>
+    <!--<input type="hidden" name="shipMode" value="shipModeA" /> -->
+    </p>
+    <p>
+    <label>發票開立:</label>
+    <input type="radio" name="invoice_type" value="personal" />個人
+    <input type="radio" name="invoice_type" value="company" />公司
+    </p>
+    <p>
+    <label>備註:</label>
+    <textarea name="memo"></textarea>
+    </p>
+</script>

@@ -158,3 +158,14 @@ function getOrder() {
     $reData['details'] = $details;
     return $reData;
 }
+
+function shipList() {
+    require_once("payModeAdm/PayMode.php");
+    $payMode = new PayMode();
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "pay mode list show";
+    $reData['data'] = $payMode->lists();
+    return $reData;
+}
+

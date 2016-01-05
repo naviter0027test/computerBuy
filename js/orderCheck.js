@@ -64,5 +64,6 @@ $(document).ready(function() {
 		}
 	    });
 	});
+        var payMethod = new PayMethod({'el' : '#payMethod', 'model' : new PayProcess()});
     });
 });

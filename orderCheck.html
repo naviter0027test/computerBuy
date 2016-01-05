@@ -47,26 +47,7 @@
 		    <input type="text" name="buyAddr" />
 		    </p>
 		</div>
-		<div>
-		    <h2>選擇付款方式</h2>
-		    <p>
-		    <label>付款方式:</label>
-		    <input type="radio" name="payMode" value="atm" />ATM轉帳付款
-		    <input type="text" name="atm_act5" />
-		    </p>
-		    <p>
-		    <label>付費類型:</label>
-		    <input type="hidden" name="shipMode" value="shipModeA" />
-		    </p>
-		    <p>
-		    <label>發票開立:</label>
-		    <input type="radio" name="invoice_type" value="personal" />個人
-		    <input type="radio" name="invoice_type" value="company" />公司
-		    </p>
-		    <p>
-		    <label>備註:</label>
-		    <textarea name="memo"></textarea>
-		    </p>
+		<div id="payMethod">
 		</div>
 		<div>
 		    <button>結帳</button>
@@ -83,5 +64,6 @@
     <script src="lib/backbone.js"></script>
     <script src="cart/Cart.js"></script>
     <script src="js/orderCheck.js"></script>
+    <script src="orderAdm/PayMethod.js"></script>
 </html>
 

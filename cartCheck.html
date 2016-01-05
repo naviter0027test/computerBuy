@@ -23,37 +23,44 @@
 	    </div>
 	</div>
 	<div id="content">
-	    <br />
-	    <h2>購物車商品查看</h2>
-	    <table id="cartShow">
-	    </table>
-	    <span>
-		<label>運費：NT$ 120</label>
-		<label>總計：NT$ 8310</label>
-		<button id="next">下一步</button>
-	    </span>
 	</div>
 	<script id="prodCart" type="text/template">
-	    <thead>
-		<tr>
-		    <td>商品分類</td>
-		    <td>商品名稱</td>
-		    <td>商品數量</td>
-		    <td>商品小計</td>
-		    <td>刪除</td>
-		</tr>
-	    </thead>
-	    <tbody>
-		<% _.each(cart, function(item) { %>
-		<tr>
-		    <td><%=item['p_cls']%></td>
-		    <td><%=item['p_name']%></td>
-		    <td><%=item['amount']%></td>
-		    <td>NT$ <%=item['subTotal']%></td>
-		    <td></td>
-		</tr>
-		<% }); %>
-	    </tbody>
+            <br />
+            <h2>購物車商品查看</h2>
+            <table id="cartShow">
+                <thead>
+                    <tr>
+                        <td>商品分類</td>
+                        <td>商品名稱</td>
+                        <td>商品數量</td>
+                        <td>商品小計</td>
+                        <td>刪除</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% var sum = 0,counter = 0; %>
+                    <% _.each(cart, function(item) { %>
+                        <tr>
+                            <td><%=item['p_cls']%></td>
+                            <td><%=item['p_name']%></td>
+                            <td><%=item['amount']%></td>
+                            <td>NT$ <%=item['subTotal']%></td>
+                            <td>
+                                <a href="#" name="delProd" pos="<%=counter%>">
+                                    <img src="imgs/1399522498_Erase.png" />
+                                </a>
+                            </td>
+                        </tr>
+                    <% ++counter; %>
+                    <% sum += item['subTotal']; %>
+                    <% }); %>
+                </tbody>
+            </table>
+	    <span>
+                <label></label>
+                <label>總計：NT$ <%=sum%></label>
+                <button id="next">下一步</button>
+	    </span>
 	</script>
 	<div id="footer">
 	</div>
@@ -64,10 +71,14 @@
     <script src="cart/Cart.js"></script>
     <script>
 	$(document).ready(function() {
-	    var cartv = new Cart({'el' : "#cartShow", 'model' : new CartStore()});
-	    $("#next").on("click", function() {
-		location.href = "orderCheck.html";
-	    });
+            var cartv = new Cart({'el' : "#content", 'model' : new CartStore()});
+            if(cartv.isClear()) {
+                alert("購物車沒東西");
+                location.href = "index.html";
+            }
+            $("#next").on("click", function() {
+                location.href = "orderCheck.html";
+            });
 	});
     </script>
 </html>

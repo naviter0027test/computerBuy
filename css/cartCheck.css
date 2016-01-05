@@ -27,6 +27,10 @@
     padding : 5px;
 }
 
+#content table a {
+    display : inline-block;
+}
+
 #content thead {
     color : #eeeeee;
     font-weight : bold;
