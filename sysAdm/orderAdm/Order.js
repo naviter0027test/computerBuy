@@ -29,6 +29,7 @@ OrderList = Backbone.View.extend({
 	});
     },
     events : {
+        "change table select[name=active]" : "changeAct",
 	"click table a[name=detailShow]" : "detailShow",
 	"click .pager a" : "changePage"
     },
@@ -47,6 +48,23 @@ OrderList = Backbone.View.extend({
 	this.model.set("nowPage", $(page).text()-1);
 	this.showPage();
 	return false;
+    },
+    changeAct : function(evt) {
+        var active = $(evt.target).val();
+	var pos = $(evt.target).attr("pos");
+	var data = this.model.get('data')['orders'];
+        var postData = {};
+        postData['instr'] = "orderActive";
+        postData['o_id'] = data[pos]['o_id'];
+        postData['active'] = active;
+        $.post("instr.php", postData, function(data) {
+            data = JSON.parse(data);
+            if(data['status'] == 200) {
+                alert("修改成功");
+            }
+            else
+                console.log(data);
+        });
     },
     detailShow : function(evt) {
 	var pos = $(evt.target).attr("pos");

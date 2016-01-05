@@ -38,7 +38,7 @@
                 <td><%=item['o_total']%></td>
                 <td><%=item['o_crTime']%></td>
                 <td>
-                    <select pos="<%=counter%>" name="active">
+                    <select pos="<%=counter%>" pos="<%=counter%>" name="active">
                         <option value="未付款" <% if(item['active'] == "未付款") { %> selected <% } %>_>未付款</option>
                         <option value="已付款" <% if(item['active'] == "已付款") { %> selected <% } %>_>已付款</option>
                     </select>
