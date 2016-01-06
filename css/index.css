@@ -127,7 +127,7 @@
     background : #007fff;
 }
 
-#leftMenu a {
+#leftMenu ul a {
     display : inline-block;
     width : 80%;
     padding : 20px 10px 20px 10px;
@@ -141,7 +141,7 @@
     background : #80bfff;
 }
 
-#leftMenu a:hover {
+#leftMenu ul a:hover {
     color : #0065cc;
     background : #cce5ff;
     border-left : 5px solid #cce5ff;
