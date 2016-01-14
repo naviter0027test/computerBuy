@@ -71,7 +71,8 @@ class Product {
 
 	if(!file_exists("../imgs/prod/$folderName/"))
 	    mkdir("../imgs/prod/$folderName/");
-	rename("imgs/tmp/". $computer['p_img'], "../imgs/prod/$folderName/". $computer['p_img']);
+        if(file_exists("imgs/tmp/". $computer['p_img']))
+            rename("imgs/tmp/". $computer['p_img'], "../imgs/prod/$folderName/". $computer['p_img']);
     }
 
     public function getProd($prodId) {

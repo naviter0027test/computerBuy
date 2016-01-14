@@ -23,7 +23,8 @@ ClsList = Backbone.View.extend({
 	var pos = $(btn).attr("pos");
 	var oper = $(btn).attr("oper");
 	if(oper == "del") {
-	    this.model.clsDel(data['data'][pos]['c_id'])
+            if(confirm("確定要刪除？"))
+                this.model.clsDel(data['data'][pos]['c_id'])
 	}
 	return false;
     }

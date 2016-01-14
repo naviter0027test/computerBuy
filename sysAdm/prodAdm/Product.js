@@ -43,6 +43,10 @@ ProdEditPage = Backbone.View.extend({
 		    console.log(data);
 		    data = JSON.parse(data);
 		    console.log(data);
+                    if(data['status'] == 200) {
+                        alert("修改成功");
+                        location.href = "admin.html#productList";
+                    }
 		}
 	    });
 	    return false;
@@ -142,6 +146,8 @@ ProductList = Backbone.View.extend({
 	    console.log(data);
 	    data = JSON.parse(data);
 	    console.log(data);
+            if(data['status'] == 200)
+                alert("狀態修改成功");
 	});
     },
     prodOper : function(evt) {
@@ -187,6 +193,11 @@ ProdModel = Backbone.Model.extend({
 		console.log(data);
 		data = JSON.parse(data);
 		console.log(data);
+                if(data['status'] == 200) {
+                    alert("新增成功");
+                    location.href = "admin.html#productList";
+                    location.reload();
+                }
 	    }
 	});
     },
