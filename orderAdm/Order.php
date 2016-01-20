@@ -37,9 +37,10 @@ class Order {
 	$columns[9] = "shipMode";
 	$columns[10] = "invoice_type";
 	$columns[11] = "active";
+        $columns[12] = "o_crTime";
 	switch($order['payMode']) {
 	case "atm" :
-	    $columns[12] = "atm_act5";
+	    $columns[13] = "atm_act5";
 	    break;
         case "card" :
             break;
@@ -60,9 +61,10 @@ class Order {
         $data[9] = "'". /*$order['shipMode']*/"shipmode". "'";
 	$data[10] = "'". $order['invoice_type']. "'";
 	$data[11] = "'未處理'";
+        $data[12] = "'". date("Y-m-d H:i:s"). "'";
 	switch($order['payMode']) {
 	case "atm" :
-            $data[12] = "'". $order['atm_act5']. "'";
+            $data[13] = "'". $order['atm_act5']. "'";
         break;
         case "card" :
             break;
