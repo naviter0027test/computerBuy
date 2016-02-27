@@ -18,7 +18,7 @@
                 <a href="contact.html"> 聯絡我們 </a>
             </div>
         </div>
-        <div id="left">
+        <div id="leftMenu">
             <h2>我要購物 <label>Shop & Buy</label></h2>
             <ul>
                 <li><a href="#">處理器</a></li>
@@ -80,5 +80,42 @@
                 <a href="#" class="add"><span></span><p>加入購物車</p></a>
             </div>
         </div>
+
+	<script id="prodListTem" type="text/template">
+	    <% var counter = 0; %>
+	    <% _.each(data, function(item) { %>
+            <div class="product">
+		<img width="150px" src="imgs/prod/<%=item['p_folder']%>/<%=item['p_img']%>">
+                <label><%=item['p_name']%></label>
+                <label>NT$<%=item['p_price']%></label>
+		<a class="addCart add" item='<%=counter++%>' href="#"><span></span>加入購物車</a>
+            </div>
+	    <% }); %>
+	    <span class="pager">
+	    <% for(i = 1;i <= pageSum;++i) { %>
+		<% if(i == nowPage) %>
+		<label><%=i%></label>
+		<% else %>
+		<a href=#><%=i%></a>
+	    <% } %>
+	    </span>
+	</script>
+	<script id="leftMenuTem" type="text/template">
+	    <ul>
+                <h2>我要購物 <label>Shop & Buy</label></h2>
+		<% 
+		var counter = 0;
+		_.each(data, function(item) { 
+		%>
+		<li><a pos=<%=counter++%> href="#"><%=item['c_name']%></a></li>
+		<% }); %>
+	    </ul>
+	</script>
     </body>
+    <script src="lib/jquery-1.8.2.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script src="prodAdm/Product.js"></script>
+    <script src="prodAdm/ProdCls.js"></script>
+    <script src="js/productList.js"></script>
 </html>
