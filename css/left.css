@@ -1,0 +1,78 @@
+
+#left {
+    display : inline-block;
+    width : 20%;
+
+    margin-left : 20px;
+    vertical-align : top;
+}
+
+#left h2 {
+    padding : 5px 0px 5px 0px;
+    color : #444444;
+    border-bottom : 1px solid #0059b3;
+    font-size : 24px;
+}
+
+#left h2 label {
+    display : inline-block;
+    padding-left : 5px;
+    font-size : 14px;
+}
+
+#left ul {
+    padding : 0px;
+    margin : 0px;
+}
+
+#left li {
+    display : block;
+
+    list-style : none;
+}
+
+#left li a {
+    display : block;
+    padding : 10px 15px 10px 36px;
+
+    color : #808080;
+    font-weight : 600;
+    text-decoration : none;
+}
+
+#left li:hover {
+    background : #b3e6ff;
+}
+
+#left li:hover a {
+    padding : 10px 15px 10px 38px;
+}
+
+#left li:nth-child(4n) a {
+    background : url(../imgs/1456578223__Windows.png) no-repeat;
+    background-position : 10px 50%;
+    border-left : 5px solid #33bbff;
+}
+
+#left li:nth-child(4n+1) a {
+    background : url(../imgs/1456578198_electronics-08.png) no-repeat;
+    background-position : 10px 50%;
+    border-left : 5px solid #0099e6;
+}
+
+#left li:nth-child(4n+2) a {
+    background : url(../imgs/1456578248__BBM.png) no-repeat;
+    background-position : 10px 50%;
+    border-left : 5px solid #006699;
+}
+
+#left li:nth-child(4n+3) a {
+    background : url(../imgs/1456578193_computer-search.png) no-repeat;
+    background-position : 10px 50%;
+    border-left : 5px solid #004466;
+}
+
+#left li a.choosed {
+    padding : 10px 15px 10px 38px;
+    color : #006699;
+}

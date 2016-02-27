@@ -1,0 +1,57 @@
+#content {
+    display : inline-block;
+    padding : 20px;
+    width : 70%;
+}
+
+#content div.product {
+    display : inline-block;
+    width : 180px;
+    margin : 10px;
+
+    text-align : center;
+}
+
+#content div.product img {
+    display : block;
+    width : 100%;
+}
+
+#content div.product label {
+    display : block;
+    padding : 10px;
+}
+
+#content div.product a {
+    display : block;
+
+    text-decoration : none;
+    color : #dddddd;
+    text-shadow : 1px 1px black;
+    background : #d9d9d9;
+}
+
+#content div.product a:hover {
+    background : #00b386;
+}
+
+#content div.product a span {
+    display : inline-block;
+    padding : 3px;
+    width : 24px;
+    height : 24px;
+    margin : 0px;
+
+    background : url(../imgs/1456398875_cart-alt.png) no-repeat;
+    background-position : 50% 50%;
+    vertical-align : top;
+}
+
+#content div.product a p {
+    display : inline-block;
+    margin : 0px;
+    padding : 5px;
+
+    vertical-align : top;
+}
+
