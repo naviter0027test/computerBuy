@@ -2,174 +2,72 @@
     <head>
 	<title>淺色電腦</title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="css/header.css" />
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link href="lib/bxslider/jquery.bxslider.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/header2.css" />
+	<link rel="stylesheet" type="text/css" href="css/left.css" />
+	<link rel="stylesheet" type="text/css" href="css/index2.css" />
 	<link rel="stylesheet" type="text/css" href="css/pager.css" />
+	<link rel="stylesheet" type="text/css" href="css/footer.css" />
     </head>
     <body>
-	<div id="header">
-	    <a href="index.html"><img src="imgs/cooltext143725226109873.png" /></a>
-	    <span>
-		<a href="cartCheck.html">立即結帳</a>
-	    </span>
-	    <div id="topMenu" class="navi">
-	    </div>
-	</div>
-	<div id="leftMenu">
-	</div>
-	<div id="content">
-	    <div>
-		<img src="imgs/computerProd.gif">
-		<span>product name</span>
-		<label>單價:</label>
-		<select>
-		    <option>請選擇數量</option>
-		    <option>1</option>
-		    <option>2</option>
-		    <option>3</option>
-		    <option>4</option>
-		</select>
-		<a href="#">查看</a>
-		<a href="#">加入購物車</a>
-	    </div>
-	    <div>
-		<img src="imgs/computerProd.gif">
-		<span>product name</span>
-		<label>單價:</label>
-		<select>
-		    <option>請選擇數量</option>
-		    <option>1</option>
-		    <option>2</option>
-		    <option>3</option>
-		    <option>4</option>
-		</select>
-		<a href="#">查看</a>
-		<a href="#">加入購物車</a>
-	    </div>
-	    <div>
-		<img src="imgs/computerProd.gif">
-		<span>product name</span>
-		<label>單價:</label>
-		<select>
-		    <option>請選擇數量</option>
-		    <option>1</option>
-		    <option>2</option>
-		    <option>3</option>
-		    <option>4</option>
-		</select>
-		<a href="#">查看</a>
-		<a href="#">加入購物車</a>
-	    </div>
-	    <div>
-		<img src="imgs/computerProd.gif">
-		<span>product name</span>
-		<label>單價:</label>
-		<select>
-		    <option>請選擇數量</option>
-		    <option>1</option>
-		    <option>2</option>
-		    <option>3</option>
-		    <option>4</option>
-		</select>
-		<a href="#">查看</a>
-		<a href="#">加入購物車</a>
-	    </div>
-	    <div>
-		<img src="imgs/computerProd.gif">
-		<span>product name</span>
-		<label>單價:</label>
-		<select>
-		    <option>請選擇數量</option>
-		    <option>1</option>
-		    <option>2</option>
-		    <option>3</option>
-		    <option>4</option>
-		</select>
-		<a href="#">查看</a>
-		<a href="#">加入購物車</a>
-	    </div>
-	</div>
-	<div id="footer">
-	</div>
-	<script id="prodListTem" type="text/template">
-	    <% var counter = 0; %>
-	    <% _.each(data, function(item) { %>
-	    <div>
-		<img src="imgs/prod/<%=item['p_folder']%>/<%=item['p_img']%>">
-		<span><%=item['p_name']%></span>
-		<label>單價:<%=item['p_price']%></label>
-		<select>
-		    <option>請選擇數量</option>
-		    <option>1</option>
-		    <option>2</option>
-		    <option>3</option>
-		    <option>4</option>
-		</select>
-		<a class="seeProd" item='<%=counter%>' href="#">查看</a>
-		<a class="addCart" item='<%=counter++%>' href="#">加入購物車</a>
-	    </div>
-	    <% }); %>
-	    <span class="pager">
-	    <% for(i = 1;i <= pageSum;++i) { %>
-		<% if(i == nowPage) %>
-		<label><%=i%></label>
-		<% else %>
-		<a href=#><%=i%></a>
-	    <% } %>
-	    </span>
-	</script>
-	<script id="prodPageTem" type="text/template">
-	    <div id="prodInfo">
-		<div>
-		    <img src="imgs/computerProd.gif" />
-		    <span>
-			<p>商品名稱:</p>
-			<p>商品價格:</p>
-			<p>
-			購買數量
-			<select>
-			    <option>1</option>
-			    <option>2</option>
-			    <option>3</option>
-			    <option>4</option>
-			</select>
-			</p>
-			<p>
-			<a href="#">加入購物車</a>
-			<a href="#">立即結帳</a>
-			</p>
-		    </span>
-		</div>
-		<div>
-		    <h2>商品說明</h2>
-		    <p></p>
-		</div>
-	    </div>
-	</script>
-	<script id="leftMenuTem" type="text/template">
-	    <ul>
-		<h2>商品分類</h2>
-		<% 
-		var counter = 0;
-		_.each(data, function(item) { 
-		%>
-		<li><a pos=<%=counter++%> href="#"><%=item['c_name']%></a></li>
-		<% }); %>
-	    </ul>
-	</script>
-	<script id="topMenuTem" type="text/template">
-	    <% 
-	    var counter = 0;
-	    _.each(data, function(item) { 
-	    %>
-	    <a pos=<%=counter++%> href="#"><%=item['c_name']%></a>
-	    <% }); %>
-	</script>
+        <div id="header">
+            <img src="imgs/cooltext143725226109873.png" />
+            <div id="nav">
+                <a href="index.html" class="choosed"> 首頁 </a>
+                <a href="about.html"> 關於我們 </a>
+                <a href="productList.html"> 我要購物 </a>
+                <a href="service.html"> 我們的服務 </a>
+                <a href="contact.html"> 聯絡我們 </a>
+            </div>
+        </div>
+        <div id="leftMenu">
+            <h2>首頁資訊 <label>Home & Info</label></h2>
+            <ul>
+                <li><a href="index.html"> 首頁 </a></li>
+                <li><a href="about.html"> 關於我們 </a></li>
+                <li><a href="productList.html"> 我要購物 </a></li>
+                <li><a href="service.html"> 我們的服務 </a></li>
+                <li><a href="contact.html"> 聯絡我們 </a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <ul id="slideBanner">
+                <li><img src="imgs/bxslide1.png" /></li>
+                <li><img src="imgs/bxslide2.png" /></li>
+                <li><img src="imgs/bxslide3.png" /></li>
+            </ul>
+            <div class="advertise">
+                <a href="#"><img src="imgs/200.png" /></a>
+                <a href="#"><img src="imgs/200.png" /></a>
+                <a href="#"><img src="imgs/200.png" /></a>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="logo">
+                <label>Light</label> 
+                <label>Com</label>
+            </div>
+            <div class="intro">
+                <p>淺色電腦有限公司</p>
+                <p>嚴選開發</p>
+                <p>程式的品質保證</p>
+            </div>
+            <div class="service">
+                <p>客服專線：02-00000000</p>
+                <p>客服時間：8:00 ~ 17:00</p>
+                <p>客服信箱：test@test.com.tw</p>
+                <p>地址：台北市中正區測試地區</p>
+            </div>
+        </div>
     </body>
-    <script src="lib/jquery-1.8.2.js"></script>
-    <script src="lib/underscore.js"></script>
-    <script src="lib/backbone.js"></script>
-    <script src="prodAdm/Product.js"></script>
-    <script src="prodAdm/ProdCls.js"></script>
-    <script src="js/index.js"></script>
+    <script src="lib/jquery-1.8.2.js" /></script>
+    <script src="lib/bxslider/jquery.bxslider.js" /></script>
+    <script> 
+        $(document).ready(function() {
+            $("#slideBanner").bxSlider({
+                auto : true
+            });
+        });
+    </script>
 </html>
+

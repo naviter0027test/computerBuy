@@ -1,0 +1,21 @@
+#content {
+    display : inline-block;
+    margin-left : 5%;
+    width : 60%;
+
+    vertical-align : top;
+}
+
+#content #slideBanner img {
+    width : 100%;
+}
+
+#content .advertise {
+    margin-bottom : 10px;
+    text-align : center;
+}
+
+#content .advertise a {
+    display : inline-block;
+    width : 30%;
+}

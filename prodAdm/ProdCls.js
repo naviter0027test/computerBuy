@@ -44,6 +44,8 @@ ClsShow = Backbone.View.extend({
     },
     changeCls : function(evt) {
 	var cls = evt.target;
+        $(this.$el.find("a")).removeClass("choosed");
+        $(cls).addClass("choosed");
 	var pos = $(cls).attr("pos");
 	var data = this.model.get("data")['data'];
 	var prodList = this.model.get("prodList");
