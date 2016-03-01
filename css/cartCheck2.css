@@ -1,0 +1,71 @@
+
+#content h1 {
+    padding : 5px 5px 5px 44px;
+
+    font-size : 36px;
+    background : url(../imgs/1456398875_cart-alt.png) no-repeat;
+    background-position : 5px 50%;
+    border-left : 10px solid #00394d;
+    border-bottom : 3px solid #0086b3;
+}
+
+#content table {
+    width : 100%;
+    border-collapse: collapse;
+}
+
+#content table td a {
+    display : inline-block;
+}
+
+#content thead {
+    background : #00394d;
+}
+
+#content thead td {
+    padding : 15px;
+}
+
+#content thead td {
+    color : white;
+    font-weight : bold;
+}
+
+#content tbody tr {
+    border-bottom : 1px solid #00394d;
+}
+
+#content tbody td {
+    padding : 10px 15px 5px 15px;
+}
+
+#content .sum span {
+    display : inline-block;
+    padding : 15px;
+    width : 50%;
+
+    color : white;
+    background : #00394d;
+    font-weight : bold;
+}
+
+#content .operating {
+    text-align : right;
+}
+
+#content .operating a {
+    display : inline-block;
+    padding : 10px 15px 10px 15px;
+
+    color : white;
+    background : #00394d;
+    font-weight : bold;
+    border : 1px solid #00394d;
+    text-decoration : none;
+}
+
+#content .operating a:hover {
+    color : #00394d;
+    background : white;
+}
+

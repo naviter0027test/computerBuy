@@ -1,69 +1,104 @@
 <html>
     <head>
-	<title>淺色電腦 訂購單確認內容</title>
+	<title>淺色電腦</title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="css/header.css" />
-	<link rel="stylesheet" type="text/css" href="css/orderCheck.css" />
+	<link rel="stylesheet" type="text/css" href="css/header2.css" />
+	<link rel="stylesheet" type="text/css" href="css/left.css" />
+	<link rel="stylesheet" type="text/css" href="css/orderCheck2.css" />
+	<link rel="stylesheet" type="text/css" href="css/pager.css" />
     </head>
     <body>
-	<div id="header">
-	    <a href="index.html"><img src="imgs/cooltext143725226109873.png" /></a>
-	    <div class="navi">
-		<a href="#">主機板</a>
-		<a href="#">處理器</a>
-		<a href="#">硬碟</a>
-		<a href="#">光碟機</a>
-		<a href="#">記憶體</a>
-		<a href="#">螢幕</a>
-		<a href="#">電源供應器</a>
-		<a href="#">顯示卡</a>
-	    </div>
-	</div>
-	<div id="content">
-	    <h2>購物車商品查看</h2>
-	    <div id="cartShow">
-	    </div>
-	    <form action="orderSpan" method="post" id="payResult">
-		<div>
-		    <h2>填寫收件人資料</h2>
-		    <p>
-		    <label>收件人姓名:</label>
-		    <input type="text" name="buyName" />
-		    </p>
-		    <p>
-		    <label>E-mail:</label>
-		    <input type="text" name="buyEmail" />
-		    </p>
-		    <p>
-		    <label>電話:</label>
-		    <input type="text" name="buyTel" />
-		    </p>
-		    <p>
-		    <label>地址:</label>
-		    <select name="buyCity" />
-		    </select>
-		    <select name="buyArea" />
-		    </select>
-		    <input type="text" name="buyAddr" />
-		    </p>
-		</div>
-		<div id="payMethod">
-		</div>
-		<div>
-		    <button>結帳</button>
-		</div>
-	    </form>
-	</div>
-	<div id="footer">
-	</div>
-	<div id="template"></div>
+        <div id="header">
+            <img src="imgs/cooltext143725226109873.png" />
+            <div id="nav">
+                <a href="index.html"> 首頁 </a>
+                <a href="about.html"> 關於我們 </a>
+                <a href="productList.html"> 我要購物 </a>
+                <a href="service.html"> 我們的服務 </a>
+                <a href="contact.html"> 聯絡我們 </a>
+            </div>
+        </div>
+        <div id="content">
+            <h1>商品清單</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <td>商品分類</td>
+                        <td>商品名稱</td>
+                        <td>商品數量</td>
+                        <td>小計</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>主機板</td>
+                        <td>Master Asus GX557</td>
+                        <td>1</td>
+                        <td>NT$ 920</td>
+                    </tr>
+                    <tr>
+                        <td>處理器</td>
+                        <td>Intel Core i5</td>
+                        <td>1</td>
+                        <td>NT$ 2388</td>
+                    </tr>
+                    <tr>
+                        <td>記憶體</td>
+                        <td>transact memory 2G</td>
+                        <td>2</td>
+                        <td>NT$ 4200</td>
+                    </tr>
+                </tbody>
+            </table>
+            <form action="#" method="post">
+                <h1>填寫收件人資料</h1>
+                <p>
+                    <span>收件人姓名：</span>
+                    <input type="text" />
+                </p>
+                <p>
+                    <span>E-mail：</span>
+                    <input type="text" />
+                </p>
+                <p>
+                    <span>電話：</span>
+                    <input type="text" />
+                </p>
+                <p>
+                    <span>地址：</span>
+                    <select name="buyCity" />
+                    </select>
+                    <select name="buyArea" />
+                    </select>
+                    <input type="text" name="buyAddr" />
+                </p>
+                <h1>選擇付款方式</h1>
+                <p>
+                    <span>付款方式：</span>
+                    <input type="radio" /> ATM 轉帳
+                    <input type="radio" /> 貨到付款
+                </p>
+                <p>
+                    <span>運費：</span>
+                    <label>NT$ 80</label>
+                </p>
+                <p>
+                    <span>發票開立：</span>
+                    <input type="radio" /> 個人
+                    <input type="radio" /> 公司
+                </p>
+                <p>
+                    <span>備註：</span>
+                    <textarea></textarea>
+                </p>
+            </form>
+            <div class="sum">
+                <span>總計</span>
+                <label>NT$ 7588</label>
+            </div>
+            <div class="operating">
+                <a href="#">下一步</a>
+            </div>
+        </div>
     </body>
-    <script src="lib/jquery-1.8.2.js"></script>
-    <script src="lib/jquery.form.js"></script>
-    <script src="lib/underscore.js"></script>
-    <script src="lib/backbone.js"></script>
-    <script src="cart/Cart.js"></script>
-    <script src="js/orderCheck.js"></script>
-    <script src="orderAdm/PayMethod.js"></script>
 </html>
-

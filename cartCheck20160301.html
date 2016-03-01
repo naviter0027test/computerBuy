@@ -1,0 +1,84 @@
+<html>
+    <head>
+	<title>淺色電腦 購物車內容</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/header.css" />
+	<link rel="stylesheet" type="text/css" href="css/cartCheck.css" />
+    </head>
+    <body>
+	<div id="header">
+	    <a href="index.html"><img src="imgs/cooltext143725226109873.png" /></a>
+	    <span>
+		<a href="#">立即結帳</a>
+	    </span>
+	    <div class="navi">
+		<a href="#">主機板</a>
+		<a href="#">處理器</a>
+		<a href="#">硬碟</a>
+		<a href="#">光碟機</a>
+		<a href="#">記憶體</a>
+		<a href="#">螢幕</a>
+		<a href="#">電源供應器</a>
+		<a href="#">顯示卡</a>
+	    </div>
+	</div>
+	<div id="content">
+	</div>
+	<script id="prodCart" type="text/template">
+            <br />
+            <h2>購物車商品查看</h2>
+            <table id="cartShow">
+                <thead>
+                    <tr>
+                        <td>商品分類</td>
+                        <td>商品名稱</td>
+                        <td>商品數量</td>
+                        <td>商品小計</td>
+                        <td>刪除</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% var sum = 0,counter = 0; %>
+                    <% _.each(cart, function(item) { %>
+                        <tr>
+                            <td><%=item['p_cls']%></td>
+                            <td><%=item['p_name']%></td>
+                            <td><%=item['amount']%></td>
+                            <td>NT$ <%=item['subTotal']%></td>
+                            <td>
+                                <a href="#" name="delProd" pos="<%=counter%>">
+                                    <img src="imgs/1399522498_Erase.png" />
+                                </a>
+                            </td>
+                        </tr>
+                    <% ++counter; %>
+                    <% sum += item['subTotal']; %>
+                    <% }); %>
+                </tbody>
+            </table>
+	    <span>
+                <label></label>
+                <label>總計：NT$ <%=sum%></label>
+                <button id="next">下一步</button>
+	    </span>
+	</script>
+	<div id="footer">
+	</div>
+    </body>
+    <script src="lib/jquery-1.8.2.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script src="cart/Cart.js"></script>
+    <script>
+	$(document).ready(function() {
+            var cartv = new Cart({'el' : "#content", 'model' : new CartStore()});
+            if(cartv.isClear()) {
+                alert("購物車沒東西");
+                location.href = "index.html";
+            }
+            $("#next").on("click", function() {
+                location.href = "orderCheck.html";
+            });
+	});
+    </script>
+</html>

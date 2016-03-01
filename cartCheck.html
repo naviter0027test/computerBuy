@@ -1,84 +1,103 @@
 <html>
     <head>
-	<title>淺色電腦 購物車內容</title>
+	<title>淺色電腦</title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="css/header.css" />
-	<link rel="stylesheet" type="text/css" href="css/cartCheck.css" />
+	<link rel="stylesheet" type="text/css" href="css/header2.css" />
+	<link rel="stylesheet" type="text/css" href="css/left.css" />
+	<link rel="stylesheet" type="text/css" href="css/cartCheck2.css" />
+	<link rel="stylesheet" type="text/css" href="css/pager.css" />
     </head>
     <body>
-	<div id="header">
-	    <a href="index.html"><img src="imgs/cooltext143725226109873.png" /></a>
-	    <span>
-		<a href="#">立即結帳</a>
-	    </span>
-	    <div class="navi">
-		<a href="#">主機板</a>
-		<a href="#">處理器</a>
-		<a href="#">硬碟</a>
-		<a href="#">光碟機</a>
-		<a href="#">記憶體</a>
-		<a href="#">螢幕</a>
-		<a href="#">電源供應器</a>
-		<a href="#">顯示卡</a>
-	    </div>
-	</div>
-	<div id="content">
-	</div>
-	<script id="prodCart" type="text/template">
-            <br />
-            <h2>購物車商品查看</h2>
-            <table id="cartShow">
+        <div id="header">
+            <img src="imgs/cooltext143725226109873.png" />
+            <div id="nav">
+                <a href="index.html"> 首頁 </a>
+                <a href="about.html"> 關於我們 </a>
+                <a href="productList.html"> 我要購物 </a>
+                <a href="service.html"> 我們的服務 </a>
+                <a href="contact.html"> 聯絡我們 </a>
+            </div>
+        </div>
+        <div id="content">
+            <h1>購物清單</h1>
+            <table>
                 <thead>
                     <tr>
                         <td>商品分類</td>
                         <td>商品名稱</td>
                         <td>商品數量</td>
-                        <td>商品小計</td>
+                        <td>小計</td>
                         <td>刪除</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <% var sum = 0,counter = 0; %>
-                    <% _.each(cart, function(item) { %>
-                        <tr>
-                            <td><%=item['p_cls']%></td>
-                            <td><%=item['p_name']%></td>
-                            <td><%=item['amount']%></td>
-                            <td>NT$ <%=item['subTotal']%></td>
-                            <td>
-                                <a href="#" name="delProd" pos="<%=counter%>">
-                                    <img src="imgs/1399522498_Erase.png" />
-                                </a>
-                            </td>
-                        </tr>
-                    <% ++counter; %>
-                    <% sum += item['subTotal']; %>
-                    <% }); %>
+                    <tr>
+                        <td>主機板</td>
+                        <td>Master Asus GX557</td>
+                        <td>1</td>
+                        <td>NT$ 920</td>
+                        <td>
+                            <a href="#">
+                                <img src="imgs/1399522498_Erase.png" />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>處理器</td>
+                        <td>Intel Core i5</td>
+                        <td>1</td>
+                        <td>NT$ 2388</td>
+                        <td>
+                            <a href="#">
+                                <img src="imgs/1399522498_Erase.png" />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>記憶體</td>
+                        <td>transact memory 2G</td>
+                        <td>2</td>
+                        <td>NT$ 4200</td>
+                        <td>
+                            <a href="#">
+                                <img src="imgs/1399522498_Erase.png" />
+                            </a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-	    <span>
-                <label></label>
-                <label>總計：NT$ <%=sum%></label>
-                <button id="next">下一步</button>
-	    </span>
-	</script>
-	<div id="footer">
-	</div>
+            <div class="sum">
+                <span>總計</span>
+                <label>NT$ 7508</label>
+            </div>
+            <div class="operating">
+                <a href="#">下一步</a>
+            </div>
+            <div class="info">
+                <h1>購物須知</h1>
+                <h2>七日鑑賞</h2>
+                <p>
+                ※ 為保障消費者權益，會員可享收到商品隔日起計算七日內(含例假日)之猶豫期，期間單筆訂單可免運費辦理退貨一次。
+                若同訂單申請第二次以上退貨，運費須由買家自行負擔。
+                </p>
+                <p>
+                ※七日鑑賞期計算: 包裹取件/簽收隔日起算第一天（不論是否為買家本人(管理員、家人親友簽收/取件視同)）。
+                </p>
+                <h2>貼心提醒</h2>
+                <p>
+                ◎依統一發票使用辦法規定，發票兌獎必須使用發票正本。
+                </p>
+                <p>
+                ◎一張發票僅有一張正本，訂單查詢內所提供的列印僅供參考之用，不具兌獎功能。
+                </p>
+                <p>
+                ◎其他有關領獎事項依「統一發票給獎辦法」規定辦理。
+                </p>
+                <p>
+                ◎有任何兌獎疑義，可至財政部電子發票整合服務平台常見問答服務項目查詢，或撥打電子發票24小時免付費專線0000-000-000。
+                </p>
+            </div>
+        </div>
     </body>
-    <script src="lib/jquery-1.8.2.js"></script>
-    <script src="lib/underscore.js"></script>
-    <script src="lib/backbone.js"></script>
-    <script src="cart/Cart.js"></script>
-    <script>
-	$(document).ready(function() {
-            var cartv = new Cart({'el' : "#content", 'model' : new CartStore()});
-            if(cartv.isClear()) {
-                alert("購物車沒東西");
-                location.href = "index.html";
-            }
-            $("#next").on("click", function() {
-                location.href = "orderCheck.html";
-            });
-	});
-    </script>
 </html>
+
