@@ -4,5 +4,10 @@ $(document).ready(function() {
     //var topMenu = new ClsTop({'model' : new ProdCls(), 'el' : "#topMenu" });
     prodcls.model.set('prodList', prodList);
     //topMenu.model.set('prodList', prodList);
+
+    $("#header").load("template/header.html",function() {
+        $("#nav a[href='productList.html']").addClass("choosed");
+    });
+    $("#footer").load("template/footer.html");
 });
 
