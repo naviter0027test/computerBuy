@@ -1,0 +1,42 @@
+#footer {
+    color : white;
+    background : #333333;
+}
+
+#footer div {
+    display : inline-block;
+
+    vertical-align : top;
+    text-align : center;
+}
+
+#footer .logo {
+    padding : 20px;
+    width : 20%;
+}
+
+#footer .logo label {
+    display : block;
+
+    font-size : 40px;
+
+}
+
+#footer .logo label:nth-child(2) {
+    position : relative;
+    left : 25px;
+}
+
+#footer .intro {
+    margin : 10px 0px 10px 0px;
+    padding : 5px 15px 5px 15px;
+    width : 25%;
+
+    border-right : dashed 1px white;
+}
+
+#footer .service {
+    padding : 5px 15px 5px 15px;
+    width : 40%;
+
+}
