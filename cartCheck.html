@@ -20,59 +20,61 @@
             </div>
         </div>
         <div id="content">
-            <h1>購物清單</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>商品分類</td>
-                        <td>商品名稱</td>
-                        <td>商品數量</td>
-                        <td>小計</td>
-                        <td>刪除</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>主機板</td>
-                        <td>Master Asus GX557</td>
-                        <td>1</td>
-                        <td>NT$ 920</td>
-                        <td>
-                            <a href="#">
-                                <img src="imgs/1399522498_Erase.png" />
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>處理器</td>
-                        <td>Intel Core i5</td>
-                        <td>1</td>
-                        <td>NT$ 2388</td>
-                        <td>
-                            <a href="#">
-                                <img src="imgs/1399522498_Erase.png" />
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>記憶體</td>
-                        <td>transact memory 2G</td>
-                        <td>2</td>
-                        <td>NT$ 4200</td>
-                        <td>
-                            <a href="#">
-                                <img src="imgs/1399522498_Erase.png" />
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="sum">
-                <span>總計</span>
-                <label>NT$ 7508</label>
-            </div>
-            <div class="operating">
-                <a href="#">下一步</a>
+            <div id="cartContent">
+                <h1>購物清單</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>商品分類</td>
+                            <td>商品名稱</td>
+                            <td>商品數量</td>
+                            <td>小計</td>
+                            <td>刪除</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>主機板</td>
+                            <td>Master Asus GX557</td>
+                            <td>1</td>
+                            <td>NT$ 920</td>
+                            <td>
+                                <a href="#">
+                                    <img src="imgs/1399522498_Erase.png" />
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>處理器</td>
+                            <td>Intel Core i5</td>
+                            <td>1</td>
+                            <td>NT$ 2388</td>
+                            <td>
+                                <a href="#">
+                                    <img src="imgs/1399522498_Erase.png" />
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>記憶體</td>
+                            <td>transact memory 2G</td>
+                            <td>2</td>
+                            <td>NT$ 4200</td>
+                            <td>
+                                <a href="#">
+                                    <img src="imgs/1399522498_Erase.png" />
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="sum">
+                    <span>總計</span>
+                    <label>NT$ 7508</label>
+                </div>
+                <div class="operating">
+                    <a href="#">下一步</a>
+                </div>
             </div>
             <div class="info">
                 <h1>購物須知</h1>
@@ -116,6 +118,62 @@
                 <p>地址：台北市中正區測試地區</p>
             </div>
         </div>
+
+	<script id="prodCart" type="text/template">
+            <h1>購物清單</h1>
+            <table id="cartShow">
+                <thead>
+                    <tr>
+                        <td>商品分類</td>
+                        <td>商品名稱</td>
+                        <td>商品數量</td>
+                        <td>商品小計</td>
+                        <td>刪除</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% var sum = 0,counter = 0; %>
+                    <% _.each(cart, function(item) { %>
+                        <tr>
+                            <td><%=item['p_cls']%></td>
+                            <td><%=item['p_name']%></td>
+                            <td><%=item['amount']%></td>
+                            <td>NT$ <%=item['subTotal']%></td>
+                            <td>
+                                <a href="#" name="delProd" pos="<%=counter%>">
+                                    <img src="imgs/1399522498_Erase.png" />
+                                </a>
+                            </td>
+                        </tr>
+                    <% ++counter; %>
+                    <% sum += item['subTotal']; %>
+                    <% }); %>
+                </tbody>
+            </table>
+            <div class="sum">
+                <span>總計</span>
+                <label>NT$ <%=sum%></label>
+            </div>
+            <div class="operating">
+                <a href="#" id="next">下一步</a>
+            </div>
+	</script>
     </body>
+    <script src="lib/jquery-1.8.2.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script src="cart/Cart.js"></script>
+    <script>
+	$(document).ready(function() {
+            var cartv = new Cart({'el' : "#cartContent", 'model' : new CartStore()});
+            if(cartv.isClear()) {
+                alert("購物車沒東西");
+                location.href = "index.html";
+            }
+            $("#next").on("click", function() {
+                location.href = "orderCheck.html";
+            });
+	});
+    </script>
 </html>
 

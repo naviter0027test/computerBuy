@@ -38,48 +38,6 @@
                 <label>NT$244</label>
                 <a href="#" class="add"><span></span><p>加入購物車</p></a>
             </div>
-            <div class="product">
-                <img src="imgs/150.png" />
-                <label>商品名稱</label>
-                <label>NT$244</label>
-                <a href="#" class="add"><span></span><p>加入購物車</p></a>
-            </div>
-            <div class="product">
-                <img src="imgs/150.png" />
-                <label>商品名稱</label>
-                <label>NT$244</label>
-                <a href="#" class="add"><span></span><p>加入購物車</p></a>
-            </div>
-            <div class="product">
-                <img src="imgs/150.png" />
-                <label>商品名稱</label>
-                <label>NT$244</label>
-                <a href="#" class="add"><span></span><p>加入購物車</p></a>
-            </div>
-            <div class="product">
-                <img src="imgs/150.png" />
-                <label>商品名稱</label>
-                <label>NT$244</label>
-                <a href="#" class="add"><span></span><p>加入購物車</p></a>
-            </div>
-            <div class="product">
-                <img src="imgs/150.png" />
-                <label>商品名稱</label>
-                <label>NT$244</label>
-                <a href="#" class="add"><span></span><p>加入購物車</p></a>
-            </div>
-            <div class="product">
-                <img src="imgs/150.png" />
-                <label>商品名稱</label>
-                <label>NT$244</label>
-                <a href="#" class="add"><span></span><p>加入購物車</p></a>
-            </div>
-            <div class="product">
-                <img src="imgs/150.png" />
-                <label>商品名稱</label>
-                <label>NT$244</label>
-                <a href="#" class="add"><span></span><p>加入購物車</p></a>
-            </div>
         </div>
         <div id="footer">
         </div>
@@ -104,8 +62,8 @@
 	    </span>
 	</script>
 	<script id="leftMenuTem" type="text/template">
+            <h2>我要購物 <label>Shop & Buy</label></h2>
 	    <ul>
-                <h2>我要購物 <label>Shop & Buy</label></h2>
 		<% 
 		var counter = 0;
 		_.each(data, function(item) { 
@@ -113,6 +71,7 @@
 		<li><a pos=<%=counter++%> href="#"><%=item['c_name']%></a></li>
 		<% }); %>
 	    </ul>
+            <a href="cartCheck.html" class="cartCheck"><span></span>我要結帳</a>
 	</script>
     </body>
     <script src="lib/jquery-1.8.2.js"></script>

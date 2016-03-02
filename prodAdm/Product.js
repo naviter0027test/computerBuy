@@ -65,20 +65,22 @@ ProductList = Backbone.View.extend({
 	console.log(data['data'][item]);
 
 	var select = $(btn).parent().find('select');
-	var buyAmount = $(select).val();
+	//var buyAmount = $(select).val();
+        /*
 	if(isNaN(buyAmount)) {
 	    alert(buyAmount);
 	    return false;
 	}
+        */
 
 	var product = {};
-	product['amount'] = buyAmount;
+	product['amount'] = 1; //buyAmount;
 	product['p_id'] = data['data'][item]['p_id'];
 	product['p_name'] = data['data'][item]['p_name'];
 	product['p_price'] = data['data'][item]['p_price'];
-	product['p_qty'] = buyAmount;
+	product['p_qty'] = 1;  //buyAmount;
 	product['p_cls'] = "主機板";
-	product['subTotal'] = data['data'][item]['p_price'] * buyAmount;
+	product['subTotal'] = data['data'][item]['p_price'] * 1;  //buyAmount;
 
 	var isInCart = false;
 	for(var i in cart) 

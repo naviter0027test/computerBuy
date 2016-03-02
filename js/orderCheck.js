@@ -14,26 +14,30 @@ $(document).ready(function() {
     $("#template").load("template/orderCheck.html", function() {
 	var cartStore = new CartStore();
 	var cartv = new Cart({'el' : "#cartShow", 'model' : cartStore});
-	$("#payResult").submit(function() {
-	    var formArr = $(this).serializeArray();
-	    var postData = {};
-	    _.each(formArr, function(item) {
-		postData[item['name']] = item['value'];
-	    });
-	    postData['cart'] = cartStore.toJSON()['data'];
-	    postData['instr'] = "createOrder";
-	    console.log(postData);
-	    $.post("instr.php", postData, function(data) {
-		console.log(data);
-		data = JSON.parse(data);
-		console.log(data);
-		if(data['status'] = 200) {
-		    cartStore.clear();
-                    location.href = "orderResult.html?orderSN=" + data['order']['o_no'];
-		}
-	    });
-	    return false;
-	});
+        $(".orderCreate").on("click", function() {
+            $("#payResult").submit();
+            return false;
+        });
+            $("#payResult").submit(function() {
+                var formArr = $(this).serializeArray();
+                var postData = {};
+                _.each(formArr, function(item) {
+                    postData[item['name']] = item['value'];
+                });
+                postData['cart'] = cartStore.toJSON()['data'];
+                postData['instr'] = "createOrder";
+                console.log(postData);
+                $.post("instr.php", postData, function(data) {
+                    console.log(data);
+                    data = JSON.parse(data);
+                    console.log(data);
+                    if(data['status'] = 200) {
+                        cartStore.clear();
+                        location.href = "orderResult.html?orderSN=" + data['order']['o_no'];
+                    }
+                });
+                return false;
+            });
 	$.post("js/taiwan.json", function(data) {
 	    console.log(data);
 	    data = data['taiwan'];

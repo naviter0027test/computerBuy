@@ -21,49 +21,55 @@
         </div>
         <div id="content">
             <h1>商品清單</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>商品分類</td>
-                        <td>商品名稱</td>
-                        <td>商品數量</td>
-                        <td>小計</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>主機板</td>
-                        <td>Master Asus GX557</td>
-                        <td>1</td>
-                        <td>NT$ 920</td>
-                    </tr>
-                    <tr>
-                        <td>處理器</td>
-                        <td>Intel Core i5</td>
-                        <td>1</td>
-                        <td>NT$ 2388</td>
-                    </tr>
-                    <tr>
-                        <td>記憶體</td>
-                        <td>transact memory 2G</td>
-                        <td>2</td>
-                        <td>NT$ 4200</td>
-                    </tr>
-                </tbody>
-            </table>
-            <form action="#" method="post">
+	    <div id="cartShow">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>商品分類</td>
+                            <td>商品名稱</td>
+                            <td>商品數量</td>
+                            <td>小計</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>主機板</td>
+                            <td>Master Asus GX557</td>
+                            <td>1</td>
+                            <td>NT$ 920</td>
+                        </tr>
+                        <tr>
+                            <td>處理器</td>
+                            <td>Intel Core i5</td>
+                            <td>1</td>
+                            <td>NT$ 2388</td>
+                        </tr>
+                        <tr>
+                            <td>記憶體</td>
+                            <td>transact memory 2G</td>
+                            <td>2</td>
+                            <td>NT$ 4200</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="sum">
+                    <span>總計</span>
+                    <label>NT$ 7588</label>
+                </div>
+	    </div>
+            <form id="payResult" action="#" method="post">
                 <h1>填寫收件人資料</h1>
                 <p>
                     <span>收件人姓名：</span>
-                    <input type="text" />
+                    <input type="text" name="buyName" />
                 </p>
                 <p>
                     <span>E-mail：</span>
-                    <input type="text" />
+                    <input type="text" name="buyEmail" />
                 </p>
                 <p>
                     <span>電話：</span>
-                    <input type="text" />
+                    <input type="text" name="buyTel" />
                 </p>
                 <p>
                     <span>地址：</span>
@@ -73,32 +79,30 @@
                     </select>
                     <input type="text" name="buyAddr" />
                 </p>
-                <h1>選擇付款方式</h1>
-                <p>
-                    <span>付款方式：</span>
-                    <input type="radio" /> ATM 轉帳
-                    <input type="radio" /> 貨到付款
-                </p>
-                <p>
-                    <span>運費：</span>
-                    <label>NT$ 80</label>
-                </p>
-                <p>
-                    <span>發票開立：</span>
-                    <input type="radio" /> 個人
-                    <input type="radio" /> 公司
-                </p>
-                <p>
-                    <span>備註：</span>
-                    <textarea></textarea>
-                </p>
+		<div id="payMethod">
+                    <h1>選擇付款方式</h1>
+                    <p>
+                        <span>付款方式：</span>
+                        <input type="radio" /> ATM 轉帳
+                        <input type="radio" /> 貨到付款
+                    </p>
+                    <p>
+                        <span>運費：</span>
+                        <label>NT$ 80</label>
+                    </p>
+                    <p>
+                        <span>發票開立：</span>
+                        <input type="radio" /> 個人
+                        <input type="radio" /> 公司
+                    </p>
+                    <p>
+                        <span>備註：</span>
+                        <textarea></textarea>
+                    </p>
+		</div>
             </form>
-            <div class="sum">
-                <span>總計</span>
-                <label>NT$ 7588</label>
-            </div>
             <div class="operating">
-                <a href="#">下一步</a>
+                <a href="#" class="orderCreate">下一步</a>
             </div>
         </div>
         <div id="footer">
@@ -118,5 +122,13 @@
                 <p>地址：台北市中正區測試地區</p>
             </div>
         </div>
+	<div id="template"></div>
     </body>
+    <script src="lib/jquery-1.8.2.js"></script>
+    <script src="lib/jquery.form.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script src="cart/Cart.js"></script>
+    <script src="js/orderCheck.js"></script>
+    <script src="orderAdm/PayMethod.js"></script>
 </html>
