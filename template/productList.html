@@ -1,0 +1,54 @@
+<script id="prodListTem" type="text/template">
+    <% var counter = 0; %>
+    <% _.each(data, function(item) { %>
+        <div class="product">
+            <a href="#"><img item=<%=counter%> class="prodInfo" width="150px" src="imgs/prod/<%=item['p_folder']%>/<%=item['p_img']%>"></a>
+            <label><%=item['p_name']%></label>
+            <label>NT$<%=item['p_price']%></label>
+            <a class="addCart add" item='<%=counter++%>' href="#"><span></span>加入購物車</a>
+        </div>
+        <% }); %>
+    <span class="pager">
+        <% for(i = 1;i <= pageSum;++i) { %>
+            <% if(i == nowPage) %>
+            <label><%=i%></label>
+            <% else %>
+            <a href=#><%=i%></a>
+            <% } %>
+    </span>
+</script>
+<script id="leftMenuTem" type="text/template">
+    <h2>我要購物 <label>Shop & Buy</label></h2>
+    <ul>
+        <% 
+        var counter = 0;
+        _.each(data, function(item) { 
+            %>
+            <li><a pos=<%=counter++%> href="#"><%=item['c_name']%></a></li>
+            <% }); %>
+    </ul>
+    <a href="cartCheck.html" class="cartCheck"><span></span>我要結帳</a>
+</script>
+
+<script id="prodPageTem" type="text/template">
+    <div class="productInfo">
+        <img src="imgs/200.png" />
+        <div class="prodContent">
+            <h2><%=p_name%></h2>
+            <label>價格 : NT$<%=p_price%></label>
+            <select name="qty">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+            <a href="#" class="addCart add"><span></span><p item='<%=item%>'>加入購物車</p></a>
+        </div>
+        <div class="text">
+            <h2>商品介紹</h2>
+            <%=p_memo%>
+        </div>
+    </div>
+</script>

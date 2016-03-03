@@ -83,23 +83,25 @@
     padding : 10px 20px 10px 0px;
 
     text-decoration : none;
-    background : #e6f9ff;
-    color : #002733;
+    background : #002733;
+    color : white;
     border : 1px solid #002733;
     font-weight : bold;
 }
 
 #leftMenu a.cartCheck:hover {
     background : #002733;
-    color : #e6f9ff;
+    color : #002733;
+    background : white;
 }
 
 #leftMenu a.cartCheck span {
+    /* 不要了 */
     display : inline-block;
     margin-right : 10px;
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 5px 0 5px 10px;
-    border-color: transparent transparent transparent #002733;
+    border-color: transparent transparent transparent transparent;
 }

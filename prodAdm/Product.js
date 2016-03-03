@@ -8,7 +8,8 @@ ProductInfo = Backbone.View.extend({
 	console.log("showProd");
 	var data = this.model.get('data');
 	console.log(data['data'][item]);
-	this.$el.html(this.template());
+        data['data'][item]['item'] = item;
+	this.$el.html(this.template(data['data'][item]));
     }
 });
 
@@ -29,6 +30,7 @@ ProductList = Backbone.View.extend({
     },
     events : {
 	'click a.addCart' : 'addCart',
+	'click .prodInfo' : 'infoShow',
 	"click a.seeProd" : "seeProd"
     },
 
@@ -53,6 +55,15 @@ ProductList = Backbone.View.extend({
 	this.template = _.template($("#prodListTem").html());
     },
 
+    infoShow : function(evt) {
+        console.log(evt.target);
+	var prodInfo = new ProductInfo({'model' : this.model, 'el' : "#content"});
+	var btn = evt.target;
+	var item = $(btn).attr("item");
+	prodInfo.showProd(item);
+        return false;
+    },
+
     addCart : function(evt) {
 	var cart = [];
         var tmp = localStorage.getItem('cart');
@@ -63,27 +74,25 @@ ProductList = Backbone.View.extend({
 	console.log(cart);
 
 	var btn = evt.target;
+        console.log(btn);
 	var item = $(btn).attr("item");
 	var data = this.model.get('data');
 	console.log(data['data'][item]);
 
-	var select = $(btn).parent().find('select');
-	//var buyAmount = $(select).val();
-        /*
+	var select = this.$el.find('select');
+	var buyAmount = $(select).val();
 	if(isNaN(buyAmount)) {
-	    alert(buyAmount);
-	    return false;
+            buyAmount = 1;
 	}
-        */
 
 	var product = {};
-	product['amount'] = 1; //buyAmount;
+	product['amount'] = buyAmount;
 	product['p_id'] = data['data'][item]['p_id'];
 	product['p_name'] = data['data'][item]['p_name'];
 	product['p_price'] = data['data'][item]['p_price'];
-	product['p_qty'] = 1;  //buyAmount;
+	product['p_qty'] = buyAmount;
 	product['p_cls'] = "主機板";
-	product['subTotal'] = data['data'][item]['p_price'] * 1;  //buyAmount;
+	product['subTotal'] = data['data'][item]['p_price'] * buyAmount;
 
 	var isInCart = false;
 	for(var i in cart) 

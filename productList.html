@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css/header2.css" />
 	<link rel="stylesheet" type="text/css" href="css/left.css" />
 	<link rel="stylesheet" type="text/css" href="css/productList.css" />
+	<link rel="stylesheet" type="text/css" href="css/productInfo.css" />
 	<link rel="stylesheet" type="text/css" href="css/pager.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css" />
     </head>
@@ -41,38 +42,7 @@
         </div>
         <div id="footer">
         </div>
-
-	<script id="prodListTem" type="text/template">
-	    <% var counter = 0; %>
-	    <% _.each(data, function(item) { %>
-            <div class="product">
-		<img width="150px" src="imgs/prod/<%=item['p_folder']%>/<%=item['p_img']%>">
-                <label><%=item['p_name']%></label>
-                <label>NT$<%=item['p_price']%></label>
-		<a class="addCart add" item='<%=counter++%>' href="#"><span></span>加入購物車</a>
-            </div>
-	    <% }); %>
-	    <span class="pager">
-	    <% for(i = 1;i <= pageSum;++i) { %>
-		<% if(i == nowPage) %>
-		<label><%=i%></label>
-		<% else %>
-		<a href=#><%=i%></a>
-	    <% } %>
-	    </span>
-	</script>
-	<script id="leftMenuTem" type="text/template">
-            <h2>我要購物 <label>Shop & Buy</label></h2>
-	    <ul>
-		<% 
-		var counter = 0;
-		_.each(data, function(item) { 
-		%>
-		<li><a pos=<%=counter++%> href="#"><%=item['c_name']%></a></li>
-		<% }); %>
-	    </ul>
-            <a href="cartCheck.html" class="cartCheck"><span></span>我要結帳</a>
-	</script>
+        <div id="scriptLoad"></div>
     </body>
     <script src="lib/jquery-1.8.2.js"></script>
     <script src="lib/underscore.js"></script>
