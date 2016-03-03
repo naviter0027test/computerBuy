@@ -14,6 +14,13 @@ $(document).ready(function() {
     $("#template").load("template/orderCheck.html", function() {
 	var cartStore = new CartStore();
 	var cartv = new Cart({'el' : "#cartShow", 'model' : cartStore});
+
+        $("#payResult").validationEngine({
+            validationEventTrigger : 'submit',
+            notEmpty : true
+        });
+
+
         $(".orderCreate").on("click", function() {
             $("#payResult").submit();
             return false;

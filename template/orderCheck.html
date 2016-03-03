@@ -36,13 +36,13 @@
     <label>付款方式:</label>
     <% var pos = 0; %>
     <% _.each(data, function(item) { %>
-    <input type="radio" name="payMode" pos="<%=pos%>" value="<%=item['pm_name']%>" /><%=item['pm_name']%>
+    <input type="radio" name="payMode" pos="<%=pos%>" value="<%=item['pm_name']%>" class="validate[required]" /><%=item['pm_name']%>
     <% ++pos; %>
     <% }); %>
     </p>
     <p id="atm_5" style="display: none;">
         <label>後五碼</label>
-        <input type="text" name="atm_act5" />
+        <input type="text" name="atm_act5" class="validate[required]"/>
     </p>
     <p>
     <label>運費:</label>
@@ -51,8 +51,8 @@
     </p>
     <p>
     <label>發票開立:</label>
-    <input type="radio" name="invoice_type" value="personal" />個人
-    <input type="radio" name="invoice_type" value="company" />公司
+    <input type="radio" name="invoice_type" value="personal" class="validate[required]"/>個人
+    <input type="radio" name="invoice_type" value="company" class="validate[required]" />公司
     </p>
     <p>
     <label>備註:</label>
