@@ -38,13 +38,16 @@ ProductList = Backbone.View.extend({
     showPage : function() {
 	var initData = {};
 	initData['nowPage'] = this.model.get('nowPage');
+        if(this.model.get("cls") != null)
+            initData['cls'] = this.model.get("cls");
+        console.log(initData);
 	this.model.prodList(initData);
 	this.template = _.template($("#prodListTem").html());
     },
 
     showPageByCls : function(cls) {
 	var initData = {};
-	initData['nowPage'] = this.model.get('nowPage');
+	initData['nowPage'] = 1;
 	initData['cls'] = cls;
 	this.model.prodList(initData);
 	this.template = _.template($("#prodListTem").html());
@@ -148,5 +151,8 @@ ProdModel = Backbone.Model.extend({
 	    self.set('data', data);
 	});
 
+        //設定現在所在頁面
+        this.set("nowPage", nowPage);
+        this.set("cls", initData['cls']);
     }
 });
