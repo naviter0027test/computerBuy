@@ -1,0 +1,48 @@
+<div class="formPanel1">
+    <table>
+        <thead>
+            <tr>
+                <td>帳號</td>
+                <td>名稱</td>
+                <td>狀態</td>
+                <td>建立日期</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+    </table>
+</div>
+<script type="text/template">
+    <div class="formPanel1">
+	<table>
+	    <thead>
+		<tr>
+		    <td>帳號</td>
+		    <td>名稱</td>
+		    <td>狀態</td>
+		    <td>建立日期</td>
+		    <td>操作</td>
+		</tr>
+	    </thead>
+	    <tbody>
+		<% var counter = 0; %>
+		<% _.each(data, function(item) { %>
+                    <tr>
+			<td>
+			    <a href="#"><img pos="<%=counter%>" oper="modify" src="imgs/1403417937_Modify.png" /></a>
+			    <a href="#"><img pos="<%=counter%>" oper="del" src="imgs/1399522498_Erase.png" /></a>
+			</td>
+		    </tr>
+		    <% ++counter; }); %>
+	    </tbody>
+	</table>
+	<span class="pager">
+	    <% for(i = 1;i <= pageSum;++i) { %>
+		<% if(i == nowPage) %>
+		<label><%=i%></label>
+		<% else %>
+		<a href=#><%=i%></a>
+		<% } %>
+	</span>
+    </div>
+</script>
+
