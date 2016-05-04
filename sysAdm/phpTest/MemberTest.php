@@ -105,8 +105,13 @@ class MemberTest extends UnitTestCase {
         $limit['amount'] = 10;
         $memList = $memAdm->memList($limit);
         $delMem = $memList[rand(0, 9)];
-        print_r($delMem);
         $memAdm->memDel($delMem['m_id']);
+    }
+
+    public function testMemberAmount() {
+        require_once("../memAdm/Member.php");
+        $memAdm = new Member();
+        $this->assertTrue($memAdm->memAmount() > 20);
     }
 }
 ?>

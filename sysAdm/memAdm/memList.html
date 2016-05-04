@@ -24,25 +24,29 @@
 		</tr>
 	    </thead>
 	    <tbody>
-		<% var counter = 0; %>
-		<% _.each(data, function(item) { %>
-                    <tr>
-			<td>
-			    <a href="#"><img pos="<%=counter%>" oper="modify" src="imgs/1403417937_Modify.png" /></a>
-			    <a href="#"><img pos="<%=counter%>" oper="del" src="imgs/1399522498_Erase.png" /></a>
-			</td>
-		    </tr>
-		    <% ++counter; }); %>
+            <% var counter = 0; %>
+            <% _.each(data, function(item) { %>
+                <tr>
+                    <td><%=item['m_account']%></td>
+                    <td><%=item['m_name']%></td>
+                    <td>
+                        <select>
+                            <option <%if(item['m_active']=="Y"){%> selected<%}%>>
+                            啟用
+                            </option>
+                            <option <%if(item['m_active']=="N"){%> selected<%}%>>
+                            未啟用
+                            </option>
+                    </td>
+                    <td><%=item['m_crTime']%></td>
+                    <td>
+                        <a href="#"><img pos="<%=counter%>" oper="modify" src="imgs/1403417937_Modify.png" /></a>
+                        <a href="#"><img pos="<%=counter%>" oper="del" src="imgs/1399522498_Erase.png" /></a>
+                    </td>
+                </tr>
+            <% ++counter; }); %>
 	    </tbody>
 	</table>
-	<span class="pager">
-	    <% for(i = 1;i <= pageSum;++i) { %>
-		<% if(i == nowPage) %>
-		<label><%=i%></label>
-		<% else %>
-		<a href=#><%=i%></a>
-		<% } %>
-	</span>
     </div>
 </script>
 

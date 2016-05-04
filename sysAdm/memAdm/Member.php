@@ -92,6 +92,16 @@ class Member {
         $dbAdm->deleteData($table, $conditionArr);
         $dbAdm->execSQL();
     }
+
+    public function memAmount() {
+        $dbAdm = $this->dbAdm;
+        $table = "Member";
+        $columns = Array();
+        $columns[0] = "*";
+        $dbAdm->selectData($table, $columns);
+        $dbAdm->execSQL();
+        return count($dbAdm->getAll());
+    }
 }
 
 ?>

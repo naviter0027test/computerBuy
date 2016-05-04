@@ -336,6 +336,7 @@ function memList() {
     $reData['status'] = 200;
     $reData['msg'] = "member list success";
     $reData['data'] = $dataList;
+    $reData['amount'] = $mem->memAmount();
     return $reData;
 }
 
