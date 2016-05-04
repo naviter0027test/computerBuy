@@ -61,6 +61,13 @@ class Control {
 
 }
 
+function test() {
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "test success";
+    return $reData;
+}
+
 function addProduct() {
     require_once("prodAdm/Product.php");
     $prodAdm = new Product();
@@ -316,3 +323,77 @@ function modPayMode() {
     $reData['postData'] = $_POST;
     return $reData;
 }
+
+function memList() {
+    require_once("memAdm/Member.php");
+    $mem = new Member();
+    $limit = Array();
+    $limit['offset'] = $_POST['nowPage'] * 10;
+    $limit['amount'] = 10;
+    $dataList = $mem->memList($limit);
+
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "member list success";
+    $reData['data'] = $dataList;
+    return $reData;
+}
+
+function memAdd() {
+    require_once("memAdm/Member.php");
+    $memAdm = new Member();
+    $memBlob = Array();
+    $memBlob['m_account'] = $_POST['account'];
+    $memBlob['m_pass'] = md5($_POST['pass']);
+    $memBlob['m_name'] = $_POST['name'];
+    $memBlob['m_phone'] = $_POST['phone'];
+    $memBlob['m_tel'] = $_POST['tel'];
+    $memBlob['m_city'] = $_POST['city'];
+    $memBlob['m_area'] = $_POST['area'];
+    $memBlob['m_addr'] = $_POST['addr'];
+    $memBlob['m_level'] = 1;
+    $memBlob['m_birthday'] = $_POST['birthday'];
+    $memBlob['m_active'] = "N";
+    $memBlob['m_crTime'] = date("Y-m-d H:i:s");
+    $memAdm->memAdd($memBlob);
+
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "member add success";
+    return $reData;
+}
+
+function memUpd() {
+    require_once("memAdm/Member.php");
+    $memAdm = new Member();
+    $m_id = $_POST['m_id'];
+    $memBlob = Array();
+    $memBlob['m_pass'] = md5($_POST['pass']);
+    $memBlob['m_name'] = $_POST['name'];
+    $memBlob['m_phone'] = $_POST['phone'];
+    $memBlob['m_tel'] = $_POST['tel'];
+    $memBlob['m_city'] = $_POST['city'];
+    $memBlob['m_area'] = $_POST['area'];
+    $memBlob['m_addr'] = $_POST['addr'];
+    $memBlob['m_birthday'] = $_POST['birthday'];
+    $memAdm->memUpd($m_id, $memBlob);
+
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "member modify success";
+    return $reData;
+}
+
+function memDel() {
+    require_once("memAdm/Member.php");
+    $memAdm = new Member();
+    $m_id = $_POST['m_id'];
+    $memAdm->memDel($m_id);
+
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "member delete success";
+    return $reData;
+}
+
+?>
