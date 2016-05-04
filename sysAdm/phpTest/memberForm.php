@@ -54,3 +54,9 @@ Start Date :
     會員編號<input type="text" name="m_id" /><br />
     <button>會員刪除</button>
 </form>
+
+<form action="../instr.php" method="post">
+    <input type="hidden" name="instr" value="memOne" />
+    會員編號<input type="text" name="m_id" /><br />
+    <button>會員查詢</button>
+</form>

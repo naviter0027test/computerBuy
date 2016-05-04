@@ -1,3 +1,6 @@
+prodList = null;
+memList = null;
+memPage = null;
 
 AdminRoutes = Backbone.Router.extend({
     initialize : function() {
@@ -7,6 +10,7 @@ AdminRoutes = Backbone.Router.extend({
     routes : {
 	'passAdm' : 'passAdm',
         'memList/:nowPage' : 'memList',
+        'memEdit/:m_id' : 'memEdit',
 	'productList' : 'productList',
 	'productAdd' : 'productAdd',
 	'productCls' : 'productCls',
@@ -43,8 +47,21 @@ AdminRoutes = Backbone.Router.extend({
     memList : function(nowPage) {
 	$("#right").load("memAdm/memList.html", function() {
 	    $.getScript("memAdm/Member.js", function() {
-                var memList = new MemberList({'model' : new MemberModel(), 'el' : "#right"});
+                if(memList == null)
+                    memList = new MemberList({'model' : new MemberModel(), 'el' : "#right"});
                 memList.model.list(nowPage);
+            });
+	    $("#left a").removeClass('clicked');
+	    $("#left a[href=#memList]").addClass('clicked');
+        });
+    },
+
+    memEdit : function(m_id) {
+	$("#right").load("memAdm/memEdit.html", function() {
+	    $.getScript("memAdm/Member.js", function() {
+                if(memPage == null)
+                    memPage = new MemberPage({'model' : new MemberModel(), 'el' : "#right"});
+                memPage.model.getOne(m_id);
             });
 	    $("#left a").removeClass('clicked');
 	    $("#left a[href=#memList]").addClass('clicked');
@@ -56,7 +73,8 @@ AdminRoutes = Backbone.Router.extend({
 	    //var tem = _.template($("#right > script").html());
 	    //$("#right tbody").html(tem());
 	    $.getScript("prodAdm/Product.js", function() {
-		var prodList = new ProductList({'model' : new ProdModel(), 'el' : "#right"});
+                if(prodList == null)
+                    prodList = new ProductList({'model' : new ProdModel(), 'el' : "#right"});
 		prodList.prodList();
 	    });
 	    $("#left a").removeClass('clicked');

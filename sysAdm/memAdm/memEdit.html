@@ -1,0 +1,27 @@
+<div class="productAdd prodEdit">
+    <form action="instr.php" method="post" id="editForm">
+	<h2>商品修改</h2>
+	<label>帳號</label><input type="text" /><br />
+	<label>姓名</label><input type="text" /><br />
+	<label>電話</label><input type="text" /><br />
+	<label>手機</label><input type="text" /><br />
+	<label>地址</label><input type="text" /> <br />
+	<button>修改</button>
+    </form>
+
+<script id="memEditTem" type="text/template">
+<div class="productAdd prodEdit">
+    <form action="instr.php" method="post" id="editForm">
+	<h2>商品修改</h2>
+	<input type="hidden" name="instr" value="memUpd" />
+	<input type="hidden" name="m_id" value="<%=data['m_id']%>" />
+	<label>帳號</label><br />
+	<label>姓名</label><br />
+	<label>電話</label><br />
+	<label>手機</label><br />
+        <label>地址</label>
+	<button>修改</button>
+    </form>
+</div>
+</script>
+

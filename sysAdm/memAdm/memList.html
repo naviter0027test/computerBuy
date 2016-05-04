@@ -40,13 +40,21 @@
                     </td>
                     <td><%=item['m_crTime']%></td>
                     <td>
-                        <a href="#"><img pos="<%=counter%>" oper="modify" src="imgs/1403417937_Modify.png" /></a>
-                        <a href="#"><img pos="<%=counter%>" oper="del" src="imgs/1399522498_Erase.png" /></a>
+                        <a href="#memEdit/<%=item['m_id']%>"><img pos="<%=counter%>" oper="modify" src="imgs/1403417937_Modify.png" /></a>
+                        <a href="#memDel/<%=item['m_id']%>"><img pos="<%=counter%>" oper="del" src="imgs/1399522498_Erase.png" /></a>
                     </td>
                 </tr>
             <% ++counter; }); %>
 	    </tbody>
 	</table>
+	<span class="pager">
+	    <% for(i = 1;i <= pageSum;++i) { %>
+		<% if(i == nowPage) %>
+		<label><%=i%></label>
+		<% else %>
+		<a href=#memList/<%=i-1%>><%=i%></a>
+		<% } %>
+	</span>
     </div>
 </script>
 

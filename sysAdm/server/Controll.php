@@ -397,4 +397,16 @@ function memDel() {
     return $reData;
 }
 
+function memOne() {
+    require_once("memAdm/Member.php");
+    $memAdm = new Member();
+    $m_id = $_POST['m_id'];
+
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "member get one success";
+    $reData['data'] = $memAdm->getOne($m_id);
+    return $reData;
+}
+
 ?>
