@@ -6,7 +6,7 @@ AdminRoutes = Backbone.Router.extend({
     },
     routes : {
 	'passAdm' : 'passAdm',
-        'memList' : 'memList',
+        'memList/:nowPage' : 'memList',
 	'productList' : 'productList',
 	'productAdd' : 'productAdd',
 	'productCls' : 'productCls',
@@ -40,10 +40,11 @@ AdminRoutes = Backbone.Router.extend({
 	});
     },
 
-    memList : function() {
+    memList : function(nowPage) {
 	$("#right").load("memAdm/memList.html", function() {
 	    $.getScript("memAdm/Member.js", function() {
                 var memList = new MemberList({'model' : new MemberModel(), 'el' : "#right"});
+                memList.model.list(nowPage);
             });
 	    $("#left a").removeClass('clicked');
 	    $("#left a[href=#memList]").addClass('clicked');
