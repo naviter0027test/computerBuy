@@ -6,6 +6,7 @@ AdminRoutes = Backbone.Router.extend({
     },
     routes : {
 	'passAdm' : 'passAdm',
+        'memList' : 'memList',
 	'productList' : 'productList',
 	'productAdd' : 'productAdd',
 	'productCls' : 'productCls',
@@ -18,6 +19,7 @@ AdminRoutes = Backbone.Router.extend({
 	'logout' : 'logout',
         '' : 'isLogin'
     },
+
     isLogin : function() {
         var postData = {};
         postData['instr'] = "isLogin";
@@ -30,12 +32,24 @@ AdminRoutes = Backbone.Router.extend({
             }
         });
     },
+
     passAdm : function() {
 	$("#right").load("login/passAdm.html", function() {
 	    $("#left a").removeClass('clicked');
 	    $("#left a[href=#passAdm]").addClass('clicked');
 	});
     },
+
+    memList : function() {
+	$("#right").load("memAdm/memList.html", function() {
+	    $.getScript("memAdm/Member.js", function() {
+                var memList = new MemberList({'model' : new MemberModel(), 'el' : "#right"});
+            });
+	    $("#left a").removeClass('clicked');
+	    $("#left a[href=#memList]").addClass('clicked');
+        });
+    },
+
     productList : function() {
 	$("#right").load("prodAdm/prodList.html", function() {
 	    //var tem = _.template($("#right > script").html());
