@@ -33,6 +33,12 @@ class Control {
 	    if(!isset($this->instr))
 		throw new Exception("instr not defined");
 	    $instr = $this->instr;
+
+            $logFile = fopen("log.txt", "a") or die("Unable to open file!");
+            $txt = "[". date("Y-m-d H:i:s"). "]:". $_SERVER['SERVER_ADDR']. ":$instr\n";
+            fwrite($logFile, $txt);
+            fclose($logFile);
+
 	    $reData = $instr();
 	    if($instr == "logout") {
 		echo json_encode($reData);
@@ -46,6 +52,7 @@ class Control {
             }
             else
                 throw new Exception("尚未登入");
+
 	}
 	catch(Exception $e) {
 	    $reData = Array();
