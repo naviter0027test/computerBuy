@@ -1,16 +1,30 @@
 MemberPage = Backbone.View.extend({
     initialize : function() {
 	var self = this;
-	self.template = _.template(self.$el.find("script").html());
+	self.template = _.template($("#memEditTem").html());
     },
     events : {
+        "click button" : 'modifySubmit'
     },
     el : '',
     template : null,
-    render : function(pos) {
+    render : function() {
         var data = this.model.get("data");
-        console.log(data);
-        console.log("member page render");
+        this.$el.html(this.template(data));
+    },
+
+    modifySubmit : function() {
+        $("#editForm").ajaxSubmit(function(data) {
+            data = JSON.parse(data);
+            if(data['status'] == 200) {
+                alert("修改成功");
+            }
+            else {
+                alert("修改失敗");
+                console.log(data['msg']);
+            }
+        });
+        return false;
     }
 });
 

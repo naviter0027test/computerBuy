@@ -1,4 +1,4 @@
-<div class="productAdd prodEdit">
+<div class="productAdd prodEdit" id="memEditPanel">
     <form action="instr.php" method="post" id="editForm">
 	<h2>商品修改</h2>
 	<label>帳號</label><input type="text" /><br />
@@ -8,20 +8,29 @@
 	<label>地址</label><input type="text" /> <br />
 	<button>修改</button>
     </form>
+</div>
 
 <script id="memEditTem" type="text/template">
-<div class="productAdd prodEdit">
-    <form action="instr.php" method="post" id="editForm">
-	<h2>商品修改</h2>
-	<input type="hidden" name="instr" value="memUpd" />
-	<input type="hidden" name="m_id" value="<%=data['m_id']%>" />
-	<label>帳號</label><br />
-	<label>姓名</label><br />
-	<label>電話</label><br />
-	<label>手機</label><br />
-        <label>地址</label>
-	<button>修改</button>
-    </form>
-</div>
+    <div class="productAdd prodEdit">
+        <form action="instr.php" method="post" id="editForm">
+            <h2>商品修改</h2>
+            <input type="hidden" name="instr" value="memUpd" />
+            <input type="hidden" name="m_id" value="<%=data['m_id']%>" />
+            <input type="hidden" name="account" value="<%=data['m_account']%>" />
+            <input type="hidden" name="name" value="<%=data['m_name']%>" />
+            <input type="hidden" name="tel" value="<%=data['m_tel']%>" />
+            <input type="hidden" name="phone" value="<%=data['m_phone']%>" />
+            <input type="hidden" name="city" value="<%=data['m_city']%>" />
+            <input type="hidden" name="area" value="<%=data['m_area']%>" />
+            <input type="hidden" name="addr" value="<%=data['m_addr']%>" />
+            <input type="hidden" name="birthday" value="<%=data['m_birthday']%>" />
+            <label>帳號</label><label><%=data['m_account']%></label><br />
+            <label>密碼</label><input type="password" name="pass" value="********" /><br />
+            <label>姓名</label><label><%=data['m_name']%></label><br />
+            <label>電話</label><label><%=data['m_tel']%></label><br />
+            <label>手機</label><label><%=data['m_phone']%></label><br />
+            <label>地址</label><label><%=data['m_city']%><%=data['m_area']%><%=data['m_addr']%></label><br />
+            <button>修改</button>
+        </form>
+    </div>
 </script>
-

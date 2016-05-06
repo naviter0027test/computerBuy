@@ -59,9 +59,19 @@ AdminRoutes = Backbone.Router.extend({
     memEdit : function(m_id) {
 	$("#right").load("memAdm/memEdit.html", function() {
 	    $.getScript("memAdm/Member.js", function() {
-                if(memPage == null)
-                    memPage = new MemberPage({'model' : new MemberModel(), 'el' : "#right"});
-                memPage.model.getOne(m_id);
+                if(memPage == null) {
+                    memPage = new MemberPage({'model' : new MemberModel(), 'el' : "#memEditPanel"});
+                    memPage.model.on("change:data", function() {
+                        memPage.render();
+                    });
+                    memPage.model.getOne(m_id);
+                }
+                else {
+                    memPage.on("change:data", function() {
+                        memPage.render();
+                    });
+                    memPage.model.getOne(m_id);
+                }
             });
 	    $("#left a").removeClass('clicked');
 	    $("#left a[href=#memList]").addClass('clicked');
