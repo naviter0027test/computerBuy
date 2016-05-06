@@ -15,3 +15,24 @@
         <li><a href="#register">註冊</a></li>
     </ul>
 </script>
+
+<script id="loginPageTem" type="text/template">
+    <h2 class="title">登入</h2>
+    <form action="instr.php" method="post" class="general">
+        <input type="hidden" name="instr" value="login" />
+        <label>帳號</label><input type="text" name="user" /><br />
+        <label>密碼</label><input type="password" name="pass" /><br />
+        <button>登入</button> <a href="#register">註冊</a>
+    </form>
+</script>
+
+<script id="registerPageTem" type="text/template">
+    <h2 class="title">註冊</h2>
+    <form action="instr.php" method="post" class="general">
+        <input type="hidden" name="instr" value="register" />
+        <label>帳號</label><input type="text" name="user" /><br />
+        <label>密碼</label><input type="password" name="pass" /><br />
+        <label>手機</label><input type="text" name="phone" /><br />
+        <button>註冊</button> <a href="#login">登入</a>
+    </form>
+</script>

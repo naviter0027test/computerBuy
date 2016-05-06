@@ -9,3 +9,59 @@
     width : 45%;
 }
 
+#content h2.title {
+    padding : 5px 0px 5px 15px;
+    margin-left : 25%;
+    width : 40%;
+    border-left : 5px solid #0059b3;
+}
+
+#content form.general {
+    margin-left: 25%;
+}
+
+#content form.general label {
+    display : inline-block;
+    padding : 5px 20px 5px 20px;
+    margin : 10px 5px 10px 0%;
+
+    color : #004080;
+    background : #cce6ff;
+    opacity : .8;
+}
+
+#content form.general input {
+    padding : 5px;
+
+    color : #dddddd;
+    background : #004d99;
+    border : solid 1px transparent;
+    box-shadow : 0px 1px 3px 0px white;
+}
+
+#content form.general button,#content form.general a {
+    position : relative;
+    display : inline-block;
+    padding : 5px 20px 5px 20px;
+    margin : 10px 50px 10px 0;
+    line-height : 20px;
+
+    font-size : 14px;
+    text-decoration : none;
+    letter-spacing : 3px;
+    font-weight : bold;
+    color : #ffffff;
+    background : #80bfff;
+    border : solid 0px transparent;
+    box-shadow : 3px 3px 5px 0px #0059b3;
+}
+
+#content form.general button:hover, #content form.general a:hover {
+    top : 3px;
+    left : 3px;
+    box-shadow : 0px 0px 0px 0px transparent;
+}
+
+#content form.general button:active, #content form.general a:active {
+    background : #0059b3;
+}
