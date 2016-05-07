@@ -2,7 +2,9 @@ var sidebar = null;
 var content = null;
 $(document).ready(function() {
     $("#scriptLoad").load("template/member.html", function() {
-        $("#header").load("template/header.html",function() { });
+        $("#header").load("template/header.html",function() { 
+        $("#nav a[href='member.html']").addClass("choosed");
+        });
         sidebar = new MemberSideBar({'el' : "#leftMenu"})
         sidebar.render();
         new MemRout();

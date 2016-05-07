@@ -175,3 +175,42 @@ function shipList() {
     return $reData;
 }
 
+function login() {
+    require_once("memAdm/Member.php");
+    $member = new Member();
+    $user = $_POST['user'];
+    if($_POST['pass'] == "")
+        throw new Exception("please input password");
+    $pass = md5($_POST['pass']);
+    $mid = $member->login($user, $pass);
+
+    $_SESSION['mid'] = $mid;
+
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "login success";
+    return $reData;
+}
+
+function isLogin() {
+    $reData = Array();
+    if(isset($_SESSION['mid'])) {
+        $reData['status'] = 200;
+        $reData['msg'] = "login already";
+    }
+    else {
+        $reData['status'] = 500;
+        $reData['msg'] = "not login";
+    }
+    return $reData;
+}
+
+function logout() {
+    unset($_SESSION['mid']);
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = "logout success";
+    return $reData;
+}
+
+?>
