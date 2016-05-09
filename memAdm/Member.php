@@ -36,10 +36,10 @@ class Member {
         $conditionArr['m_pass'] = "'$pass'";
         $dbAdm->selectData($table, $columns, $conditionArr);
         $dbAdm->execSQL();
-        $mem = $dbAdm->getAll()[0];
-        if(!isset($mem['m_id'])) {
+        $mems = $dbAdm->getAll();
+        if(count($mems) < 0)
             throw new Exception("Exception: not find member");
-        }
+        $mem = $mems[0];
         return $mem['m_id'];
     }
 

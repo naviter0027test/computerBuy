@@ -1,12 +1,19 @@
 var sidebar = null;
 var content = null;
+var model = null;
 $(document).ready(function() {
     $("#scriptLoad").load("template/member.html", function() {
         $("#header").load("template/header.html",function() { 
         $("#nav a[href='member.html']").addClass("choosed");
         });
-        sidebar = new MemberSideBar({'el' : "#leftMenu"})
-        sidebar.render();
+        model = new MemberModel();
+        sidebar = new MemberSideBar({'el' : "#leftMenu", 'model' : model});
+        content = new MemberPanel({'el' : "#content", 'model' : model});
+        model.isLogin();
+        content.render();
+        model.on("change:isLogin", function() {
+            sidebar.render();
+        });
         new MemRout();
         Backbone.history.start();
         $("#footer").load("template/footer.html");
@@ -17,7 +24,8 @@ MemRout = Backbone.Router.extend({
     routes : {
         "login" : "login",
         "register" : "register",
-        "logout" : "logout"
+        "logout" : "logout",
+        "memHome" : "memHome"
     },
     login : function() {
 	var template = _.template($("#loginPageTem").html());
@@ -30,4 +38,7 @@ MemRout = Backbone.Router.extend({
     logout : function() {
         console.log("logout");
     },
+    memHome : function() {
+        content.render();
+    }
 });
