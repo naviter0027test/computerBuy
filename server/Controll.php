@@ -205,6 +205,22 @@ function isLogin() {
     return $reData;
 }
 
+function myOrders() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $reData = Array();
+    if(isset($_SESSION['mid'])) {
+        $reData['status'] = 200;
+        $reData['msg'] = "get member list success";
+        $reData['data'] = $orderAdm->getListByMember($_SESSION['mid']);
+    }
+    else {
+        $reData['status'] = 500;
+        $reData['msg'] = "not login";
+    }
+    return $reData;
+}
+
 function logout() {
     unset($_SESSION['mid']);
     $reData = Array();

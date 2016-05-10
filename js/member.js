@@ -24,6 +24,8 @@ MemRout = Backbone.Router.extend({
     routes : {
         "login" : "login",
         "register" : "register",
+        "myData" : "editPage",
+        "myOrders" : "myOrderList",
         "logout" : "logout",
         "memHome" : "memHome"
     },
@@ -35,8 +37,14 @@ MemRout = Backbone.Router.extend({
 	var template = _.template($("#registerPageTem").html());
         $("#content").html(template());
     },
+    editPage : function() {
+        console.log("myData");
+    },
+    myOrderList : function() {
+        console.log("my order");
+    },
     logout : function() {
-        console.log("logout");
+        model.logout();
     },
     memHome : function() {
         content.render();

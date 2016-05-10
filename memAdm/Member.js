@@ -68,6 +68,22 @@ MemberModel = Backbone.Model.extend({
             self.set("data", data);
         });
     },
+    logout : function() {
+        var self = this;
+        var postData = {};
+        postData['instr'] = "logout";
+        $.post("instr.php", postData, function(data) {
+            data = JSON.parse(data);
+            if(data['status'] == 200) {
+                alert("登出成功");
+                self.set("isLogin", false);
+            }
+            else {
+                alert("登出失敗");
+                console.log(data);
+            }
+        });
+    },
     isLogin : function() {
         var self = this;
         var postData = {};

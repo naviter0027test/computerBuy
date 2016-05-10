@@ -144,4 +144,18 @@ class Order {
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }
+
+    public function getListByMember($mid) {
+        $dbAdm = $this->mysql;
+
+        $tablename = "OrderList";
+        $columns = Array();
+        $columns[0] = "*";
+
+        $conditionArr = Array();
+	$conditionArr['o_mid'] = $mid;
+	$dbAdm->selectData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
+	return $dbAdm->getAll();
+    }
 }
