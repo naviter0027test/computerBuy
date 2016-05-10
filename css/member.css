@@ -65,3 +65,40 @@
 #content form.general button:active, #content form.general a:active {
     background : #0059b3;
 }
+
+#content .orderTable {
+    margin : 15px 0px 0px 20px;
+    border-collapse: collapse; 
+}
+
+#content .orderTable thead {
+    background : #2689BF;
+}
+
+#content .orderTable thead td {
+    color : white;
+}
+
+#content .orderTable td {
+    padding : 5px 10px 5px 10px;
+}
+
+#content .orderTable tbody a {
+    display : inline-block;
+    padding : 5px;
+
+    color : white;
+    text-decoration : none;
+    background : #66b2ff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#content .orderTable tbody tr {
+    border-bottom : 1px solid #2689BF;
+}
+
+#content .orderTable tbody tr:hover {
+    background : #e6faff;
+}
