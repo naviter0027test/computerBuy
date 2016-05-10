@@ -10,10 +10,19 @@ $(document).ready(function() {
         sidebar = new MemberSideBar({'el' : "#leftMenu", 'model' : model});
         content = new MemberPanel({'el' : "#content", 'model' : model});
         model.isLogin();
+
+        content.template = _.template($("#memHome").html());
         content.render();
+
         model.on("change:isLogin", function() {
             sidebar.render();
         });
+
+        model.on("change:orderList", function() {
+            content.template = _.template($("#memOrders").html());
+            content.render();
+        });
+
         new MemRout();
         Backbone.history.start();
         $("#footer").load("template/footer.html");
@@ -41,12 +50,13 @@ MemRout = Backbone.Router.extend({
         console.log("myData");
     },
     myOrderList : function() {
-        console.log("my order");
+        model.orders();
     },
     logout : function() {
         model.logout();
     },
     memHome : function() {
+        content.template = _.template($("#memHome").html());
         content.render();
     }
 });

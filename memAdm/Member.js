@@ -24,7 +24,6 @@ MemberPanel = Backbone.View.extend({
     },
     template : null,
     render : function() {
-        this.template = _.template($("#memHome").html());
 	this.$el.html(this.template());
     },
     subAjax : function() {
@@ -55,6 +54,7 @@ MemberModel = Backbone.Model.extend({
     },
     defaults : {
 	'data' : null,
+        'orderList' : null,
         'isLogin' : null
     },
     getPage : function(page) {
@@ -66,6 +66,16 @@ MemberModel = Backbone.Model.extend({
             data = JSON.parse(data);
             console.log(data);
             self.set("data", data);
+        });
+    },
+    orders : function() {
+        var self = this;
+        var postData = {};
+        postData['instr'] = "myOrders";
+        $.post("instr.php", postData, function(data) {
+            data = JSON.parse(data);
+            console.log(data);
+            self.set("orderList", data);
         });
     },
     logout : function() {
