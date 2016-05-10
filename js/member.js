@@ -20,7 +20,12 @@ $(document).ready(function() {
 
         model.on("change:orderList", function() {
             content.template = _.template($("#memOrders").html());
-            content.render();
+            content.renderOrders();
+        });
+
+        model.on("change:orderDetail", function() {
+            content.template = _.template($("#odrDetail").html());
+            content.renderDetail();
         });
 
         new MemRout();
@@ -35,6 +40,7 @@ MemRout = Backbone.Router.extend({
         "register" : "register",
         "myData" : "editPage",
         "myOrders" : "myOrderList",
+        "detail/:no" : "detail",
         "logout" : "logout",
         "memHome" : "memHome"
     },
@@ -51,6 +57,9 @@ MemRout = Backbone.Router.extend({
     },
     myOrderList : function() {
         model.orders();
+    },
+    detail : function(no) {
+        model.getOrder(no);
     },
     logout : function() {
         model.logout();
