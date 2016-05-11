@@ -76,21 +76,81 @@
             </tr>
         </thead>
         <tbody>
+            <% var counter = 0; %>
+            <% _.each(data, function(item) { %>
             <tr>
-                <td>PSN1460610593</td>
-                <td>文中文</td>
-                <td>NT$ 5400</td>
-                <td>已付款</td>
-                <td>2016-01-03 12:03:22</td>
-                <td><a href="#">查看</a></td>
+                <td><%=item['o_no']%></td>
+                <td><%=item['buyName']%></td>
+                <td>NT$ <%=item['o_total']%></td>
+                <td><%=item['active']%></td>
+                <td><%=item['o_crTime']%></td>
+                <td><a href="#detail/<%=item['o_no']%>">查看</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</script>
+
+<script id="odrDetail" type="text/template">
+    <h2>訂單細項</h2>
+    <table class="detailShow">
+        <tbody>
+            <tr>
+                <td>訂單編號</td>
+                <td><%=order['o_no']%></td>
             </tr>
             <tr>
-                <td>PSN1460610593</td>
-                <td>文中文</td>
-                <td>NT$ 5400</td>
-                <td>已付款</td>
-                <td>2016-01-03 12:03:22</td>
-                <td><a href="#">查看</a></td>
+                <td>收貨姓名</td>
+                <td><%=order['buyName']%></td>
             </tr>
+            <tr>
+                <td>電話</td>
+                <td><%=order['buyTel']%></td>
+            </tr>
+            <tr>
+                <td>付款方式</td>
+                <td><%=order['payMode']%></td>
+            </tr>
+            <tr>
+                <td>下定時間</td>
+                <td><%=order['o_crTime']%></td>
+            </tr>
+            <tr>
+                <td>其他訊息</td>
+                <td>
+                    <% if(order['atm_act5'] != "") { %>
+                    ATM後五碼: <%=order['atm_act5']%>
+                    <% } %>
+                </td>
+            </tr>
+            <tr>
+                <td>運費</td>
+                <td><%=order['o_shipment']%></td>
+            </tr>
+            <tr>
+                <td>總計</td>
+                <td><%=order['o_total']%></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="detailProds">
+        <thead>
+            <tr>
+                <td>商品名稱</td>
+                <td>單價</td>
+                <td>數量</td>
+                <td>小計</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% _.each(details, function(item) { %>
+            <tr>
+                <td><%=item['p_name']%></td>
+                <td>NT$ <%=item['od_price']%></td>
+                <td><%=item['od_qty']%></td>
+                <td>NT$ <%=item['od_subtotal']%></td>
+            </tr>
+            <% }); %>
+        </tbody>
     </table>
 </script>

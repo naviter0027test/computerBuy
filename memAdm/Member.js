@@ -26,6 +26,14 @@ MemberPanel = Backbone.View.extend({
     render : function() {
 	this.$el.html(this.template());
     },
+    renderOrders : function() {
+        var data = this.model.get("orderList");
+	this.$el.html(this.template(data));
+    },
+    renderDetail : function() {
+        var data = this.model.get("orderDetail");
+	this.$el.html(this.template(data));
+    },
     subAjax : function() {
         var self = this;
         var form = this.$el.find("form");
@@ -55,6 +63,7 @@ MemberModel = Backbone.Model.extend({
     defaults : {
 	'data' : null,
         'orderList' : null,
+        'orderDetail' : null,
         'isLogin' : null
     },
     getPage : function(page) {
@@ -76,6 +85,18 @@ MemberModel = Backbone.Model.extend({
             data = JSON.parse(data);
             console.log(data);
             self.set("orderList", data);
+        });
+    },
+    getOrder : function(no) {
+        var self = this;
+        var postData = {};
+        postData['instr'] = "getOrder";
+        postData['orderSN'] = no;
+        console.log(postData);
+        $.post("instr.php", postData, function(data) {
+            data = JSON.parse(data);
+            console.log(data);
+            self.set("orderDetail", data);
         });
     },
     logout : function() {
