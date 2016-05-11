@@ -97,35 +97,39 @@
         <tbody>
             <tr>
                 <td>訂單編號</td>
-                <td></td>
+                <td><%=order['o_no']%></td>
             </tr>
             <tr>
                 <td>收貨姓名</td>
-                <td>將善意</td>
+                <td><%=order['buyName']%></td>
             </tr>
             <tr>
                 <td>電話</td>
-                <td>091238412</td>
+                <td><%=order['buyTel']%></td>
             </tr>
             <tr>
                 <td>付款方式</td>
-                <td>atm</td>
+                <td><%=order['payMode']%></td>
             </tr>
             <tr>
                 <td>下定時間</td>
-                <td>2016-05-05 10:02:00</td>
+                <td><%=order['o_crTime']%></td>
             </tr>
             <tr>
                 <td>其他訊息</td>
-                <td>ATM後五碼:12345</td>
+                <td>
+                    <% if(order['atm_act5'] != "") { %>
+                    ATM後五碼: <%=order['atm_act5']%>
+                    <% } %>
+                </td>
             </tr>
             <tr>
                 <td>運費</td>
-                <td>5200</td>
+                <td><%=order['o_shipment']%></td>
             </tr>
             <tr>
                 <td>總計</td>
-                <td>5200</td>
+                <td><%=order['o_total']%></td>
             </tr>
         </tbody>
     </table>
@@ -139,12 +143,14 @@
             </tr>
         </thead>
         <tbody>
+            <% _.each(details, function(item) { %>
             <tr>
-                <td>ABC</td>
-                <td>NT$ 5000</td>
-                <td>1</td>
-                <td>NT$ 5000</td>
+                <td><%=item['p_name']%></td>
+                <td>NT$ <%=item['od_price']%></td>
+                <td><%=item['od_qty']%></td>
+                <td>NT$ <%=item['od_subtotal']%></td>
             </tr>
+            <% }); %>
         </tbody>
     </table>
 </script>

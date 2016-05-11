@@ -31,8 +31,8 @@ MemberPanel = Backbone.View.extend({
 	this.$el.html(this.template(data));
     },
     renderDetail : function() {
-        //var data = this.model.get("orderDetail");
-	this.$el.html(this.template());
+        var data = this.model.get("orderDetail");
+	this.$el.html(this.template(data));
     },
     subAjax : function() {
         var self = this;

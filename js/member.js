@@ -57,9 +57,17 @@ MemRout = Backbone.Router.extend({
     },
     myOrderList : function() {
         model.orders();
+        if(model.get("orderList") != null) {
+            content.template = _.template($("#memOrders").html());
+            content.renderOrders();
+        }
     },
     detail : function(no) {
         model.getOrder(no);
+        if(model.get("orderDetail") != null) {
+            content.template = _.template($("#odrDetail").html());
+            content.renderDetail();
+        }
     },
     logout : function() {
         model.logout();
