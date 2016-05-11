@@ -2,7 +2,7 @@
 <script id="leftLoginTem" type="text/template">
     <h2>會員中心 <label>Member Center</label></h2>
     <ul>
-        <li><a href="#myData">我的資料</a></li>
+        <!--<li><a href="#myData">我的資料</a></li> -->
         <li><a href="#myOrders">我的訂單</a></li>
         <li><a href="#logout">登出</a></li>
     </ul>
@@ -125,11 +125,11 @@
             </tr>
             <tr>
                 <td>運費</td>
-                <td><%=order['o_shipment']%></td>
+                <td>NT$ <%=order['o_shipment']%></td>
             </tr>
             <tr>
                 <td>總計</td>
-                <td><%=order['o_total']%></td>
+                <td>NT$ <%=order['o_total']%></td>
             </tr>
         </tbody>
     </table>

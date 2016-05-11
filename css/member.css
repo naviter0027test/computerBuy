@@ -68,6 +68,8 @@
 
 #content .orderTable {
     margin : 15px 0px 0px 20px;
+    width : 100%;
+
     border-collapse: collapse; 
 }
 
@@ -101,4 +103,27 @@
 
 #content .orderTable tbody tr:hover {
     background : #e6faff;
+}
+
+
+#content .detailProds {
+    width : 100%;
+}
+
+#content .detailShow tr td:nth-child(1) {
+    color : white;
+    background : #2689BF;
+}
+
+#content .detailShow td {
+    padding : 5px 10px 5px 10px;
+}
+
+#content .detailProds thead td {
+    color : white;
+    background : #2689BF;
+}
+
+#content .detailProds td {
+    padding : 5px 10px 5px 10px;
 }
