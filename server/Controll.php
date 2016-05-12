@@ -65,10 +65,13 @@ function prodList() {
 function orderAdd($order = null) {
     require_once("orderAdm/Order.php");
     $orderAdm = new Order();
+    $mid = null;
+    if(isset($_SESSION['mid']))
+        $mid = $_SESSION['mid'];
     if($order == null)
-	$orderAdm->spanOrder($_POST);
+	$orderAdm->spanOrder($_POST, $mid);
     else
-	$orderAdm->spanOrder($order);
+	$orderAdm->spanOrder($order, $mid);
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "order span success";

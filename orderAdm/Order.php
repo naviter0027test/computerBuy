@@ -19,7 +19,7 @@ class Order {
 	$this->mysql = new MysqlCon();
     }
 
-    public function spanOrder($order) {
+    public function spanOrder($order, $mid) {
 	$dbAdm = $this->mysql;
 	$no = $order['o_no'];
 
@@ -47,6 +47,7 @@ class Order {
 	default : 
 	    throw new Exception("沒有指定付款方式");
 	}
+        $columns[] = "o_mid";
 
 	$data = Array();
 	$data[0] = "'$no'";
@@ -71,6 +72,14 @@ class Order {
 	default : 
 	    throw new Exception("沒有指定付款方式");
 	}
+
+        foreach($columns as $idx => $column) 
+            if($column == "o_mid") 
+                if($mid == null)
+                    $data[$idx] = 0;
+                else
+                    $data[$idx] = $mid;
+
 	$dbAdm->insertData($tablename, $columns, $data);
 	$dbAdm->execSQL();
     }
@@ -154,7 +163,11 @@ class Order {
 
         $conditionArr = Array();
 	$conditionArr['o_mid'] = $mid;
-	$dbAdm->selectData($tablename, $columns, $conditionArr);
+
+        $orderBy = Array();
+        $orderBy['col'] = "o_crTime";
+        $orderBy['order'] = "desc";
+	$dbAdm->selectData($tablename, $columns, $conditionArr, $orderBy);
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
     }
