@@ -208,6 +208,24 @@ function isLogin() {
     return $reData;
 }
 
+function memberData() {
+    require_once("memAdm/Member.php");
+    $member = new Member();
+
+    $res = isLogin();
+    $reData = Array();
+    if($res['status'] == 200) {
+        $reData['status'] = 200;
+        $reData['msg'] = "member data success";
+        $reData['data'] = $member->getOne($_SESSION['mid']);
+    }
+    else {
+        $reData['status'] = 500;
+        $reData['msg'] = "not login";
+    }
+    return $reData;
+}
+
 function myOrders() {
     require_once("orderAdm/Order.php");
     $orderAdm = new Order();

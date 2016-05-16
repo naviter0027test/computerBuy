@@ -12,6 +12,7 @@
 
 $(document).ready(function() {
     $("#template").load("template/orderCheck.html", function() {
+        var member = {};
 	var cartStore = new CartStore();
 	var cartv = new Cart({'el' : "#cartShow", 'model' : cartStore});
 
@@ -79,5 +80,43 @@ $(document).ready(function() {
 	    });
 	});
         var payMethod = new PayMethod({'el' : '#payMethod', 'model' : new PayProcess()});
+
+        var postData = {};
+        postData['instr'] = "isLogin";
+        $.post("instr.php", postData, function(data) {
+            data = JSON.parse(data);
+            console.log(data);
+            if(data['status'] == 200) {
+                var postData = {};
+                postData['instr'] = "memberData";
+                $.post("instr.php", postData, function(data2) {
+                    console.log(data2);
+                    data2 = JSON.parse(data2);
+                    console.log(data2);
+                    member = data2['data'];
+                    $("input[name=buyName]").val(member['m_name']);
+                    $("input[name=buyEmail]").val(member['m_account']);
+                    $("input[name=buyTel]").val(member['m_tel']);
+                    var options = $("select[name=buyCity] option");
+                    for(var idx = 0;idx < options.length;++idx) 
+                        if($(options[idx]).val() == member['m_city']) {
+                            $(options[idx]).attr("selected", "selected");
+                            $("select[name=buyCity]").trigger("change");
+                        }
+
+                    var options = $("select[name=buyArea] option");
+                    for(var idx = 0;idx < options.length;++idx) 
+                        if($(options[idx]).val() == member['m_area']) {
+                            $(options[idx]).attr("selected", "selected");
+                            $("select[name=buyArea]").trigger("change");
+                        }
+
+                    $("input[name=buyAddr]").val(member['m_addr']);
+                });
+            }
+            else {
+                console.log("未登入");
+            }
+        });
     });
 });
