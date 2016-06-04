@@ -32,7 +32,7 @@ class Control {
 	    $instr = $this->instr;
 
             $logFile = fopen("log.txt", "a") or die("Unable to open file!");
-            $txt = "[". date("Y-m-d H:i:s"). "]:". $_SERVER['SERVER_ADDR']. ":$instr\n";
+            $txt = "[". date("Y-m-d H:i:s"). "]:". get_client_ip(). ":$instr\n";
             fwrite($logFile, $txt);
             fclose($logFile);
 
@@ -48,6 +48,25 @@ class Control {
 	}
     }
 
+}
+
+function get_client_ip() {
+    $ipaddress = '';
+    if (getenv('HTTP_CLIENT_IP'))
+        $ipaddress = getenv('HTTP_CLIENT_IP');
+    else if(getenv('HTTP_X_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+    else if(getenv('HTTP_X_FORWARDED'))
+        $ipaddress = getenv('HTTP_X_FORWARDED');
+    else if(getenv('HTTP_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+    else if(getenv('HTTP_FORWARDED'))
+        $ipaddress = getenv('HTTP_FORWARDED');
+    else if(getenv('REMOTE_ADDR'))
+        $ipaddress = getenv('REMOTE_ADDR');
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
 }
 
 function prodList() {
