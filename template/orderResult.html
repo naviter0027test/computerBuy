@@ -1,6 +1,5 @@
 <script id="orderShowTem" type="text/template">
     <% 
-    var orderSN = getQueryVariable("orderSN");
 
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
@@ -12,6 +11,8 @@
             }
         } 
     }
+    
+    var orderSN = getQueryVariable("orderSN");
     %>
     <div class="sum">
         <span>訂單編號</span>
