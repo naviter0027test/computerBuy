@@ -25,6 +25,21 @@ function getUrlParameter(sParam) {
     }
 };
 
+function getUrlParameterEscape(sParam) {
+    var sPageURL = decodeURIComponent(escape(window.location.search.substring(1))),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+}
+
 OrderShow = Backbone.View.extend({
     initialize : function() {
         var self = this;
@@ -34,7 +49,6 @@ OrderShow = Backbone.View.extend({
         this.model.on("change:data", function() {
             self.render();
         });
-        this.model.getOrder();
     },
     el : '',
     template : null,
@@ -58,6 +72,19 @@ OrderModel = Backbone.Model.extend({
         var postData = {};
         postData['instr'] = "getOrder";
         postData['orderSN'] = getUrlParameter('orderSN');
+        $.post("instr.php", postData, function(data) {
+            data = JSON.parse(data);
+            console.log(data);
+            self.set("data", data);
+        });
+    },
+    getOrderId : function() {
+        //ezship使用
+        var self = this;
+        var postData = {};
+        postData['instr'] = "getOrder";
+        postData['orderSN'] = getUrlParameterEscape('order_id');
+        console.log(postData);
         $.post("instr.php", postData, function(data) {
             data = JSON.parse(data);
             console.log(data);

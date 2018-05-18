@@ -32,7 +32,7 @@ class Control {
 	    $instr = $this->instr;
 
             $logFile = fopen("log.txt", "a") or die("Unable to open file!");
-            $txt = "[". date("Y-m-d H:i:s"). "]:". get_client_ip(). ":$instr\n";
+            $txt = "[". date("Y-m-d H:i:s"). "]:". $_SERVER['SERVER_ADDR']. ":$instr\n";
             fwrite($logFile, $txt);
             fclose($logFile);
 
@@ -50,25 +50,6 @@ class Control {
 
 }
 
-function get_client_ip() {
-    $ipaddress = '';
-    if (getenv('HTTP_CLIENT_IP'))
-        $ipaddress = getenv('HTTP_CLIENT_IP');
-    else if(getenv('HTTP_X_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-    else if(getenv('HTTP_X_FORWARDED'))
-        $ipaddress = getenv('HTTP_X_FORWARDED');
-    else if(getenv('HTTP_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_FORWARDED_FOR');
-    else if(getenv('HTTP_FORWARDED'))
-        $ipaddress = getenv('HTTP_FORWARDED');
-    else if(getenv('REMOTE_ADDR'))
-        $ipaddress = getenv('REMOTE_ADDR');
-    else
-        $ipaddress = 'UNKNOWN';
-    return $ipaddress;
-}
-
 function prodList() {
     require_once("prodAdm/Product.php");
     //$nowPage = $_POST['nowPage'];
@@ -84,13 +65,10 @@ function prodList() {
 function orderAdd($order = null) {
     require_once("orderAdm/Order.php");
     $orderAdm = new Order();
-    $mid = null;
-    if(isset($_SESSION['mid']))
-        $mid = $_SESSION['mid'];
     if($order == null)
-	$orderAdm->spanOrder($_POST, $mid);
+	$orderAdm->spanOrder($_POST);
     else
-	$orderAdm->spanOrder($order, $mid);
+	$orderAdm->spanOrder($order);
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "order span success";
@@ -130,7 +108,7 @@ function createOrder() {
     $prodAdm = new Product();
     $orderAdm = new Order();
     $order = $_POST;
-    $order['o_no'] = "PSN". strtotime(date("Y-m-d H:i:s"));
+    $order['o_no'] = "PSN". time();
 
     //計算總金額
     $total = 0;
@@ -160,6 +138,7 @@ function createOrder() {
     $reData['status'] = 200;
     $reData['msg'] = "order span success";
     $reData['order'] = $odr;
+    $reData['myHost'] = $_SERVER['HTTP_HOST'];
     return $reData;
 }
 
@@ -227,24 +206,6 @@ function isLogin() {
     return $reData;
 }
 
-function memberData() {
-    require_once("memAdm/Member.php");
-    $member = new Member();
-
-    $res = isLogin();
-    $reData = Array();
-    if($res['status'] == 200) {
-        $reData['status'] = 200;
-        $reData['msg'] = "member data success";
-        $reData['data'] = $member->getOne($_SESSION['mid']);
-    }
-    else {
-        $reData['status'] = 500;
-        $reData['msg'] = "not login";
-    }
-    return $reData;
-}
-
 function myOrders() {
     require_once("orderAdm/Order.php");
     $orderAdm = new Order();
@@ -266,6 +227,18 @@ function logout() {
     $reData = Array();
     $reData['status'] = 200;
     $reData['msg'] = "logout success";
+    return $reData;
+}
+
+function ezshipStore() {
+    require_once("orderAdm/Order.php");
+    $orderAdm = new Order();
+    $updData = Array();
+    $updData['ezshipInfo'] = json_encode($_POST['ezshipInfo']);
+    $orderAdm->updOrder($_POST['orderSN'], $updData);
+
+    $reData['status'] = 200;
+    $reData['msg'] = "ezshipStore success";
     return $reData;
 }
 

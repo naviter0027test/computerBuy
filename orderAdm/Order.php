@@ -44,6 +44,8 @@ class Order {
 	    break;
         case "card" :
             break;
+        case "ezship" :
+            break;
 	default : 
 	    throw new Exception("沒有指定付款方式");
 	}
@@ -68,6 +70,8 @@ class Order {
             $data[13] = "'". $order['atm_act5']. "'";
         break;
         case "card" :
+            break;
+        case "ezship" :
             break;
 	default : 
 	    throw new Exception("沒有指定付款方式");
@@ -170,5 +174,19 @@ class Order {
 	$dbAdm->selectData($tablename, $columns, $conditionArr, $orderBy);
 	$dbAdm->execSQL();
 	return $dbAdm->getAll();
+    }
+
+    public function updOrder($ono, $updData) {
+        $dbAdm = $this->mysql;
+
+        $tablename = "OrderList";
+	$columns = Array();
+	$columns['ezshipInfo'] = "'". $updData['ezshipInfo']. "'";
+
+	$conditionArr = Array();
+	$conditionArr['o_no'] = "'". $ono. "'";
+
+	$dbAdm->updateData($tablename, $columns, $conditionArr);
+	$dbAdm->execSQL();
     }
 }

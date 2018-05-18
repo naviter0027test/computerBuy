@@ -52,7 +52,7 @@ class MysqlCon {
 	if($res)
 	    return $res;
 	else
-	    throw new Exception("mysqlError");
+	    throw new Exception("mysqlError:". $this->errorMsg());
     }
 
     public function getAll() {
