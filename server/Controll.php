@@ -233,6 +233,8 @@ function logout() {
 function ezshipStore() {
     require_once("orderAdm/Order.php");
     $orderAdm = new Order();
+    $_POST['ezshipInfo']['st_addr'] = mb_convert_encoding(urldecode($_POST['ezshipInfo']['st_addr']), "UTF-8", "BIG5");
+    $_POST['ezshipInfo']['st_name'] = mb_convert_encoding(urldecode($_POST['ezshipInfo']['st_name']), "UTF-8", "BIG5");
     $updData = Array();
     $updData['ezshipInfo'] = json_encode($_POST['ezshipInfo']);
     $orderAdm->updOrder($_POST['orderSN'], $updData);
