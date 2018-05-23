@@ -1,46 +1,106 @@
-body {
-    background : #007399;
-}
-h2 {
-    padding : 5px;
-    width : 40%;
-
-    color : white;
-    background : #6699cc;
-    opacity : .8;
-    border-bottom : 1px solid #3333cc;
+#content {
+    margin : 0px 15px 10px 15px;
 }
 
-#orderShow table {
-    width : 80%;
+#content h1 {
+    padding : 5px 5px 5px 44px;
+
+    font-size : 36px;
+    background : url(../imgs/1456398875_cart-alt.png) no-repeat;
+    background-position : 5px 50%;
+    border-left : 10px solid #00394d;
+    border-bottom : 3px solid #0086b3;
 }
 
-#orderShow thead {
-    color : white;
-    background : #2eb8b8;
-    opacity : .8;
+#content table {
+    width : 100%;
+    border-collapse: collapse;
 }
 
-#orderShow td {
-    padding : 5px;
-}
-
-#orderShow tbody {
-    background : #c2f0f0;
-    opacity : .8;
-}
-
-#orderShow span {
-    display : block;
-    width : 80%;
-    margin : 2px;
-}
-
-#orderShow span label {
+#content table td a {
     display : inline-block;
-    width : 48%;
-    padding : 5px;
-
-    background : #70dcdc;
-    opacity : .9;
 }
+
+#content thead {
+    background : #00394d;
+}
+
+#content thead td {
+    padding : 15px;
+}
+
+#content thead td {
+    color : white;
+    font-weight : bold;
+}
+
+#content tbody tr {
+    border-bottom : 1px solid #00394d;
+}
+
+#content tbody td {
+    padding : 10px 15px 5px 15px;
+}
+
+#content form p {
+    margin : 10px 10% 0px 15px;
+    padding-bottom : 8px;
+    border-bottom : 1px solid #aaaaaa;
+}
+
+#content form p span {
+    display : inline-block;
+    width : 15%;
+    text-align : right;
+}
+
+#content form p input[type=text] {
+    padding : 5px;
+    width : 25%;
+    border : 1px solid #00394d;
+}
+
+#content .sum span {
+    display : inline-block;
+    padding : 15px;
+    width : 50%;
+
+    color : white;
+    background : #00394d;
+    font-weight : bold;
+}
+
+#content .ezship {
+    margin-bottom : 3px;
+}
+
+#content .ezship span {
+    display : inline-block;
+    padding : 15px;
+    width : 50%;
+
+    color : white;
+    background : #004466;
+    font-weight : bold;
+}
+
+#content .operating {
+    text-align : right;
+}
+
+#content .operating a {
+    display : inline-block;
+    padding : 10px 15px 10px 15px;
+
+    color : white;
+    background : #00394d;
+    font-weight : bold;
+    border : 1px solid #00394d;
+    text-decoration : none;
+}
+
+#content .operating a:hover {
+    color : #00394d;
+    background : white;
+}
+
