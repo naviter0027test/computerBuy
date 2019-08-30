@@ -12,6 +12,7 @@
     </table>
 </div>
 <script type="text/template">
+    <h1>會員清單</h1>
     <div class="formPanel1">
 	<table>
 	    <thead>
@@ -40,8 +41,8 @@
                     </td>
                     <td><%=item['m_crTime']%></td>
                     <td>
-                        <a href="#memEdit/<%=item['m_id']%>"><img pos="<%=counter%>" oper="modify" src="imgs/1403417937_Modify.png" /></a>
-                        <a href="#memDel/<%=item['m_id']%>"><img pos="<%=counter%>" oper="del" src="imgs/1399522498_Erase.png" /></a>
+                        <a href="#memEdit/<%=item['m_id']%>" class="glyphicon glyphicon-pencil" pos="<%=counter%>" oper="modify"></a>
+                        <a href="#memDel/<%=item['m_id']%>" class="glyphicon glyphicon-remove" pos="<%=counter%>" oper="del"></a>
                     </td>
                 </tr>
             <% ++counter; }); %>

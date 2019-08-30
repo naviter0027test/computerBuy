@@ -1,16 +1,8 @@
 #right .prodEdit {
     padding : 15px;
+    margin-left : 10px;
 
-    background : #fff2e5;
-}
-
-#right .prodEdit h2 {
-    padding : 5px;
-    width : 40%;
-
-    color : white;
-    background : #663200;
-    border-bottom : #4d2600 3px solid;
+    background : #fff;
 }
 
 #right .prodEdit label {
@@ -19,9 +11,6 @@
     margin-top : 5px;
     width : 25%;
 
-    color : white;
-    background : #994c00;
-    border : 1px solid #994c00;
     vertical-align : top;
 }
 
@@ -31,7 +20,6 @@
     margin-top : 5px;
     width : 45%;
 
-    border : 1px solid #994c00;
     vertical-align : top;
 }
 
@@ -74,5 +62,11 @@
     padding : 5px;
     width : 10%;
 
-    border : 1px solid #994c00;
+    border : 1px solid transparent;
+    background : #52accc;
+    color : #fff;
+}
+
+#right .prodEdit button:hover {
+    background : #4796b3;
 }

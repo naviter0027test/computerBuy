@@ -1,6 +1,6 @@
+<h1>會員修改</h1>
 <div class="productAdd prodEdit" id="memEditPanel">
     <form action="instr.php" method="post" id="editForm">
-	<h2>商品修改</h2>
 	<label>帳號</label><input type="text" /><br />
 	<label>姓名</label><input type="text" /><br />
 	<label>電話</label><input type="text" /><br />
@@ -13,7 +13,6 @@
 <script id="memEditTem" type="text/template">
     <div class="productAdd prodEdit">
         <form action="instr.php" method="post" id="editForm">
-            <h2>商品修改</h2>
             <input type="hidden" name="instr" value="memUpd" />
             <input type="hidden" name="m_id" value="<%=data['m_id']%>" />
             <input type="hidden" name="account" value="<%=data['m_account']%>" />

@@ -1,48 +1,53 @@
 body {
-    background : #B7B5AC;
+    background : #f1f1f1;
+    margin : 0px;
 }
 
 a {
     text-decoration : none;
+    color : #fff;
+}
+
+a:hover {
+    text-decoration : none;
+
+    color : #fff;
+    background : #4796b3;
 }
 
 #header {
-    position : relative;
-    top : -10px;
-    left : -10px;
-    padding : 10px;
+    padding : 0px;
     width : 100%;
+    height : 40px;
 
-    background : #ffefcc;
+    background : #52accc;
+}
+
+#header .logo {
+    height : 40px;
+    padding : 0px 5px 0px 0px;
+}
+
+#header .logo:hover {
+    background : #4796b3;
+    cursor : pointer;
 }
 
 #header > a {
     display : inline-block;
-    padding : 3px;
-    width : 5%;
+    padding : 10px 8px 10px 8px;
+    vertical-align : top;
 
-    color : #6B6561;
     text-align : center;
-    background : #C6B9B4;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    border : 1px solid #BAA38D;
-}
-
-#header > a:hover {
-    color : black;
-    background : #F2EDEA;
 }
 
 #left {
     display : inline-block;
     position : relative;
-    top : -10px;
     width : 15%;
 
     vertical-align : top;
-    background : white;
+    background : #52accc;
 }
 
 #left h3 {
@@ -50,7 +55,8 @@ a {
     margin : 0px;
 
     color : white;
-    background : #4d2600;
+    font-weight : normal;
+    background : #096484;
 }
 
 #left ul {
@@ -64,24 +70,11 @@ a {
 #left a {
     display : block;
     padding : 10px;
-
-    color : #917e7e;
-}
-
-#left a:hover {
-    color : #666633;
-    background : #fff2e5;
-}
-
-#left a.clicked {
-    color : #666633;
-    background : #fff2e5;
 }
 
 #right {
     display : inline-block;
     position : relative;
-    top : -10px;
     width : 85%;
 
     vertical-align : top;
