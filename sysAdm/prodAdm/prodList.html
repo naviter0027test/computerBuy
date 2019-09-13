@@ -1,5 +1,6 @@
 
 <script type="text/template">
+    <h1>商品清單</h1>
     <div class="formPanel1">
 	<table>
 	    <thead>
@@ -25,8 +26,8 @@
 			    </select>
 			</td>
 			<td>
-			    <a href="#"><img pos="<%=counter%>" oper="modify" src="imgs/1403417937_Modify.png" /></a>
-			    <a href="#"><img pos="<%=counter%>" oper="del" src="imgs/1399522498_Erase.png" /></a>
+                            <a href="#productMod/<%=item['p_id']%>" pos="<%=counter%>" oper="modify" class="glyphicon glyphicon-pencil" ></a>
+			    <a href="#productDel/<%=item['p_id']%>" pos="<%=counter%>" oper="del" class="glyphicon glyphicon-remove" ></a>
 			</td>
 		    </tr>
 		    <% ++counter; }); %>
