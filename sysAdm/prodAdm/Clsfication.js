@@ -24,8 +24,14 @@ ClsList = Backbone.View.extend({
 	var oper = $(btn).attr("oper");
 	if(oper == "del") {
             if(confirm("確定要刪除？"))
-                this.model.clsDel(data['data'][pos]['c_id'])
+                this.model.clsDel(data['data'][pos]['c_id']);
 	}
+        else if(oper == "mod") {
+            var clsName = prompt("請輸入修改名稱");
+            if(clsName != null) {
+                this.model.clsMod(data['data'][pos]['c_id'], clsName);
+            }
+        }
 	return false;
     }
 });
@@ -64,6 +70,20 @@ ClsModel = Backbone.Model.extend({
 	    data = JSON.parse(data);
 	    if(data['status'] == 200) {
 		alert("刪除成功");
+		self.clsAll();
+	    }
+	});
+    },
+    clsMod : function(c_id, clsName) {
+	var self = this;
+	var postData = {};
+	postData['instr'] = "classEdit";
+	postData['c_id'] = c_id;
+	postData['c_name'] = clsName;
+	$.post("instr.php", postData, function(data) {
+	    data = JSON.parse(data);
+	    if(data['status'] == 200) {
+		alert("修改成功");
 		self.clsAll();
 	    }
 	});

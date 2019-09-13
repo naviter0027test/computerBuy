@@ -1,3 +1,4 @@
+<h1>商品分類</h1>
 <div class="formPanel1">
     <table id="clsShow">
     </table>
@@ -17,8 +18,8 @@
 	    <td><%=item['c_id']%></td>
 	    <td><%=item['c_name']%></td>
 	    <td>
-		<a href='#'><img oper='mod' pos='<%=counter%>' src="imgs/1403417937_Modify.png" /></a>
-		<a href='#'><img oper='del' pos='<%=counter%>' src="imgs/1399522498_Erase.png" /></a>
+		<a href='#' oper='mod' pos='<%=counter%>' class='glyphicon glyphicon-pencil'></a>
+		<a href='#' oper='del' pos='<%=counter%>' class='glyphicon glyphicon-remove'></a>
 	    </td>
 	</tr>
 	<% ++counter;%>
