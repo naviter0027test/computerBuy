@@ -1,6 +1,5 @@
 .orderDetail {
     padding : 5px;
-    background : #ffffe5;
 }
 
 .orderDetail h2 {
@@ -19,8 +18,8 @@
     margin-left : 1%;
     padding : 5px;
 
-    color : #F6D8CE;
-    background : #E18B6B;
+    color : white;
+    background : #096484;
     border-bottom : #F6D8CE solid 1px;
 }
 
@@ -29,12 +28,11 @@
     width : 45%;
     padding : 5px;
 
-    background : #F5ECCE;
 }
 
 .orderDetail table {
     width : 90%;
-    margin-left : 15px;
+    margin-left : 10px;
 
 }
 
@@ -42,12 +40,11 @@
     padding : 8px;
 
     color : white;
-    background : #805500;
+    background : #52accc;
 }
 
 .orderDetail tbody tr td {
     padding : 8px;
 
     color : #331a00;
-    background : #e6ff99;
 }
