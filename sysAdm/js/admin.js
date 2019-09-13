@@ -41,10 +41,24 @@ AdminRoutes = Backbone.Router.extend({
 	$("#right").load("login/passAdm.html", function() {
 	    $("#left a").removeClass('clicked');
 	    $("#left a[href=#passAdm]").addClass('clicked');
+
+            $(".passForm").submit(function() {
+                var postData = $(".passForm").serialize();
+                $.post("instr.php", postData, function(result) {
+                    var data = JSON.parse(result);
+                    console.log(data);
+                    if(data['status'] == 200)
+                        alert(data['msg']);
+                });
+                return false;
+            });
 	});
     },
 
     memList : function(nowPage) {
+        prodList = null;
+        memList = null;
+        memPage = null;
 	$("#right").load("memAdm/memList.html", function() {
 	    $.getScript("memAdm/Member.js", function() {
                 if(memList == null)
@@ -57,6 +71,9 @@ AdminRoutes = Backbone.Router.extend({
     },
 
     memEdit : function(m_id) {
+        prodList = null;
+        memList = null;
+        memPage = null;
 	$("#right").load("memAdm/memEdit.html", function() {
 	    $.getScript("memAdm/Member.js", function() {
                 if(memPage == null) {
@@ -79,6 +96,9 @@ AdminRoutes = Backbone.Router.extend({
     },
 
     productList : function() {
+        prodList = null;
+        memList = null;
+        memPage = null;
 	$("#right").load("prodAdm/prodList.html", function() {
 	    //var tem = _.template($("#right > script").html());
 	    //$("#right tbody").html(tem());

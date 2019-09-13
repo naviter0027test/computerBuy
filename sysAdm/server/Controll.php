@@ -416,4 +416,21 @@ function memOne() {
     return $reData;
 }
 
+function passChange() {
+    require_once("selfAdm/Admin.php");
+    $admin = new Admin();
+    $msg = "password change success";
+    try {
+        $admin->passChange($_POST['pass']);
+    } 
+    catch (Exception $e) {
+        $msg = $e->getMessage();
+    }
+
+    $reData = Array();
+    $reData['status'] = 200;
+    $reData['msg'] = $msg;
+    return $reData;
+}
+
 ?>
