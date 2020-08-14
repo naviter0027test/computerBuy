@@ -12,13 +12,14 @@
  *  Author :
  *	Lanker
  */
+require_once(__DIR__. '/../config.php');
 
 class MysqlCon {
     protected $con;
     protected $sql;
     protected $res;
 
-    public function __construct($webSite = "192.168.3.21", $user = "skydep", $passwd = "d3c8b2ka", $db = "ComputerBuy") {
+    public function __construct($webSite = DB_HOST, $user = DB_USER, $passwd = DB_PASS, $db = DB_BASE) {
 	$dbconStat = "mysql:host=$webSite;dbname=$db";
 	$this->con = new PDO($dbconStat, $user, $passwd);
     }
