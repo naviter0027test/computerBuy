@@ -43,8 +43,10 @@ class Product {
 	$dbAdm->insertData($tablename, $columns, $data);
 	$dbAdm->execSQL();
 
-	mkdir("../imgs/prod/$folderName");
-	rename("imgs/tmp/". $computer['p_img'], "../imgs/prod/$folderName/". $computer['p_img']);
+        if(is_dir(__DIR__. "/../../imgs/prod/$folderName") == false) {
+            mkdir(__DIR__. "/../../imgs/prod/$folderName");
+            rename(__DIR__. "/../../imgs/tmp/". $computer['p_img'], __DIR__. "/../../imgs/prod/$folderName/". $computer['p_img']);
+        }
     }
 
     public function editProd($computer) {
@@ -69,10 +71,13 @@ class Product {
 	//echo $dbAdm->echoSQL();
 	$dbAdm->execSQL();
 
-	if(!file_exists("../imgs/prod/$folderName/"))
-	    mkdir("../imgs/prod/$folderName/");
-        if(file_exists("imgs/tmp/". $computer['p_img']))
-            rename("imgs/tmp/". $computer['p_img'], "../imgs/prod/$folderName/". $computer['p_img']);
+        if(is_dir(__DIR__. "/../../imgs/prod/$folderName") == false) {
+            mkdir(__DIR__. "/../../imgs/prod/$folderName");
+            rename(__DIR__. "/../../imgs/tmp/". $computer['p_img'], __DIR__. "/../../imgs/prod/$folderName/". $computer['p_img']);
+        }
+        if(file_exists(__DIR__. "/../../imgs/tmp/". $computer['p_img']) == true) {
+            rename(__DIR__. "/../../imgs/tmp/". $computer['p_img'], __DIR__. "/../../imgs/prod/$folderName/". $computer['p_img']);
+        }
     }
 
     public function getProd($prodId) {

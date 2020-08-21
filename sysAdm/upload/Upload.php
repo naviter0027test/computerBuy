@@ -42,7 +42,9 @@ class Upload {
 		    $data['success'][$sussCount]['name'] = $_FILES['file']['name'][$count];
 		    $data['success'][$sussCount]['type'] = $_FILES['file']['type'][$count];
 		    $data['success'][$sussCount]['size'] = $_FILES['file']['size'][$count];
-		    move_uploaded_file($_FILES['file']['tmp_name'][$count], "imgs/tmp/". $_FILES['file']['name'][$count]);
+                    if(is_dir(__DIR__. "/../../imgs/tmp") == false)
+                        mkdir(__DIR__. "/../../imgs/tmp");
+		    move_uploaded_file($_FILES['file']['tmp_name'][$count], __DIR__. "/../../imgs/tmp/". $_FILES['file']['name'][$count]);
 		    ++$sussCount;
 		}
 	}
