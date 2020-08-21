@@ -19,7 +19,7 @@ class Order {
 	$this->mysql = new MysqlCon();
     }
 
-    public function spanOrder($order, $mid) {
+    public function spanOrder($order, $mid = null) {
 	$dbAdm = $this->mysql;
 	$no = $order['o_no'];
 
